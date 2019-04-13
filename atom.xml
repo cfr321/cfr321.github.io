@@ -39,6 +39,30 @@
   </entry>
   
   <entry>
+    <title>JVM学习笔记（一）</title>
+    <link href="https://ccgofa.top/2019/04/12/JVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://ccgofa.top/2019/04/12/JVM学习笔记（一）/</id>
+    <published>2019-04-12T14:56:41.000Z</published>
+    <updated>2019-04-13T09:35:10.800Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JVM学习笔记（一）&quot;&gt;&lt;a href=&quot;#JVM学习笔记（一）&quot; class=&quot;headerlink&quot; title=&quot;JVM学习笔记（一）&quot;&gt;&lt;/a&gt;JVM学习笔记（一）&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;最近学习Java虚拟机，看的是深入理解Java虚拟机，整本书内容还还是非常的多的，而且有一些知识似乎还太适合我…..水平不够。然后准备做点读书笔记和一些自己的思考。&lt;/p&gt;
+&lt;p&gt;我主要准备学习的有一下三部分：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="https://ccgofa.top/categories/java/"/>
+    
+    
+      <category term="学习" scheme="https://ccgofa.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="jvm" scheme="https://ccgofa.top/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://ccgofa.top/2019/04/12/hello-world/"/>
     <id>https://ccgofa.top/2019/04/12/hello-world/</id>
