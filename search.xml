@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2F2019%2F04%2F12%2Ftest%2F</url>
-    <content type="text"><![CDATA[markdowm 使用这是三级标题 列表1 列表2 a 子列表 b 子列表 列表3这是连接斜体加粗1class 我的引用内容 上面这是一个横线]]></content>
+    <title><![CDATA[about me]]></title>
+    <url>%2F2019%2F04%2F12%2Fabout-me%2F</url>
+    <content type="text"><![CDATA[今天是2019.4.13--我念大三，从今天起记录我的生活 初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。 我的其实是想记录下自己的所学，每天都能记录下来一些东西。]]></content>
       <categories>
-        <category>java</category>
+        <category>life</category>
       </categories>
       <tags>
-        <tag>导航</tag>
         <tag>分享</tag>
+        <tag>置顶</tag>
       </tags>
   </entry>
   <entry>

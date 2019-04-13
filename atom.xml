@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ccgofa.top/"/>
-  <updated>2019-04-12T15:23:22.977Z</updated>
+  <updated>2019-04-13T04:21:13.031Z</updated>
   <id>https://ccgofa.top/</id>
   
   <author>
@@ -17,24 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="https://ccgofa.top/2019/04/12/test/"/>
-    <id>https://ccgofa.top/2019/04/12/test/</id>
+    <title>about me</title>
+    <link href="https://ccgofa.top/2019/04/12/about-me/"/>
+    <id>https://ccgofa.top/2019/04/12/about-me/</id>
     <published>2019-04-12T14:56:41.000Z</published>
-    <updated>2019-04-12T15:23:22.977Z</updated>
+    <updated>2019-04-13T04:21:13.031Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;markdowm-使用&quot;&gt;&lt;a href=&quot;#markdowm-使用&quot; class=&quot;headerlink&quot; title=&quot;markdowm 使用&quot;&gt;&lt;/a&gt;markdowm 使用&lt;/h1&gt;&lt;h3 id=&quot;这是三级标题&quot;&gt;&lt;a href=&quot;#这是三级标题&quot; class=&quot;headerlink&quot; title=&quot;这是三级标题&quot;&gt;&lt;/a&gt;这是三级标题&lt;/h3&gt;
+      &lt;pre&gt;&lt;code&gt;今天是2019.4.13--我念大三，从今天起记录我的生活
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
-      <category term="java" scheme="https://ccgofa.top/categories/java/"/>
+      <category term="life" scheme="https://ccgofa.top/categories/life/"/>
     
-    
-      <category term="导航" scheme="https://ccgofa.top/tags/%E5%AF%BC%E8%88%AA/"/>
     
       <category term="分享" scheme="https://ccgofa.top/tags/%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="置顶" scheme="https://ccgofa.top/tags/%E7%BD%AE%E9%A1%B6/"/>
     
   </entry>
   
