@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="Task try">
 <meta property="og:description" content="今天是2019.4.13–我念大三，从今天起记录我的生活。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-20T11:55:54.615Z">
+<meta property="og:updated_time" content="2019-04-21T09:17:35.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about me">
 <meta name="twitter:description" content="今天是2019.4.13–我念大三，从今天起记录我的生活。">
@@ -426,7 +426,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-20 19:55:54" itemprop="dateModified" datetime="2019-04-20T19:55:54+08:00">2019-04-20</time>
+                <time title="修改时间：2019-04-21 17:17:35" itemprop="dateModified" datetime="2019-04-21T17:17:35+08:00">2019-04-21</time>
               
             
           </span>
@@ -501,6 +501,19 @@
            <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center>
 
 <a id="more"></a>
+<ul>
+<li><p>2019-4-21  还凑合</p>
+<p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p>
+<p>原因很简单：</p>
+<ul>
+<li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p>
+</li>
+<li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
 <ul>
 <li><p>2019-4-20 多云转雨</p>
 <p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p>
@@ -667,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -688,7 +701,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -721,7 +736,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

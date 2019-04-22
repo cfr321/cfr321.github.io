@@ -103,21 +103,18 @@
 
 
 
-  <meta name="description" content="继续JVM知识，这次主要总分解类得加载，深入了解JVM这本书我就先看这部分，实在是难啃，很多名词都没接触过，知识概念性得东西又多，关于调优部分一些常用得调优工具我就不总结了，后面有机会再来读读这本书">
-<meta name="keywords" content="学习,jvm">
+  <meta name="description" content="计算机网络知识一、TCP/IP物理层：主要解决对接的标准，网络信号的传输，信道的多效利用 数据链路层：1、打包成贞、透明传输、可靠传输、差错检验。。。。。给资源加上MAC地址 网络层一、IP协议IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协">
+<meta name="keywords" content="学习,计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM学习笔记（二）">
-<meta property="og:url" content="https://www.ccgofa.top/2019/04/15/JVM学习笔记（二）/index.html">
+<meta property="og:title" content="spring重点归纳">
+<meta property="og:url" content="https://www.ccgofa.top/2019/04/22/计算机网络/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="继续JVM知识，这次主要总分解类得加载，深入了解JVM这本书我就先看这部分，实在是难啃，很多名词都没接触过，知识概念性得东西又多，关于调优部分一些常用得调优工具我就不总结了，后面有机会再来读读这本书">
+<meta property="og:description" content="计算机网络知识一、TCP/IP物理层：主要解决对接的标准，网络信号的传输，信道的多效利用 数据链路层：1、打包成贞、透明传输、可靠传输、差错检验。。。。。给资源加上MAC地址 网络层一、IP协议IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3278574594,735796484&fm=26&gp=0.jpg">
-<meta property="og:image" content="http://static.oschina.net/uploads/img/201405/09113619_cx03.png">
-<meta property="og:updated_time" content="2019-04-15T08:49:55.670Z">
+<meta property="og:updated_time" content="2019-04-22T05:16:30.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM学习笔记（二）">
-<meta name="twitter:description" content="继续JVM知识，这次主要总分解类得加载，深入了解JVM这本书我就先看这部分，实在是难啃，很多名词都没接触过，知识概念性得东西又多，关于调优部分一些常用得调优工具我就不总结了，后面有机会再来读读这本书">
-<meta name="twitter:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3278574594,735796484&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="spring重点归纳">
+<meta name="twitter:description" content="计算机网络知识一、TCP/IP物理层：主要解决对接的标准，网络信号的传输，信道的多效利用 数据链路层：1、打包成贞、透明传输、可靠传输、差错检验。。。。。给资源加上MAC地址 网络层一、IP协议IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协">
 
 
 
@@ -127,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://www.ccgofa.top/2019/04/15/JVM学习笔记（二）/">
+  <link rel="canonical" href="https://www.ccgofa.top/2019/04/22/计算机网络/">
 
 
 
@@ -137,7 +134,7 @@
   };
 </script>
 
-  <title>JVM学习笔记（二） | Task try</title>
+  <title>spring重点归纳 | Task try</title>
   
 
 
@@ -369,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/15/JVM学习笔记（二）/">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/22/计算机网络/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="摇井">
@@ -386,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM学习笔记（二）
+          <h1 class="post-title" itemprop="name headline">spring重点归纳
 
               
             
@@ -412,7 +409,7 @@
                 
               
 
-              <time title="创建时间：2019-04-15 14:49:45 / 修改时间：16:49:55" itemprop="dateCreated datePublished" datetime="2019-04-15T14:49:45+08:00">2019-04-15</time>
+              <time title="创建时间：2019-04-22 19:50:23 / 修改时间：13:16:30" itemprop="dateCreated datePublished" datetime="2019-04-22T19:50:23+08:00">2019-04-22</time>
             
 
             
@@ -434,7 +431,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机基础/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a></span>
 
                 
                 
@@ -453,8 +450,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/15/JVM学习笔记（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/15/JVM学习笔记（二）/" itemprop="commentCount"></span>
+                <a href="/2019/04/22/计算机网络/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/计算机网络/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -489,91 +486,76 @@
       
 
       
-        <p>继续JVM知识，这次主要总分解类得加载，深入了解JVM这本书我就先看这部分，实在是难啃，很多名词都没接触过，知识概念性得东西又多，关于调优部分一些常用得调优工具我就不总结了，后面有机会再来读读这本书<br><a id="more"></a></p>
-<h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><blockquote>
+        <a id="more"></a>
+<h1 id="计算机网络知识"><a href="#计算机网络知识" class="headerlink" title="计算机网络知识"></a>计算机网络知识</h1><h2 id="一、TCP-IP"><a href="#一、TCP-IP" class="headerlink" title="一、TCP/IP"></a>一、TCP/IP</h2><p>物理层：主要解决对接的标准，网络信号的传输，信道的多效利用</p>
+<p>数据链路层：1、打包成贞、透明传输、可靠传输、差错检验。。。。。给资源加上MAC地址</p>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h4 id="一、IP协议"><a href="#一、IP协议" class="headerlink" title="一、IP协议"></a>一、IP协议</h4><p>IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协议：TCP或UDP要做的事情。每个计算机都有为一的IP地址</p>
+<h4 id="TTL字段。"><a href="#TTL字段。" class="headerlink" title="TTL字段。"></a>TTL字段。</h4><p>这个字段规定该数据包在穿过多少个路由之后才会被抛弃。某个IP数据包每穿过一个路由器，该数据包的TTL数值就会减少1，当该数据包的TTL成为零，它就会被自动抛弃。</p>
+<p>这个字段的最大值也就是255，也就是说一个协议包也就在路由器里面穿行255次就会被抛弃了，根据系统的不同，这个数字也不一样，一般是32或者是64。</p>
+<h3 id="二、ARP协议（地址解析协议）"><a href="#二、ARP协议（地址解析协议）" class="headerlink" title="二、ARP协议（地址解析协议）"></a>二、ARP协议（地址解析协议）</h3><p>这个协议是为IP协议服务的：</p>
+<p>做三件事：先查开目的的IP地址在自己的ARP高速缓存（就是一个IP-MAC地址对应表缓存）。</p>
+<p>​        没有的话就会在自己的局域网中发广播获取目标IP的MAC地址</p>
+<p>​        没有的话，就会发给网关路由器，等到MAC地址。</p>
+<h3 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h3><p>答:RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<h3 id="三、ICMP协议（网络控制报文协议）"><a href="#三、ICMP协议（网络控制报文协议）" class="headerlink" title="三、ICMP协议（网络控制报文协议）"></a>三、ICMP协议（网络控制报文协议）</h3><p>IP协议并不是一个可靠的协议，它不保证数据被送达，那么，自然的，保证数据送达的工作应该由其他的模块来完成。其中一个重要的模块就是ICMP(网络控制报文)协议。ICMP不是高层协议，而是IP层的协议。</p>
+<p>当传送IP数据包发生错误。比如主机不可达，路由不可达等等，ICMP协议将会把错误信息封包，然后传送回给主机。给主机一个处理错误的机会，这 也就是为什么说建立在IP层以上的协议是可能做到安全的原因。</p>
+<p>​    网络层两个应用：</p>
+<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a><strong>ping</strong></h4><p>ping可以说是ICMP的最著名的应用，是TCP/IP协议的一部分。利用“ping”命令可以检查网络是否连通，可以很好地帮助我们分析和判定网络故障。</p>
+<p>ping这个单词源自声纳定位，而这个程序的作用也确实如此，它利用ICMP协议包来侦测另一个主机是否可达。原理是用类型码为0的ICMP发请 求，受到请求的主机则用类型码为8的ICMP回应。</p>
+<p>ping程序来计算间隔时间，并计算有多少个包被送达。用户就可以判断网络大致的情况。我们可以看到， ping给出来了传送的时间和TTL的数据。</p>
+<h4 id="Traceroute"><a href="#Traceroute" class="headerlink" title="Traceroute"></a>Traceroute</h4><p>Traceroute是用来侦测主机到目的主机之间所经路由情况的重要工具，也是最便利的工具。</p>
+<p>Traceroute的原理是非常非常的有意思，它收到到目的主机的IP后，首先给目的主机发送一个TTL=1的UDP数据包，而经过的第一个路由器收到这个数据包以后，就自动把TTL减1，而TTL变为0以后，路由器就把这个包给抛弃了，并同时产生   一个主机不可达的ICMP数据报给主机。主机收到这个数据报以后再发一个TTL=2的UDP数据报给目的主机，然后刺激第二个路由器给主机发ICMP数据  报。如此往复直到到达目的主机。这样，traceroute就拿到了所有的路由器IP。</p>
+<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h2><p>一个面向连接、可靠传输、面向字节流、能流量控制和阻塞控制，全双工。</p>
+<h3 id="TCP对应的协议："><a href="#TCP对应的协议：" class="headerlink" title="TCP对应的协议："></a>TCP对应的协议：</h3><p>（1） FTP：定义了文件传输协议，使用21端口。<br>（2） Telnet：一种用于远程登陆的端口，使用23端口，用户可以以自己的身份远程连接到计算机上，可提供基于DOS模式下的通信服务。<br>（3） SMTP：邮件传送协议，用于发送邮件。服务器开放的是25号端口。<br>（4） POP3：它是和SMTP对应，POP3用于接收邮件。POP3协议所用的是110端口。<br>（5）HTTP：是从Web服务器传输超文本到本地浏览器的传送协议。</p>
+<p>一个不连接、不可靠、面向报文、不能流量控制和阻塞控制，一对一、一对多、多对多、多对一，速度快。</p>
+<h3 id="UDP对应的协议："><a href="#UDP对应的协议：" class="headerlink" title="UDP对应的协议："></a>UDP对应的协议：</h3><p>（1） DNS：用于域名解析服务，将域名地址转换为IP地址。DNS用的是53号端口。<br>（2） SNMP：简单网络管理协议，使用161号端口，是用来管理网络设备的。由于网络设备很多，无连接的服务就体现出其优势。<br>（3） TFTP(Trival File Transfer Protocal)，简单文件传输协议，该协议在熟知端口69上使用UDP服务。</p>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>第一次握手： 建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</p>
+<p>第二次握手：  服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment  Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence  Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
+<p>第三次握手： 客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
+<p><strong>为什么要三次握手？</strong></p>
+<p>主要是第三次握手的存在，避免了服务端等待确认的资源浪费，</p>
+<p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</p>
+<p>具体例子：“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
+<h3 id="四次分手"><a href="#四次分手" class="headerlink" title="四次分手"></a>四次分手</h3><p>第一次分手： 主机1（可以使客户端，也可以是服务器端），设置Sequence Number，向主机2发送一个FIN报文段；此时，主机1进入<strong>FIN_WAIT_1</strong>状态；这表示主机1没有数据要发送给主机2了；</p>
+<p>第二次分手： 主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；</p>
+<p>第三次分手： 主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；</p>
+<p>第四次分手：   主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</p>
+<p><strong>为什么要四次分手？</strong></p>
+<p>TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<p><strong>为什么要等待2MSL？</strong></p>
+<p>MSL：报文段最大生存时间，它是任何报文段被丢弃前在网络内的最长时间。</p>
+<p>原因有二：</p>
 <ul>
-<li>类加载得全过程</li>
-<li>什么时候类加载</li>
-<li>类加载器</li>
+<li>保证TCP协议的全双工连接能够可靠关闭</li>
+<li>保证这次连接的重复数据段从网络中消失</li>
 </ul>
-</blockquote>
-<h2 id="一、类加载全过程"><a href="#一、类加载全过程" class="headerlink" title="一、类加载全过程"></a>一、类加载全过程</h2><ul>
-<li><p>先看看一张完整的类的生命周期图</p>
-<p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3278574594,735796484&amp;fm=26&amp;gp=0.jpg" alt="类加载过程"></p>
-<p>整个过程分为七步，其中验证、准备、解析属于连接，前面五部总的来说就是类的加载，加载、验证、准备、初始化和卸载这些步骤的顺序是固定的，其他的可能不确定，解析可能在初始化之后，比如反射机制。</p>
-<p>下面主题看看加载的步骤：</p>
-</li>
-</ul>
-<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>加载主要做三件事：</p>
+<p>第一点：如果主机1直接CLOSED了，那么由于IP协议的不可靠性或者是其它网络原因，导致主机2没有收到主机1最后回复的ACK。那么主机2就会在超时之后继续发送FIN，此时由于主机1已经CLOSED了，就找不到与重发的FIN对应的连接。所以，主机1不是直接进入CLOSED，而是要保持TIME_WAIT，当再次收到FIN的时候，能够保证对方收到ACK，最后正确的关闭连接。</p>
+<p>第二点：如果主机1直接CLOSED，然后又再向主机2发起一个新连接，我们不能保证这个新连接与刚关闭的连接的端口号是不同的。也就是说有可能新连接和老连接的端口号是相同的。一般来说不会发生什么问题，但是还是有特殊情况出现：假设新连接和已经关闭的老连接端口号是一样的，如果前一次连接的某些数据仍然滞留在网络中，这些延迟数据在建立新连接之后才到达主机2，由于新连接和老连接的端口号是一样的，TCP协议就认为那个延迟的数据是属于新连接的，这样就和真正的新连接的数据包发生混淆了。所以TCP连接还要在TIME_WAIT状态等待2倍MSL，这样可以保证本次连接的所有数据都从网络中消失。</p>
+<h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><p>主要是借助 <strong>rwnd</strong>,接受端通过不断地响应rwnd的大小给接受端来实现流量的控制</p>
+<p>发送窗口时不会大于接受窗口的。</p>
+<h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><p>拥塞控制是有一个 cwnd,  拥塞窗口，这是发送端发送数据的窗口，</p>
+<p>发送模拟：1、慢开始：发送的第一个数据只有一个包，cwnd的大小为1，如果能够顺利响应</p>
+<p>​        2、继续满开始的节奏，成指数增长窗口的大小。</p>
+<p>​        3、然后增长会到达一个慢增长限制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限ssthresh状态变量。慢开始门限ssthresh的用法如下：</span><br><span class="line"></span><br><span class="line">    当 cwnd &lt; ssthresh 时，使用上述的慢开始算法。</span><br><span class="line">    当 cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。</span><br><span class="line">    当 cwnd = ssthresh 时，既可使用慢开始算法，也可使用拥塞控制避免算法。</span><br></pre></td></tr></table></figure>
+<p>​        4、接着只会进行，cwnd一个一个的增长</p>
+<p>​        5、知道增大到某一个值，发生了阻塞，丢包了，</p>
+<p>​                就会向调整  ssthresh等于 档期cwnd大小的一半，然后cwnd的大小回到1，重新慢增长。</p>
+<p><strong>快重传</strong></p>
+<p>问题：（因为报文是每隔多少 响应一次的，比如M5才会响应，M3丢了，那么要等到M5，传好了之后才响应M3丢了）</p>
+<p>快重传算法首先要求接收方每收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
+<p>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。</p>
+<p>显然，接收方不能确认M4，因为M4是收到的失序报文段。根据 可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。</p>
+<p>但按照快重传算法的规定，接收方应及时发送对M2的重复确认，这样做可以让   发送方及早知道报文段M3没有到达接收方。发送方接着发送了M5和M6。接收方收到这两个报文后，也还要再次发出对M2的重复确认。这样，发送方共收到了  接收方的四个对M2的确认，其中后三个都是重复确认。</p>
+<p>快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段M3，而不必 继续等待M3设置的重传计时器到期。</p>
+<p>由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
+<p><strong>快恢复</strong></p>
+<p>问题：报文的丢失，可能不是网络拥塞的问题，那么当三个重复确认连续收到，说明网络没有阻塞，没有必要再从1满开始。所以有了快恢复。</p>
+<p>与快重传配合使用的还有快恢复算法，其过程有以下两个要点：</p>
 <ul>
-<li>通过一个类的全限定名来获取定义此类的二进制字节流，后面介绍类加载器时，会自定义一个类加载器，就是需要一个io的字节流，来实现类的加载。</li>
-<li>将字节流的静态储存结构转化为方法区的运行时的数据结构；也就是类加载先会去加载那些静态的资源放入方法区。</li>
-<li>还有就是会在堆里面生成一个 java.lang.class的对象，作为访问这个类在方法区里面内容的接口。</li>
+<li>当发送方连续收到三个重复确认，就执行“乘法减小”算法，把慢开始门限ssthresh减半。</li>
+<li>与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为 慢开始门限ssthresh减半后的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。</li>
 </ul>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>验证的几个内容：</p>
-<ul>
-<li>文件格式的验证：检查是不是以魔数开头，版本对不对。。。</li>
-<li>元数据验证：对一些类需要的数据进行验证，必有这个类有没有父类，这个父类是不是不能被继承的，父类是不是抽象的</li>
-<li>字节码验证：这是比较麻烦的一个部分，主要是验证程序是不是语义合法，是不是逻辑符合，这个其实idea也会去做….所以在编译器调优时可以把JVM 的这些验证功能关掉。-Xverify:none</li>
-<li>符号引用验证：这个其实是在解析的时候发生。是对常量池中各种符号引用的一种验证</li>
-</ul>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>准备阶段就是为类的<strong>变量分配内存</strong>，并设置类变量的初始值的阶段，注意的是这个阶段只是对类变量（被static修饰的变量）进行准备，不包括实例变量。</p>
-<ul>
-<li><p>public static int a=123;     这里再准备阶段a 的值将只是 0，不是123，因为只是给一个初始值，要解析的时候才会真正被复制。</p>
-</li>
-<li><p>public final static int a=123;   这里的a在准备阶段是123，因为加了final那么就会为变量赋值—-注意一下</p>
-</li>
-</ul>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
-<li><p>解析的主要目的是：将虚拟机常量池中的符号引用替换为直接引用的过程。</p>
-</li>
-<li><p>解释一下符号引用和直接引用：比如在方法A中使用方法B，A（）{B（）；}，这里的B（）就是符号引用，初学java时我们都是知道这是java的引用，以为B指向B方法的内存地址，但是这是不完整的，这里的B只是一个符号引用，它对于方法的调用没有太多的实际意义，可以这么认为，他就是给程序员看的一个标志，让程序员知道，这个方法可以这么调用，但是B方法实际调用时是通过一个指针指向B方法的内存地址，这个指针才是真正负责方法调用，他就是直接引用。</p>
-</li>
-</ul>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>初始化简单来讲就是去执行 &lt; clinit&gt;()构造方法的过程，为类的静态变量赋予正确的初始值，上述的准备阶段为静态变量赋予的是虚拟机默认的初始值，此处赋予的才是程序编写者为变量分配的真正的初始值。</p>
-<p>对 <strong>类变量</strong> 和 <strong>静态语句块</strong> 进行赋值动作，这个过程先后就是开谁在前谁在后。</p>
-<p>下面代码值得一看</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        i=<span class="number">0</span>;		<span class="comment">//可以赋值，即使还没定义，但是不能访问，也就是你不能对i进行其他操作，除了赋值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">1</span>;	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(i);   <span class="comment">//结果为1，如果调整静态块顺序结构就为0.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对子类的静态值调用会先去加载父类的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> A=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            A=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Sun</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> B=A;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(Sun.B);  <span class="comment">//打印结果为2</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>而且静态块的赋值操作还是阻塞的。</p>
-<h2 id="二、什么时候类加载"><a href="#二、什么时候类加载" class="headerlink" title="二、什么时候类加载"></a>二、什么时候类加载</h2><h3 id="类的主动加载"><a href="#类的主动加载" class="headerlink" title="类的主动加载"></a>类的主动加载</h3><p>主动加载就是出现下面情况，会里面对类进行初始化，当然初始化之前肯定还有加载、验证、准备、解析。。</p>
-<p>java对类的主动使用有五种情况：</p>
-<ol>
-<li>创建类的实例   (new），或者定义类用 final 修饰</li>
-<li>访问某个类或接口的静态变量，或者对该静态变量赋值 ，调用类的静态方法 。类的static你要用就得先加载这个类。</li>
-<li>反射（如Class.forName(“com.shengsiyuan.Test”)）</li>
-<li>初始化一个类的子类（先初始化所有的父类，最后初始化本身，接口除外，类初始化的时候，它所实现的接口不会初始化，就算字接口初始化，父接口也不会初始化，只有当程序调用接口的静态变量的时候才会导致接口的初始化）</li>
-<li>Java虚拟机启动时被标明为启动类的类，如main方法的那个类。</li>
-</ol>
-<p>写点代码吧,下面代码差不多概括了2和4和5，1好理解，3记一下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是妈妈，我要先被加载"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span>  <span class="title">Parent</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是儿子，我被加载了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是儿子的静态方法，调用我要先加载我"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是有main方法的类，我第一个加载"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Son.function();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> 	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打印结果：</span></span><br><span class="line"><span class="comment">     * 我是有main方法的类，我第一个加载</span></span><br><span class="line"><span class="comment">     * 我是妈妈，我要先被加载</span></span><br><span class="line"><span class="comment">     * 我是儿子，我被加载了</span></span><br><span class="line"><span class="comment">     * 我是儿子的静态方法，调用我要先加载我</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
-<h3 id="类的被动加载"><a href="#类的被动加载" class="headerlink" title="类的被动加载"></a>类的被动加载</h3><p>有以下三种情况</p>
-<ul>
-<li>访问类的静态变量，只会去初始化这个变量真正被定义的类。</li>
-<li>new一个类的数组是不会马上去加载这个类的，只有最后操作数组具体对象才会加载。</li>
-<li>访问类的final变量不会去加载这个类</li>
-</ul>
-<p>也写点代码吧。很有意义的代码，值得思考</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent2</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是妈妈，我要先被加载"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value=<span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son2</span> <span class="keyword">extends</span>  <span class="title">Parent2</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> sonvalue=<span class="number">123</span>;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是儿子，我被加载了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(Son2.value);			<span class="comment">//Son2不加载</span></span><br><span class="line">        Son2[]  son2s=<span class="keyword">new</span> Son2[<span class="number">10</span>];				<span class="comment">//Son2不加载</span></span><br><span class="line">        System.out.println(Son2.sonvalue);		<span class="comment">//Son2不加载</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印结果是之后Parent2被加载了</span></span><br></pre></td></tr></table></figure>
-<h2 id="三、类加载器"><a href="#三、类加载器" class="headerlink" title="三、类加载器"></a>三、类加载器</h2><h3 id="JDK-默认提供了如下几种ClassLoader"><a href="#JDK-默认提供了如下几种ClassLoader" class="headerlink" title="JDK 默认提供了如下几种ClassLoader"></a>JDK 默认提供了如下几种ClassLoader</h3><ol>
-<li><p>Bootstrp loaderBootstrp</p>
-<p>加载器是用C++语言写的，它是在Java虚拟机启动后初始化的，它主要负责加载%JAVA_HOME%/jre/lib,-Xbootclasspath参数指定的路径以及%JAVA_HOME%/jre/classes中的类。</p>
-</li>
-<li><p>ExtClassLoader  Bootstrp  loader</p>
-<p>加载ExtClassLoader,并且将ExtClassLoader的父加载器设置为Bootstrp  loader.ExtClassLoader是用Java写的，具体来说就是  sun.misc.Launcher$ExtClassLoader，ExtClassLoader主要加载%JAVA_HOME%/jre/lib/ext，此路径下的所有classes目录以及java.ext.dirs系统变量指定的路径中类库。</p>
-</li>
-<li><p>AppClassLoader Bootstrp  loader</p>
-<p>加载完ExtClassLoader后，就会加载AppClassLoader,并且将AppClassLoader的父加载器指定为  ExtClassLoader。AppClassLoader也是用Java写成的，它的实现类是  sun.misc.Launcher$AppClassLoader，另外我们知道ClassLoader中有个getSystemClassLoader方法,此方法返回的正是AppclassLoader.AppClassLoader主要负责加载classpath所指定的位置的类或者是jar文档，它也是Java程序默认的类加载器。</p>
-</li>
-</ol>
-<p>综上所述，它们之间的关系可以通过下图形象的描述：</p>
-<p><strong><img src="http://static.oschina.net/uploads/img/201405/09113619_cx03.png" alt="img"></strong></p>
-<p>为什么要有三个类加载器，一方面是分工，各自负责各自的区块，另一方面为了实现委托模型。</p>
-<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>就是一个类加载器收到类加载的要求，它先不会去加载，会先让上一层的的类加载器去加载，一致到启动类加载器，然后启动类加载器就回去加载，它加载不了又丢回给扩展类加载器，下来每个都会去是试着加载知道加载出来，到最后加载不出来就报错。</p>
-<p>目的就是为了安全，对Java层序稳定性有很重要的作用。</p>
-<h3 id="破坏双亲委派模型"><a href="#破坏双亲委派模型" class="headerlink" title="破坏双亲委派模型"></a>破坏双亲委派模型</h3><p>这个就是类加载器收到类加载的要求，它就回去加载，它加载不了再去个ParentClassLoader加载。比如tomcat就是这个干的，这样做灵活性更高。</p>
-<h3 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h3><p>最后写一个自定义的文件类加载器，很简单，实现了双亲委派模型。先丢个parent。也就是会丢个App-ClassLoader。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileSystemClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String rootDir;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FileSystemClassLoader</span><span class="params">(String rootDir)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.rootDir=rootDir;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        Class c=findLoadedClass(name);</span><br><span class="line">        <span class="keyword">if</span>(c!=<span class="keyword">null</span>)&#123;  <span class="comment">//已经加载过了</span></span><br><span class="line">            <span class="keyword">return</span> c;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ClassLoader parent=<span class="keyword">this</span>.getParent();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                c=parent.loadClass(name);</span><br><span class="line">            &#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> c;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">byte</span>[] classdate= <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    classdate = getClassDate(name);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(classdate==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">throw</span>  <span class="keyword">new</span> ClassNotFoundException();</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    c=defineClass(name,classdate,<span class="number">0</span>,classdate.length);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] getClassDate(String className) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        String path=rootDir+<span class="string">"/"</span>+className.replace(<span class="string">'.'</span>,<span class="string">'/'</span>);</span><br><span class="line">        InputStream is = <span class="keyword">null</span>;</span><br><span class="line">        StringBuffer a=<span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            is=<span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">            <span class="keyword">byte</span>[] buffer=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">int</span> tmp=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>((tmp=is.read(buffer))!=-<span class="number">1</span>)&#123;</span><br><span class="line">                a.append(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(is!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                is.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a.toString().getBytes();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -623,7 +605,7 @@
           
             <a href="/tags/学习/" rel="tag"># 学习</a>
           
-            <a href="/tags/jvm/" rel="tag"># jvm</a>
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
           
         </div>
       
@@ -636,8 +618,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/14/Java多线程（一）/" rel="next" title="Java多线程学习笔记（一）">
-                <i class="fa fa-chevron-left"></i> Java多线程学习笔记（一）
+              <a href="/2019/04/20/设计模式简单的思考/" rel="next" title="设计模式简单的思考">
+                <i class="fa fa-chevron-left"></i> 设计模式简单的思考
               </a>
             
           </div>
@@ -645,10 +627,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/16/Java多线程（二）/" rel="prev" title="java多线程（二）">
-                java多线程（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -852,7 +830,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">1.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、类加载全过程"><span class="nav-number">1.1.</span> <span class="nav-text">一、类加载全过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">1.1.1.</span> <span class="nav-text">加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">1.1.2.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.1.3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">1.1.4.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.1.5.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、什么时候类加载"><span class="nav-number">1.2.</span> <span class="nav-text">二、什么时候类加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的主动加载"><span class="nav-number">1.2.1.</span> <span class="nav-text">类的主动加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的被动加载"><span class="nav-number">1.2.2.</span> <span class="nav-text">类的被动加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、类加载器"><span class="nav-number">1.3.</span> <span class="nav-text">三、类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK-默认提供了如下几种ClassLoader"><span class="nav-number">1.3.1.</span> <span class="nav-text">JDK 默认提供了如下几种ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派模型"><span class="nav-number">1.3.2.</span> <span class="nav-text">双亲委派模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#破坏双亲委派模型"><span class="nav-number">1.3.3.</span> <span class="nav-text">破坏双亲委派模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义类加载器"><span class="nav-number">1.3.4.</span> <span class="nav-text">自定义类加载器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络知识"><span class="nav-number">1.</span> <span class="nav-text">计算机网络知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、TCP-IP"><span class="nav-number">1.1.</span> <span class="nav-text">一、TCP/IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层"><span class="nav-number">1.1.1.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、IP协议"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">一、IP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TTL字段。"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">TTL字段。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、ARP协议（地址解析协议）"><span class="nav-number">1.1.2.</span> <span class="nav-text">二、ARP协议（地址解析协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述RARP协议"><span class="nav-number">1.1.3.</span> <span class="nav-text">描述RARP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、ICMP协议（网络控制报文协议）"><span class="nav-number">1.1.4.</span> <span class="nav-text">三、ICMP协议（网络控制报文协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ping"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">ping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Traceroute"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Traceroute</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">1.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">1.3.</span> <span class="nav-text">TCP/UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP对应的协议："><span class="nav-number">1.3.1.</span> <span class="nav-text">TCP对应的协议：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP对应的协议："><span class="nav-number">1.3.2.</span> <span class="nav-text">UDP对应的协议：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP"><span class="nav-number">1.4.</span> <span class="nav-text">TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">三次握手</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次分手"><span class="nav-number">1.4.1.</span> <span class="nav-text">四次分手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP流量控制"><span class="nav-number">1.4.2.</span> <span class="nav-text">TCP流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP拥塞控制"><span class="nav-number">1.4.3.</span> <span class="nav-text">TCP拥塞控制</span></a></li></ol></li></ol></div>
             
 
           </div>
