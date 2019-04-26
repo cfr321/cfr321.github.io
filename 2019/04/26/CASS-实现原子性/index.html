@@ -103,16 +103,18 @@
 
 
 
-  <meta name="description" content="锄禾日当午 码农真辛苦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Task try">
-<meta property="og:url" content="https://www.ccgofa.top/tags/spring/index.html">
+  <meta name="description" content="前面学习过volatile，它实现了内存的可见性，但是不保证原子性。于是我们引用了AtomicInteger类实现了非原子操作的线程安全，回过头来想，AtomicInteger类是如果实现 ++ 的原子性的呢。 一、compareAndSet123456789101112131415161718//比较符合预期就更新public final boolean compareAndSet(int e">
+<meta name="keywords" content="多线程,集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CASS-实现原子性">
+<meta property="og:url" content="https://www.ccgofa.top/2019/04/26/CASS-实现原子性/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="锄禾日当午 码农真辛苦">
+<meta property="og:description" content="前面学习过volatile，它实现了内存的可见性，但是不保证原子性。于是我们引用了AtomicInteger类实现了非原子操作的线程安全，回过头来想，AtomicInteger类是如果实现 ++ 的原子性的呢。 一、compareAndSet123456789101112131415161718//比较符合预期就更新public final boolean compareAndSet(int e">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-26T05:31:47.603Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Task try">
-<meta name="twitter:description" content="锄禾日当午 码农真辛苦">
+<meta name="twitter:title" content="CASS-实现原子性">
+<meta name="twitter:description" content="前面学习过volatile，它实现了内存的可见性，但是不保证原子性。于是我们引用了AtomicInteger类实现了非原子操作的线程安全，回过头来想，AtomicInteger类是如果实现 ++ 的原子性的呢。 一、compareAndSet123456789101112131415161718//比较符合预期就更新public final boolean compareAndSet(int e">
 
 
 
@@ -122,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://www.ccgofa.top/tags/spring/">
+  <link rel="canonical" href="https://www.ccgofa.top/2019/04/26/CASS-实现原子性/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>标签: spring | Task try</title>
+  <title>CASS-实现原子性 | Task try</title>
   
 
 
@@ -180,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/cfr321" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,7 +241,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -344,80 +346,281 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>spring<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/26/CASS-实现原子性/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/18/spring重点归纳/" itemprop="url">
-            
-              <span itemprop="name">spring重点归纳</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">CASS-实现原子性
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-18T19:50:23+08:00" content="2019-04-18">
-          04-18
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-26 12:26:43 / 修改时间：13:31:47" itemprop="dateCreated datePublished" datetime="2019-04-26T12:26:43+08:00">2019-04-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/26/CASS-实现原子性/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/26/CASS-实现原子性/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>前面学习过volatile，它实现了内存的可见性，但是不保证原子性。于是我们引用了AtomicInteger类实现了非原子操作的线程安全，回过头来想，AtomicInteger类是如果实现 ++ 的原子性的呢。</p>
+<h3 id="一、compareAndSet"><a href="#一、compareAndSet" class="headerlink" title="一、compareAndSet"></a>一、compareAndSet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比较符合预期就更新</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">compareAndSet</span><span class="params">(<span class="keyword">int</span> expect, <span class="keyword">int</span> update)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="keyword">this</span>, valueOffset, expect, update);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//加一</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">incrementAndGet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> unsafe.getAndAddInt(<span class="keyword">this</span>, valueOffset, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//再点进去  unsafe.getAndAddInt</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndAddInt</span><span class="params">(Object var1, <span class="keyword">long</span> var2, <span class="keyword">int</span> var4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> var5;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            var5 = <span class="keyword">this</span>.getIntVolatile(var1, var2);</span><br><span class="line">        &#125; <span class="keyword">while</span>(!<span class="keyword">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> var5;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>我们最后发现两个方法最后都有调用</p>
+<p><strong>unsafe.compareAndSwapInt  (this, valueOffset, expect, update); </strong></p>
+<p>那这是是个什么方法呢，unsafe类的这个方法是一个native的本地方法，它是底层的c类语言的对cup直接操作的原语。何为原语，它是一段不能被<strong>打断插入</strong>的对底层操作。</p>
+<p>百度百科：原语 操作系统或<a href="https://baike.baidu.com/item/计算机" target="_blank" rel="noopener">计算机</a>网络用语范畴。是由若干条指令组成的，用于完成一定功能的一个过程。primitive or atomic action 是由若干个<a href="https://baike.baidu.com/item/机器指令/8553126" target="_blank" rel="noopener">机器指令</a>构成的完成某种特定功能的一段程序，具有不可分割性·即原语的执行必须是连续的，在执行过程中不允许被中断。</p>
+<p>OK我们要知道的就是它不能被分割了的，不会被别的操作再去干扰的机器命令。</p>
+<p>那么在看看它传入的参数：</p>
+<ul>
+<li>this ：表示当前需要修改的对象</li>
+<li>valueOffset：对象的内存地址，底层可以通过这个地址获得 this 对象的值。</li>
+<li>expect：我们对this对象所期望的值</li>
+<li>update：符合期望我们要将它更新的值</li>
+</ul>
+<p>2、那么到这里我们的<strong>compareAndSet compareAndSet(expect, update)</strong>方法就借助底层的<strong>compareAndSwapInt  (this, valueOffset, expect, update)</strong>，实现了是否可以跟新。</p>
+<p>3、getAndAddInt（）又是如何借助compareAndSwapInt  实现安全自增呢。我们的++操作是一个必须要成功的操作，不能想compareAndSet一样更新不成功就不更新了。</p>
+<ul>
+<li><p>再来读读<strong>getAndAddInt(Object var1, long var2, int var4)</strong>源码，</p>
+<p>var1=&gt;this，var2=&gt;地址，var4=&gt;需要增加的值，var5=&gt;就是自己线程工作内存里面的值</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndAddInt</span><span class="params">(Object var1, <span class="keyword">long</span> var2, <span class="keyword">int</span> var4)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> var5;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            var5 = <span class="keyword">this</span>.getIntVolatile(var1, var2);			<span class="comment">//读取主内存值到工作内存</span></span><br><span class="line">        &#125; <span class="keyword">while</span>(!<span class="keyword">this</span>.compareAndSwapInt(var1, var2, var5, var5 + var4));<span class="comment">//跟新不成功，自旋操作,重新读取var5，然后再进行compareAndSwapInt，注意这个方法是原语操作不会被打断，也就是这个操作过程中主内存里面的值是不会被修改的，这个var1也就是当前主内存里面的值。</span></span><br><span class="line">        <span class="keyword">return</span> var5;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>我们模拟两个线程并发的执行这个操作：</p>
+<p>1、A线程读取主内存值得到自己的  Avar5=3，然后被挂起了</p>
+<p>2、B线程读取主内存值得到自己的  Bvar5=3，然后进行了加一写入主内存。</p>
+<p>3、A线程唤起，进行compareAndSwapInt，但是读取的var1是4，和期望的var5=3不相等，那么不跟新进入下一次循环。</p>
+<p>4、再次读取var5=4，执行compareAndSwapInt，对比没问题，更新操作，写入主内存。</p>
+</li>
+</ul>
+<h3 id="二、CAS的问题"><a href="#二、CAS的问题" class="headerlink" title="二、CAS的问题"></a>二、CAS的问题</h3><p>1、ABA问题：那上面的来讲，要是B线程加完之后又减了，主内存中的值就还是3，那么A线程的跟新操作也会一次就成功。这就是ABA问题。有一种狸猫换太子的感觉</p>
+<p>​      解决：加上一个版本号，每次操作都让版本号加一，比较更新时除了比较值意外还要比较版本号。AtomicStampedRefrence，就实现了这样的功能，</p>
+<p>2、自旋的性能消耗问题</p>
+<p>3、无法解决多个变量的原子操作，前面的方法也体现了，这个时只能对一个变量进行比较跟新，多个变量操纵就需要加锁了。</p>
+<p>​    </p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>个人微信，欢迎骚扰</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/we.png" alt="摇井 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+            <a href="/tags/集合/" rel="tag"># 集合</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/volatile轻量级的同步机制/" rel="next" title="spring重点归纳">
+                <i class="fa fa-chevron-left"></i> spring重点归纳
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -437,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -575,6 +787,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、compareAndSet"><span class="nav-number">1.</span> <span class="nav-text">一、compareAndSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、CAS的问题"><span class="nav-number">2.</span> <span class="nav-text">二、CAS的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -741,6 +970,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -786,6 +1019,8 @@
 
 
 
+
+  
 
 
   

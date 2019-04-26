@@ -104,7 +104,7 @@
 
 
   <meta name="description" content="1、Volatile:轻量级的同步机制 保证可见性 不保证原子性(不保证JMM需要的原子性，所以轻量) 禁止指令重拍  2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。可见性、原子性、有序性  变量存在主内存、线程变量需要拷贝到自己的工作内存，操作完成后再写入主内存。 线程A读取主内存值，线程B也读取主内存。 3、从内存模型里去分析volatile的各种属性 可见性">
-<meta name="keywords" content="学习,多线程">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring重点归纳">
 <meta property="og:url" content="https://www.ccgofa.top/2019/04/25/volatile轻量级的同步机制/index.html">
@@ -112,7 +112,7 @@
 <meta property="og:description" content="1、Volatile:轻量级的同步机制 保证可见性 不保证原子性(不保证JMM需要的原子性，所以轻量) 禁止指令重拍  2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。可见性、原子性、有序性  变量存在主内存、线程变量需要拷贝到自己的工作内存，操作完成后再写入主内存。 线程A读取主内存值，线程B也读取主内存。 3、从内存模型里去分析volatile的各种属性 可见性">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdn.net/20160921182748551">
-<meta property="og:updated_time" content="2019-04-25T10:09:08.522Z">
+<meta property="og:updated_time" content="2019-04-26T04:28:25.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring重点归纳">
 <meta name="twitter:description" content="1、Volatile:轻量级的同步机制 保证可见性 不保证原子性(不保证JMM需要的原子性，所以轻量) 禁止指令重拍  2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。可见性、原子性、有序性  变量存在主内存、线程变量需要拷贝到自己的工作内存，操作完成后再写入主内存。 线程A读取主内存值，线程B也读取主内存。 3、从内存模型里去分析volatile的各种属性 可见性">
@@ -411,12 +411,24 @@
                 
               
 
-              <time title="创建时间：2019-04-25 19:50:23 / 修改时间：18:09:08" itemprop="dateCreated datePublished" datetime="2019-04-25T19:50:23+08:00">2019-04-25</time>
+              <time title="创建时间：2019-04-25 19:50:23" itemprop="dateCreated datePublished" datetime="2019-04-25T19:50:23+08:00">2019-04-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-26 12:28:25" itemprop="dateModified" datetime="2019-04-26T12:28:25+08:00">2019-04-26</time>
               
             
           </span>
@@ -563,8 +575,6 @@
       
         <div class="post-tags">
           
-            <a href="/tags/学习/" rel="tag"># 学习</a>
-          
             <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
@@ -587,6 +597,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/26/CASS-实现原子性/" rel="prev" title="CASS-实现原子性">
+                CASS-实现原子性 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -661,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

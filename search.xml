@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CASS-实现原子性]]></title>
+    <url>%2F2019%2F04%2F26%2FCASS-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[前面学习过volatile，它实现了内存的可见性，但是不保证原子性。于是我们引用了AtomicInteger类实现了非原子操作的线程安全，回过头来想，AtomicInteger类是如果实现 ++ 的原子性的呢。 一、compareAndSet123456789101112131415161718//比较符合预期就更新public final boolean compareAndSet(int expect, int update) &#123; return unsafe.compareAndSwapInt(this, valueOffset, expect, update); &#125;//加一public final int incrementAndGet() &#123; return unsafe.getAndAddInt(this, valueOffset, 1) + 1; &#125;//再点进去 unsafe.getAndAddIntpublic final int getAndAddInt(Object var1, long var2, int var4) &#123; int var5; do &#123; var5 = this.getIntVolatile(var1, var2); &#125; while(!this.compareAndSwapInt(var1, var2, var5, var5 + var4)); return var5; &#125; 我们最后发现两个方法最后都有调用 unsafe.compareAndSwapInt (this, valueOffset, expect, update); 那这是是个什么方法呢，unsafe类的这个方法是一个native的本地方法，它是底层的c类语言的对cup直接操作的原语。何为原语，它是一段不能被打断插入的对底层操作。 百度百科：原语 操作系统或计算机网络用语范畴。是由若干条指令组成的，用于完成一定功能的一个过程。primitive or atomic action 是由若干个机器指令构成的完成某种特定功能的一段程序，具有不可分割性·即原语的执行必须是连续的，在执行过程中不允许被中断。 OK我们要知道的就是它不能被分割了的，不会被别的操作再去干扰的机器命令。 那么在看看它传入的参数： this ：表示当前需要修改的对象 valueOffset：对象的内存地址，底层可以通过这个地址获得 this 对象的值。 expect：我们对this对象所期望的值 update：符合期望我们要将它更新的值 2、那么到这里我们的compareAndSet compareAndSet(expect, update)方法就借助底层的compareAndSwapInt (this, valueOffset, expect, update)，实现了是否可以跟新。 3、getAndAddInt（）又是如何借助compareAndSwapInt 实现安全自增呢。我们的++操作是一个必须要成功的操作，不能想compareAndSet一样更新不成功就不更新了。 再来读读getAndAddInt(Object var1, long var2, int var4)源码， var1=&gt;this，var2=&gt;地址，var4=&gt;需要增加的值，var5=&gt;就是自己线程工作内存里面的值 1234567public final int getAndAddInt(Object var1, long var2, int var4) &#123; int var5; do &#123; var5 = this.getIntVolatile(var1, var2); //读取主内存值到工作内存 &#125; while(!this.compareAndSwapInt(var1, var2, var5, var5 + var4));//跟新不成功，自旋操作,重新读取var5，然后再进行compareAndSwapInt，注意这个方法是原语操作不会被打断，也就是这个操作过程中主内存里面的值是不会被修改的，这个var1也就是当前主内存里面的值。 return var5; &#125; 我们模拟两个线程并发的执行这个操作： 1、A线程读取主内存值得到自己的 Avar5=3，然后被挂起了 2、B线程读取主内存值得到自己的 Bvar5=3，然后进行了加一写入主内存。 3、A线程唤起，进行compareAndSwapInt，但是读取的var1是4，和期望的var5=3不相等，那么不跟新进入下一次循环。 4、再次读取var5=4，执行compareAndSwapInt，对比没问题，更新操作，写入主内存。 二、CAS的问题1、ABA问题：那上面的来讲，要是B线程加完之后又减了，主内存中的值就还是3，那么A线程的跟新操作也会一次就成功。这就是ABA问题。有一种狸猫换太子的感觉 ​ 解决：加上一个版本号，每次操作都让版本号加一，比较更新时除了比较值意外还要比较版本号。AtomicStampedRefrence，就实现了这样的功能， 2、自旋的性能消耗问题 3、无法解决多个变量的原子操作，前面的方法也体现了，这个时只能对一个变量进行比较跟新，多个变量操纵就需要加锁了。 ​]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>多线程</tag>
+        <tag>集合</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[spring重点归纳]]></title>
     <url>%2F2019%2F04%2F25%2Fvolatile%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%9A%84%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6%2F</url>
     <content type="text"><![CDATA[1、Volatile:轻量级的同步机制 保证可见性 不保证原子性(不保证JMM需要的原子性，所以轻量) 禁止指令重拍 2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。可见性、原子性、有序性 变量存在主内存、线程变量需要拷贝到自己的工作内存，操作完成后再写入主内存。 线程A读取主内存值，线程B也读取主内存。 3、从内存模型里去分析volatile的各种属性 可见性 此时A线程修改x,并写入主内，此时要求其他线程知道这个x被改变。这部分其实在Java多线程学习中就有学习过，只不过没有从JMM层次这么深刻的去认识。 123456789101112131415161718192021222324252627class MyDate&#123; volatile int number=0; public void addTo60()&#123; this.number=60; &#125;&#125;//1、验证volatile可见性 public class Test1 &#123; public static void main(String[] args)&#123; MyDate date=new MyDate(); //第一个线程AAA， new Thread(() -&gt; &#123; System.out.println(Thread.currentThread().getName()+"\t come in"); try &#123; TimeUnit.SECONDS.sleep(3);&#125;catch (InterruptedException e) &#123; e.printStackTrace();&#125; date.addTo60(); System.out.println(); &#125;, "AAA").start(); while(date.number==0)&#123; &#125; //1、如果number没有加volatile.这里无法发生，main线程无法读取到AAA线程修改的值，无法读取主内存中改变的值 //2、如果加了volatile，就可以去读取到主内存改变的值 System.out.println("main线程结束"); &#125;&#125; 不保证原子性，JMM要求保证原子性，但是volatile不保证原子性。为什么volatile不能保证原子性呢。比如两个线程同时要对主内存中的i 进行 ++操作。++并不是原子操作，三步，读取i的值，将i加1，赋值给i。最后写入主内存。现在两个线程都完成了i++的操作了，然后写入操作是同步的，那么其中一个被挂起，写入之后主内存里面的值改变，这时候根据volatile的内存语义，其他线程应该通知得到这个值，但是被挂起的线程已经完成了i++的操作，所以这个可见来的有点晚，线程并不会再去对新的这个值去++操作，而是在很快的时间内就把自己加好的值写入主内存，这时候就会造成++操作的丢失。 12345678910111213141516171819202122232425//不保证原子性操作public class Test2 &#123; public static void main(String[] args)&#123; MyDate date=new MyDate(); for(int i=0;i&lt;100;i++)&#123; new Thread(() -&gt; &#123; for(int j=0;j&lt;1000;j++)&#123; date.addSum(); date.sumByAtomic(); &#125; &#125;, "i").start(); &#125; while(Thread.activeCount()&gt;2)&#123; Thread.yield(); &#125; System.out.println("mian中： number="+date.number); //number2是原子类型的 AtomicInteger System.out.println("main中： number2="+date.number2); &#125;&#125;/**mian中： number=98729main中： number2=100000 *///解决这个问题其实只要用上原子类 volatile重排规则，这是比较复杂的一个内容，涉及到JMM中happend-before，在代码编译运行过程中会对我们的代码进些一些重新排序，我们的基本要求是希望这些重新排序不要影响程序的运行结果。 volatile变量对于重拍有了这些内存语义： 对于任何volatile写，其前面的操作都不能重拍到它的后面 对于任何volatile读，其后面的操作都不能重拍到它的前面 先volatile写 再volatile读，也不能重新排序。 volatile要先读了，操作后面，操作好了，再写。如果硬是要先写再读也不能重排序]]></content>
@@ -8,7 +20,6 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>多线程</tag>
       </tags>
   </entry>
@@ -20,7 +31,7 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
+        <tag>多线程</tag>
         <tag>集合</tag>
       </tags>
   </entry>
@@ -32,7 +43,6 @@
         <category>计算机基础</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>计算机网络</tag>
       </tags>
   </entry>
@@ -44,7 +54,6 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>设计模式</tag>
       </tags>
   </entry>
@@ -56,7 +65,6 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>spring</tag>
       </tags>
   </entry>
@@ -68,8 +76,7 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
-        <tag>中间件</tag>
+        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -80,8 +87,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>多线程</tag>
+        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
@@ -104,14 +111,14 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>学习</tag>
         <tag>多线程</tag>
+        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[about me]]></title>
     <url>%2F2019%2F04%2F12%2Fabout-me%2F</url>
-    <content type="text"><![CDATA[今天是2019.4.13–我念大三，从今天起记录我的生活。 2019-4-25 暴雨转大太阳 逼着我画了一下的CAD 最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习 2019-4-23 气温逐渐升高 负载均衡 2019-4-21 还凑合 为什么重写对象的equals()方法一定要重写hashcode()方法。 原因很简单： 基本条件：两个对象 equals成立 是 hashcode相等的 充分不必要条件。 就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。 2019-4-20 多云转雨 今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。 学习学习使我快乐。 2019-4-18 天气还不错今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油 2019-4-16 多云Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。 2019-4-15 阴今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。 2019-4-14 多云我已经写了两篇文章啦，还是很开心的。我在过着我喜欢的日子，不再有过去两年那种迷茫。 2019-4-12 雨初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。]]></content>
+    <content type="text"><![CDATA[今天是2019.4.13–我念大三，从今天起记录我的生活。 2019-4-26 开始热了 今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想== 2019-4-25 暴雨转大太阳 逼着我画了一下的CAD 最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习 2019-4-23 气温逐渐升高 负载均衡 2019-4-21 还凑合 为什么重写对象的equals()方法一定要重写hashcode()方法。 原因很简单： 基本条件：两个对象 equals成立 是 hashcode相等的 充分不必要条件。 就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。 2019-4-20 多云转雨 今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。 学习学习使我快乐。 2019-4-18 天气还不错今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油 2019-4-16 多云Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。 2019-4-15 阴今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。 2019-4-14 多云我已经写了两篇文章啦，还是很开心的。我在过着我喜欢的日子，不再有过去两年那种迷茫。 2019-4-12 雨初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。]]></content>
       <categories>
         <category>life</category>
       </categories>
