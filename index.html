@@ -544,7 +544,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/25/volatile轻量级的同步机制/">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/29/线程池技术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="摇井">
@@ -564,7 +564,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/25/volatile轻量级的同步机制/" class="post-title-link" itemprop="url">spring重点归纳</a>
+                <a href="/2019/04/29/线程池技术/" class="post-title-link" itemprop="url">线程池技术</a>
               
             
           </h1>
@@ -589,7 +589,174 @@
                 
               
 
-              <time title="创建时间：2019-04-25 19:50:23" itemprop="dateCreated datePublished" datetime="2019-04-25T19:50:23+08:00">2019-04-25</time>
+              <time title="创建时间：2019-04-29 19:50:23 / 修改时间：15:47:22" itemprop="dateCreated datePublished" datetime="2019-04-29T19:50:23+08:00">2019-04-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>线程学到了线程池技术了，可能多线程学习也要告一段落了，回顾，线程我们实现多线程的方式已经有了四种，Thread继承，Runnable接口实现，Callable接口实现，和最后的线程池。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/29/线程池技术/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/28/Java中的阻塞队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/28/Java中的阻塞队列/" class="post-title-link" itemprop="url">Java中的阻塞队列</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-28 14:06:53" itemprop="dateCreated datePublished" datetime="2019-04-28T14:06:53+08:00">2019-04-28</time>
             
 
             
@@ -606,7 +773,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-26 12:28:25" itemprop="dateModified" datetime="2019-04-26T12:28:25+08:00">2019-04-26</time>
+                <time title="修改时间：2019-04-29 15:16:04" itemprop="dateModified" datetime="2019-04-29T15:16:04+08:00">2019-04-29</time>
               
             
           </span>
@@ -659,37 +826,195 @@
 
       
         
+          <p>阻塞列队也是Java高并发里面常用的工具类，今天学习了一下，总结 一下。</p>
+          <!--noindex-->
           
-            <a id="more"></a>
-<h3 id="1、Volatile-轻量级的同步机制"><a href="#1、Volatile-轻量级的同步机制" class="headerlink" title="1、Volatile:轻量级的同步机制"></a>1、Volatile:轻量级的同步机制</h3><ul>
-<li>保证可见性</li>
-<li>不保证原子性(不保证JMM需要的原子性，所以轻量)</li>
-<li>禁止指令重拍</li>
-</ul>
-<h3 id="2、JMM-Java内存模型-：是一种抽象概念，并不正式存在，-是一种规范。"><a href="#2、JMM-Java内存模型-：是一种抽象概念，并不正式存在，-是一种规范。" class="headerlink" title="2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。"></a>2、JMM(Java内存模型)：是一种抽象概念，并不正式存在， 是一种规范。</h3><p>可见性、原子性、有序性</p>
-<p><img src="https://img-blog.csdn.net/20160921182748551" alt="这里写图片描述"></p>
-<p>变量存在主内存、线程变量需要拷贝到自己的工作内存，操作完成后再写入主内存。</p>
-<p>线程A读取主内存值，线程B也读取主内存。</p>
-<h3 id="3、从内存模型里去分析volatile的各种属性"><a href="#3、从内存模型里去分析volatile的各种属性" class="headerlink" title="3、从内存模型里去分析volatile的各种属性"></a>3、从内存模型里去分析volatile的各种属性</h3><ul>
-<li>可见性 此时A线程修改x,并写入主内，此时要求其他线程知道这个x被改变。这部分其实在Java多线程学习中就有学习过，只不过没有从JMM层次这么深刻的去认识。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDate</span></span>&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">int</span> number=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTo60</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number=<span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1、验证volatile可见性 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        MyDate date=<span class="keyword">new</span> MyDate();</span><br><span class="line">        <span class="comment">//第一个线程AAA，</span></span><br><span class="line">       <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">           System.out.println(Thread.currentThread().getName()+<span class="string">"\t  come in"</span>);</span><br><span class="line">           <span class="keyword">try</span> &#123; TimeUnit.SECONDS.sleep(<span class="number">3</span>);&#125;<span class="keyword">catch</span> (InterruptedException e) &#123; e.printStackTrace();&#125;</span><br><span class="line">           date.addTo60();</span><br><span class="line">           System.out.println();</span><br><span class="line">       &#125;, <span class="string">"AAA"</span>).start();</span><br><span class="line">       <span class="keyword">while</span>(date.number==<span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//1、如果number没有加volatile.这里无法发生，main线程无法读取到AAA线程修改的值，无法读取主内存中改变的值</span></span><br><span class="line">       <span class="comment">//2、如果加了volatile，就可以去读取到主内存改变的值</span></span><br><span class="line">       System.out.println(<span class="string">"main线程结束"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>不保证原子性，JMM要求保证原子性，但是volatile不保证原子性。为什么volatile不能保证原子性呢。比如两个线程同时要对主内存中的i 进行 ++操作。++并不是原子操作，三步，读取i的值，将i加1，赋值给i。最后写入主内存。现在两个线程都完成了i++的操作了，然后写入操作是同步的，那么其中一个被挂起，写入之后主内存里面的值改变，这时候根据volatile的内存语义，其他线程应该通知得到这个值，但是被挂起的线程已经完成了i++的操作，所以这个可见来的有点晚，线程并不会再去对新的这个值去++操作，而是在很快的时间内就把自己加好的值写入主内存，这时候就会造成++操作的丢失。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不保证原子性操作</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        MyDate date=<span class="keyword">new</span> MyDate();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">1000</span>;j++)&#123;</span><br><span class="line">                    date.addSum();</span><br><span class="line">                    date.sumByAtomic();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="string">"i"</span>).start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(Thread.activeCount()&gt;<span class="number">2</span>)&#123;</span><br><span class="line">            Thread.yield();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"mian中： number="</span>+date.number);</span><br><span class="line">        <span class="comment">//number2是原子类型的  AtomicInteger</span></span><br><span class="line">        System.out.println(<span class="string">"main中： number2="</span>+date.number2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">mian中： number=98729</span></span><br><span class="line"><span class="comment">main中： number2=100000	</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//解决这个问题其实只要用上原子类</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>volatile重排规则，这是比较复杂的一个内容，涉及到JMM中happend-before，在代码编译运行过程中会对我们的代码进些一些重新排序，我们的基本要求是希望这些重新排序不要影响程序的运行结果。</li>
-<li>volatile变量对于重拍有了这些内存语义：<ul>
-<li>对于任何volatile写，其前面的操作都不能重拍到它的后面</li>
-<li>对于任何volatile读，其后面的操作都不能重拍到它的前面</li>
-<li>先volatile写  再volatile读，也不能重新排序。</li>
-</ul>
-</li>
-<li>volatile要先读了，操作后面，操作好了，再写。如果硬是要先写再读也不能重排序</li>
-</ul>
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/28/Java中的阻塞队列/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/25/volatile轻量级的同步机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/25/volatile轻量级的同步机制/" class="post-title-link" itemprop="url">volatile轻量级锁-同步机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-25 19:50:23" itemprop="dateCreated datePublished" datetime="2019-04-25T19:50:23+08:00">2019-04-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-28 14:04:54" itemprop="dateModified" datetime="2019-04-28T14:04:54+08:00">2019-04-28</time>
+              
+            
+          </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>不写点东西他还啥都没有</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/25/volatile轻量级的同步机制/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -806,7 +1131,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-26 12:27:22" itemprop="dateModified" datetime="2019-04-26T12:27:22+08:00">2019-04-26</time>
+                <time title="修改时间：2019-04-28 14:05:53" itemprop="dateModified" datetime="2019-04-28T14:05:53+08:00">2019-04-28</time>
               
             
           </span>
@@ -859,35 +1184,16 @@
 
       
         
+          <p>ConcurrentHashMap简单小总结</p>
+          <!--noindex-->
           
-            <a id="more"></a>
-<p>最近一直在看《Java并发编程艺术》一书，书本内容还是相当的丰富，先从并发的底层实现、内存层次剖析了并发的实现，再到各种锁的底层实现原理，然后降到了Java中并发容器和框架。</p>
-<p>前面的内容一直没时间整理，主要前面的知识底层读起来还是有难度的，一遍看过来感触不是很深。</p>
-<p>今天学习了并发容器里面的ConcurrentHashMap和ConcurrentLinkedQueue，这里主要是写一些ConcurrentHashMap的理解。</p>
-<p>Map家族是Java容器里非常重要的一部分，比如HashMap，Hashtable，ConcurrentHashMap。这三个中国HashMap线程不安全，后两者线程安全，但是Hashtable采用的是一种相当重量的锁，在对它进行操作的时候它会把整个表锁起来，是一种悲观锁。</p>
-<p>而今天要讲的ConcurrentHashMap则时采用了一种更为巧妙地方式实现了线程安全。</p>
-<ul>
-<li>不锁全表，锁局部。</li>
-<li>不锁所有操作，只锁有线程安全的操作。</li>
-<li>对用量的计算（size)，采用一种乐观锁的机制。</li>
-</ul>
-<p>我阅读书本后书本总ConcurrentHashMap的结构大致是这样子的：ConcurrentHashMap的内部结构图：</p>
-<p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1123993683,437526452&amp;fm=173&amp;app=25&amp;f=JPEG?w=640&amp;h=341&amp;s=5AA834639B9759CA0CF5E1DF0000C0B1" alt="img"></p>
-<p>从上面的结构我们可以了解到，ConcurrentHashMap定位一个元素的过程需要进行两次Hash操作。</p>
-<p>锁的思路是put才锁上局部的HashEntry，这些HashEntry都是volatile的，volatile是concurrent包一个非常重要的锁的机制，当然它底层关键的点还是CAS算法。这本书前面讲原理讲锁主要就是讲这些东西。</p>
-<p>看完书后我打开电脑翻阅了一下concurrentHashMap的源码，发现似乎和书上的有所差异，我的是jdk1.8，后来看了网上发现书本上应该讲的是1.7及以前的版本。</p>
-<p>1.8的ConcurrentHashMap的结构其实我觉得和HashMap结构非常相似：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * The array of bins. Lazily initialized upon first insertion.</span></span><br><span class="line"><span class="comment">    * Size is always a power of two. Accessed directly by iterators.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * The next table to use; non-null only while resizing.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;K,V&gt;[] nextTable;</span><br></pre></td></tr></table></figure>
-<p>但是不一样的是变量前都加了volatile。</p>
-<p>卧槽源码越读越卧槽，大概看了下get  和 put 还有扩容，</p>
-<p>get方法比较简单，和HashMap的思路差不多，先找到table对应的位置，再到链表中找对应的key，无需加锁。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; e, p; <span class="keyword">int</span> n, eh; K ek;</span><br><span class="line">        <span class="comment">//计算hash值</span></span><br><span class="line">        <span class="keyword">int</span> h = spread(key.hashCode());</span><br><span class="line">        <span class="comment">//根据hash值确定节点位置</span></span><br><span class="line">        <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">            (e = tabAt(tab, (n - <span class="number">1</span>) &amp; h)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//如果搜索到的节点key与传入的key相同且不为null,直接返回这个节点  </span></span><br><span class="line">            <span class="keyword">if</span> ((eh = e.hash) == h) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((ek = e.key) == key || (ek != <span class="keyword">null</span> &amp;&amp; key.equals(ek)))</span><br><span class="line">                    <span class="keyword">return</span> e.val;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果eh&lt;0 说明这个节点在树上 直接寻找</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (eh &lt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> (p = e.find(h, key)) != <span class="keyword">null</span> ? p.val : <span class="keyword">null</span>;</span><br><span class="line">             <span class="comment">//否则遍历链表 找到对应的值并返回</span></span><br><span class="line">            <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == h &amp;&amp;</span><br><span class="line">                    ((ek = e.key) == key || (ek != <span class="keyword">null</span> &amp;&amp; key.equals(ek))))</span><br><span class="line">                    <span class="keyword">return</span> e.val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>put复杂一些:我们看到它锁的是节点，</p>
-<p>先计算hash，找到对应位置，当然还有一系列的判断、table是否为空、判断时候需要扩容、判断时候需要调整链表为数、插入的时候还要判断key时候存在过了、其实都和HashMap相似。关键在于它将这个节点锁主其他线程不能访问，当然它的子节点也不能被访问到了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> putVal(key, value, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/** Implementation for put and putIfAbsent */</span></span><br><span class="line">    <span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(K key, V value, <span class="keyword">boolean</span> onlyIfAbsent)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//不允许 key或value为null</span></span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span> || value == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">        <span class="comment">//计算hash值</span></span><br><span class="line">        <span class="keyword">int</span> hash = spread(key.hashCode());</span><br><span class="line">        <span class="keyword">int</span> binCount = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//死循环 何时插入成功 何时跳出</span></span><br><span class="line">        <span class="keyword">for</span> (Node&lt;K,V&gt;[] tab = table;;) &#123;</span><br><span class="line">            Node&lt;K,V&gt; f; <span class="keyword">int</span> n, i, fh;</span><br><span class="line">            <span class="comment">//如果table为空的话，初始化table</span></span><br><span class="line">            <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">                tab = initTable();</span><br><span class="line">            <span class="comment">//根据hash值计算出在table里面的位置 </span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((f = tabAt(tab, i = (n - <span class="number">1</span>) &amp; hash)) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">//如果这个位置没有值 ，直接放进去，不需要加锁</span></span><br><span class="line">                <span class="keyword">if</span> (casTabAt(tab, i, <span class="keyword">null</span>,</span><br><span class="line">                             <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key, value, <span class="keyword">null</span>)))</span><br><span class="line">                    <span class="keyword">break</span>;                   <span class="comment">// no lock when adding to empty bin</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//当遇到表连接点时，需要进行整合表的操作</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((fh = f.hash) == MOVED)</span><br><span class="line">                tab = helpTransfer(tab, f);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                V oldVal = <span class="keyword">null</span>;</span><br><span class="line">                <span class="comment">//结点上锁  这里的结点可以理解为hash值相同组成的链表的头结点</span></span><br><span class="line">                <span class="keyword">synchronized</span> (f) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (tabAt(tab, i) == f) &#123;</span><br><span class="line">                        <span class="comment">//fh〉0 说明这个节点是一个链表的节点 不是树的节点</span></span><br><span class="line">                        <span class="keyword">if</span> (fh &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                            binCount = <span class="number">1</span>;</span><br><span class="line">                            <span class="comment">//在这里遍历链表所有的结点</span></span><br><span class="line">                            <span class="keyword">for</span> (Node&lt;K,V&gt; e = f;; ++binCount) &#123;</span><br><span class="line">                                K ek;</span><br><span class="line">                                <span class="comment">//如果hash值和key值相同  则修改对应结点的value值</span></span><br><span class="line">                                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                                    ((ek = e.key) == key ||</span><br><span class="line">                                     (ek != <span class="keyword">null</span> &amp;&amp; key.equals(ek)))) &#123;</span><br><span class="line">                                    oldVal = e.val;</span><br><span class="line">                                    <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                        e.val = value;</span><br><span class="line">                                    <span class="keyword">break</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                                Node&lt;K,V&gt; pred = e;</span><br><span class="line">                                <span class="comment">//如果遍历到了最后一个结点，那么就证明新的节点需要插入 就把它插入在链表尾部</span></span><br><span class="line">                                <span class="keyword">if</span> ((e = e.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                    pred.next = <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key,</span><br><span class="line">                                                              value, <span class="keyword">null</span>);</span><br><span class="line">                                    <span class="keyword">break</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">//如果这个节点是树节点，就按照树的方式插入值</span></span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span> (f <span class="keyword">instanceof</span> TreeBin) &#123;</span><br><span class="line">                            Node&lt;K,V&gt; p;</span><br><span class="line">                            binCount = <span class="number">2</span>;</span><br><span class="line">                            <span class="keyword">if</span> ((p = ((TreeBin&lt;K,V&gt;)f).putTreeVal(hash, key,</span><br><span class="line">                                                           value)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                                oldVal = p.val;</span><br><span class="line">                                <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                    p.val = value;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (binCount != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">//如果链表长度已经达到临界值8 就需要把链表转换为树结构</span></span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD)</span><br><span class="line">                        treeifyBin(tab, i);</span><br><span class="line">                    <span class="keyword">if</span> (oldVal != <span class="keyword">null</span>)</span><br><span class="line">                        <span class="keyword">return</span> oldVal;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将当前ConcurrentHashMap的元素数量+1</span></span><br><span class="line">        addCount(<span class="number">1L</span>, binCount);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>还有就是关于size和扩容的操作，扩容是要复制表的，这个过程要考虑到线程的安全性问题，当然可以简单的单线程一步一步复制，但它是支持了多线程复制的。源码瞄了一两眼实在难看。</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/23/ConcurrentHashMap-浅析/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1004,7 +1310,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-26 12:28:38" itemprop="dateModified" datetime="2019-04-26T12:28:38+08:00">2019-04-26</time>
+                <time title="修改时间：2019-04-28 14:03:19" itemprop="dateModified" datetime="2019-04-28T14:03:19+08:00">2019-04-28</time>
               
             
           </span>
@@ -1057,79 +1363,16 @@
 
       
         
+          <p>佛了</p>
+          <!--noindex-->
           
-            <a id="more"></a>
-<h1 id="计算机网络知识"><a href="#计算机网络知识" class="headerlink" title="计算机网络知识"></a>计算机网络知识</h1><h2 id="一、TCP-IP"><a href="#一、TCP-IP" class="headerlink" title="一、TCP/IP"></a>一、TCP/IP</h2><p>物理层：主要解决对接的标准，网络信号的传输，信道的多效利用</p>
-<p>数据链路层：1、打包成贞、透明传输、可靠传输、差错检验。。。。。给资源加上MAC地址</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><h4 id="一、IP协议"><a href="#一、IP协议" class="headerlink" title="一、IP协议"></a>一、IP协议</h4><p>IP协议是TCP/IP协议的核心，所有的TCP，UDP，IMCP，IGMP的数据都以IP数据格式传输。要注意的是，IP不是可靠的协议，这是说，IP协议没有提供一种数据未传达以后的处理机制，这被认为是上层协议：TCP或UDP要做的事情。每个计算机都有为一的IP地址</p>
-<h4 id="TTL字段。"><a href="#TTL字段。" class="headerlink" title="TTL字段。"></a>TTL字段。</h4><p>这个字段规定该数据包在穿过多少个路由之后才会被抛弃。某个IP数据包每穿过一个路由器，该数据包的TTL数值就会减少1，当该数据包的TTL成为零，它就会被自动抛弃。</p>
-<p>这个字段的最大值也就是255，也就是说一个协议包也就在路由器里面穿行255次就会被抛弃了，根据系统的不同，这个数字也不一样，一般是32或者是64。</p>
-<h3 id="二、ARP协议（地址解析协议）"><a href="#二、ARP协议（地址解析协议）" class="headerlink" title="二、ARP协议（地址解析协议）"></a>二、ARP协议（地址解析协议）</h3><p>这个协议是为IP协议服务的：</p>
-<p>做三件事：先查开目的的IP地址在自己的ARP高速缓存（就是一个IP-MAC地址对应表缓存）。</p>
-<p>​        没有的话就会在自己的局域网中发广播获取目标IP的MAC地址</p>
-<p>​        没有的话，就会发给网关路由器，等到MAC地址。</p>
-<h3 id="描述RARP协议"><a href="#描述RARP协议" class="headerlink" title="描述RARP协议"></a>描述RARP协议</h3><p>答:RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
-<h3 id="三、ICMP协议（网络控制报文协议）"><a href="#三、ICMP协议（网络控制报文协议）" class="headerlink" title="三、ICMP协议（网络控制报文协议）"></a>三、ICMP协议（网络控制报文协议）</h3><p>IP协议并不是一个可靠的协议，它不保证数据被送达，那么，自然的，保证数据送达的工作应该由其他的模块来完成。其中一个重要的模块就是ICMP(网络控制报文)协议。ICMP不是高层协议，而是IP层的协议。</p>
-<p>当传送IP数据包发生错误。比如主机不可达，路由不可达等等，ICMP协议将会把错误信息封包，然后传送回给主机。给主机一个处理错误的机会，这 也就是为什么说建立在IP层以上的协议是可能做到安全的原因。</p>
-<p>​    网络层两个应用：</p>
-<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a><strong>ping</strong></h4><p>ping可以说是ICMP的最著名的应用，是TCP/IP协议的一部分。利用“ping”命令可以检查网络是否连通，可以很好地帮助我们分析和判定网络故障。</p>
-<p>ping这个单词源自声纳定位，而这个程序的作用也确实如此，它利用ICMP协议包来侦测另一个主机是否可达。原理是用类型码为0的ICMP发请 求，受到请求的主机则用类型码为8的ICMP回应。</p>
-<p>ping程序来计算间隔时间，并计算有多少个包被送达。用户就可以判断网络大致的情况。我们可以看到， ping给出来了传送的时间和TTL的数据。</p>
-<h4 id="Traceroute"><a href="#Traceroute" class="headerlink" title="Traceroute"></a>Traceroute</h4><p>Traceroute是用来侦测主机到目的主机之间所经路由情况的重要工具，也是最便利的工具。</p>
-<p>Traceroute的原理是非常非常的有意思，它收到到目的主机的IP后，首先给目的主机发送一个TTL=1的UDP数据包，而经过的第一个路由器收到这个数据包以后，就自动把TTL减1，而TTL变为0以后，路由器就把这个包给抛弃了，并同时产生   一个主机不可达的ICMP数据报给主机。主机收到这个数据报以后再发一个TTL=2的UDP数据报给目的主机，然后刺激第二个路由器给主机发ICMP数据  报。如此往复直到到达目的主机。这样，traceroute就拿到了所有的路由器IP。</p>
-<h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h2><p>一个面向连接、可靠传输、面向字节流、能流量控制和阻塞控制，全双工。</p>
-<h3 id="TCP对应的协议："><a href="#TCP对应的协议：" class="headerlink" title="TCP对应的协议："></a>TCP对应的协议：</h3><p>（1） FTP：定义了文件传输协议，使用21端口。<br>（2） Telnet：一种用于远程登陆的端口，使用23端口，用户可以以自己的身份远程连接到计算机上，可提供基于DOS模式下的通信服务。<br>（3） SMTP：邮件传送协议，用于发送邮件。服务器开放的是25号端口。<br>（4） POP3：它是和SMTP对应，POP3用于接收邮件。POP3协议所用的是110端口。<br>（5）HTTP：是从Web服务器传输超文本到本地浏览器的传送协议。</p>
-<p>一个不连接、不可靠、面向报文、不能流量控制和阻塞控制，一对一、一对多、多对多、多对一，速度快。</p>
-<h3 id="UDP对应的协议："><a href="#UDP对应的协议：" class="headerlink" title="UDP对应的协议："></a>UDP对应的协议：</h3><p>（1） DNS：用于域名解析服务，将域名地址转换为IP地址。DNS用的是53号端口。<br>（2） SNMP：简单网络管理协议，使用161号端口，是用来管理网络设备的。由于网络设备很多，无连接的服务就体现出其优势。<br>（3） TFTP(Trival File Transfer Protocal)，简单文件传输协议，该协议在熟知端口69上使用UDP服务。</p>
-<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>第一次握手： 建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</p>
-<p>第二次握手：  服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment  Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence  Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
-<p>第三次握手： 客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
-<p><strong>为什么要三次握手？</strong></p>
-<p>主要是第三次握手的存在，避免了服务端等待确认的资源浪费，</p>
-<p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</p>
-<p>具体例子：“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
-<h3 id="四次分手"><a href="#四次分手" class="headerlink" title="四次分手"></a>四次分手</h3><p>第一次分手： 主机1（可以使客户端，也可以是服务器端），设置Sequence Number，向主机2发送一个FIN报文段；此时，主机1进入<strong>FIN_WAIT_1</strong>状态；这表示主机1没有数据要发送给主机2了；</p>
-<p>第二次分手： 主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求；</p>
-<p>第三次分手： 主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态；</p>
-<p>第四次分手：   主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</p>
-<p><strong>为什么要四次分手？</strong></p>
-<p>TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
-<p><strong>为什么要等待2MSL？</strong></p>
-<p>MSL：报文段最大生存时间，它是任何报文段被丢弃前在网络内的最长时间。</p>
-<p>原因有二：</p>
-<ul>
-<li>保证TCP协议的全双工连接能够可靠关闭</li>
-<li>保证这次连接的重复数据段从网络中消失</li>
-</ul>
-<p>第一点：如果主机1直接CLOSED了，那么由于IP协议的不可靠性或者是其它网络原因，导致主机2没有收到主机1最后回复的ACK。那么主机2就会在超时之后继续发送FIN，此时由于主机1已经CLOSED了，就找不到与重发的FIN对应的连接。所以，主机1不是直接进入CLOSED，而是要保持TIME_WAIT，当再次收到FIN的时候，能够保证对方收到ACK，最后正确的关闭连接。</p>
-<p>第二点：如果主机1直接CLOSED，然后又再向主机2发起一个新连接，我们不能保证这个新连接与刚关闭的连接的端口号是不同的。也就是说有可能新连接和老连接的端口号是相同的。一般来说不会发生什么问题，但是还是有特殊情况出现：假设新连接和已经关闭的老连接端口号是一样的，如果前一次连接的某些数据仍然滞留在网络中，这些延迟数据在建立新连接之后才到达主机2，由于新连接和老连接的端口号是一样的，TCP协议就认为那个延迟的数据是属于新连接的，这样就和真正的新连接的数据包发生混淆了。所以TCP连接还要在TIME_WAIT状态等待2倍MSL，这样可以保证本次连接的所有数据都从网络中消失。</p>
-<h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><p>主要是借助 <strong>rwnd</strong>,接受端通过不断地响应rwnd的大小给接受端来实现流量的控制</p>
-<p>发送窗口时不会大于接受窗口的。</p>
-<h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><p>拥塞控制是有一个 cwnd,  拥塞窗口，这是发送端发送数据的窗口，</p>
-<p>发送模拟：1、慢开始：发送的第一个数据只有一个包，cwnd的大小为1，如果能够顺利响应</p>
-<p>​        2、继续满开始的节奏，成指数增长窗口的大小。</p>
-<p>​        3、然后增长会到达一个慢增长限制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限ssthresh状态变量。慢开始门限ssthresh的用法如下：</span><br><span class="line"></span><br><span class="line">    当 cwnd &lt; ssthresh 时，使用上述的慢开始算法。</span><br><span class="line">    当 cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。</span><br><span class="line">    当 cwnd = ssthresh 时，既可使用慢开始算法，也可使用拥塞控制避免算法。</span><br></pre></td></tr></table></figure>
-<p>​        4、接着只会进行，cwnd一个一个的增长</p>
-<p>​        5、知道增大到某一个值，发生了阻塞，丢包了，</p>
-<p>​                就会向调整  ssthresh等于 档期cwnd大小的一半，然后cwnd的大小回到1，重新慢增长。</p>
-<p><strong>快重传</strong></p>
-<p>问题：（因为报文是每隔多少 响应一次的，比如M5才会响应，M3丢了，那么要等到M5，传好了之后才响应M3丢了）</p>
-<p>快重传算法首先要求接收方每收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
-<p>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。</p>
-<p>显然，接收方不能确认M4，因为M4是收到的失序报文段。根据 可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。</p>
-<p>但按照快重传算法的规定，接收方应及时发送对M2的重复确认，这样做可以让   发送方及早知道报文段M3没有到达接收方。发送方接着发送了M5和M6。接收方收到这两个报文后，也还要再次发出对M2的重复确认。这样，发送方共收到了  接收方的四个对M2的确认，其中后三个都是重复确认。</p>
-<p>快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段M3，而不必 继续等待M3设置的重传计时器到期。</p>
-<p>由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
-<p><strong>快恢复</strong></p>
-<p>问题：报文的丢失，可能不是网络拥塞的问题，那么当三个重复确认连续收到，说明网络没有阻塞，没有必要再从1满开始。所以有了快恢复。</p>
-<p>与快重传配合使用的还有快恢复算法，其过程有以下两个要点：</p>
-<ul>
-<li>当发送方连续收到三个重复确认，就执行“乘法减小”算法，把慢开始门限ssthresh减半。</li>
-<li>与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为 慢开始门限ssthresh减半后的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。</li>
-</ul>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/22/计算机网络/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1425,7 +1668,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-26 12:27:55" itemprop="dateModified" datetime="2019-04-26T12:27:55+08:00">2019-04-26</time>
+                <time title="修改时间：2019-04-28 14:02:56" itemprop="dateModified" datetime="2019-04-28T14:02:56+08:00">2019-04-28</time>
               
             
           </span>
@@ -1478,15 +1721,7 @@
 
       
         
-          <!-- TOC -->
-<ul>
-<li><a href="#ioc">IOC</a></li>
-<li><a href="#DL">DL</a></li>
-<li><a href="#IOC和Dl区别">IOC和DI区别</a></li>
-<li><a href="#AOP原理">AOP原理</a></li>
-<li><a href="#spring事务">spring事务</a></li>
-</ul>
-<!-- /TOC -->
+          <p>为什么会乱啊</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1881,340 +2116,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/15/JVM学习笔记（二）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="摇井">
-      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
-      <meta itemprop="image" content="/images/aaa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Task try">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/15/JVM学习笔记（二）/" class="post-title-link" itemprop="url">JVM学习笔记（二）</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-15 14:49:45 / 修改时间：16:49:55" itemprop="dateCreated datePublished" datetime="2019-04-15T14:49:45+08:00">2019-04-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>继续JVM知识，这次主要总分解类得加载，深入了解JVM这本书我就先看这部分，实在是难啃，很多名词都没接触过，知识概念性得东西又多，关于调优部分一些常用得调优工具我就不总结了，后面有机会再来读读这本书<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/15/JVM学习笔记（二）/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/14/Java多线程（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="摇井">
-      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
-      <meta itemprop="image" content="/images/aaa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Task try">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/14/Java多线程（一）/" class="post-title-link" itemprop="url">Java多线程学习笔记（一）</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-14 22:56:41 / 修改时间：15:39:49" itemprop="dateCreated datePublished" datetime="2019-04-14T22:56:41+08:00">2019-04-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Java多线程编程核心技术也看了大半了，感觉时候做点总结了，这本书看着还是比较轻松愉快的，推荐推荐。书本用的了很多事例去讲解多线程的种种API，作为多线程学习还是很不错的。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/14/Java多线程（一）/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2263,7 +2164,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2286,7 +2187,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
