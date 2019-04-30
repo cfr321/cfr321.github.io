@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ccgofa.top/"/>
-  <updated>2019-04-29T07:47:22.928Z</updated>
+  <updated>2019-04-30T12:38:57.021Z</updated>
   <id>https://www.ccgofa.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人简历</title>
+    <link href="https://www.ccgofa.top/2019/04/30/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
+    <id>https://www.ccgofa.top/2019/04/30/个人简历/</id>
+    <published>2019-04-30T12:33:48.000Z</published>
+    <updated>2019-04-30T12:38:57.021Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一份个人简历。。</p><a id="more"></a><h2 id="联系方式-期望职位：Java开发实习生"><a href="#联系方式-期望职位：Java开发实习生" class="headerlink" title="联系方式 | 期望职位：Java开发实习生"></a>联系方式 | <font face="微软雅黑" size="2" color="#0099ff">期望职位：<u>Java开发实习生</u></font></h2><ul><li>手机（微信号）：173-9651-0930</li><li>Email：<a href="mailto:cwellshake@gmail.com" target="_blank" rel="noopener">cwellshake@gmail.com</a> </li></ul><h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息 |"></a>个人信息 |</h2><ul><li>陈发荣 / 男 / 1998</li><li>教育背景：福州大学（211）</li><li>技术博客：<a href="http://cfr321.github.io" target="_blank" rel="noopener">http://cfr321.github.io</a></li><li>Github：<a href="https://github.com/cfr321" target="_blank" rel="noopener">https://github.com/cfr321</a></li><li>证书技能：CTE4 / 自学C语言、数据结构和算法、计算机网络知识等计算机专业知识</li></ul><h2 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单 |"></a>技能清单 |</h2><ul><li>熟悉Java基础，了解常见设计模式</li><li>熟悉Servlet、JSP、JDBC等JavaWeb基础知识</li><li>熟悉IntelliJ IDEA、eclipse、vscode、Git、Maven等工具</li><li>熟悉MySQL关系型数据库，了解Redis</li><li>熟悉SringMVC、Spring、Mybatis框架技术；了解SpringBoot、SpringData</li><li>了解HTML+CSS+JS，以及BootStrap、Vue.js等前端知识</li><li>了解Linux常用命令，能够搭建开发环境</li></ul><h2 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目 |"></a>个人项目 |</h2><ul><li><p><strong>员工管理系统</strong></p><p>项目介绍：这是一个独立完成的员工管理系统，通过这个项目使我更加熟悉了SSM框架，以及学习BootStrap对页面的搭建，项目主要采用页面发送ajax到后端，实现对员工的信息的修改。整个项目业务并不复杂，但第一次做项目还是出现了很多问题，比如bootstrap的cs效果引入问题、MySQL8.0版本连接问题等等，我是完全自学的、遇到了问题我只能不断地去网上搜索，翻阅很多别人的博客，最终让问题得到解决。</p></li><li><p><strong>CkServer服务器</strong></p><p>一个类似tomcat的web服务器，这是在我学习Java网络编程时候做的一个小项目。它能接受HTTP请求以及响应，实现了war包的自动解压、xml的解析获取servlet、以及常见的状态码的响应。一开始它只支持IO流操作，一个请求一个线程；我又去学习了NIO的知识，并运用在这个小项目上。</p></li><li><p><strong>cako商城</strong></p><p>这是一个基于SpringBoot和SpringData的分布式项目，前端用的是vue.js，用nginx实现方向代理。目前并没有完全开发完全，现在在开发后台商品管理系统，从中我也在不断记取不断进步。</p></li></ul><h2 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息 |"></a>其他信息 |</h2><ul><li>校园经历：曾担任idea精英汇新闻官部长，负责微信公众号管理，有公众号管理和推文撰写经验</li><li>性格特点：专注度高，热爱学习，富有创造力</li><li>个人爱好：运动、游戏、读书和敲代码</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是一份个人简历。。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="https://www.ccgofa.top/categories/life/"/>
+    
+    
+      <category term="分享" scheme="https://www.ccgofa.top/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>线程池技术</title>
@@ -327,9 +349,9 @@
     <link href="https://www.ccgofa.top/2019/04/12/about-me/"/>
     <id>https://www.ccgofa.top/2019/04/12/about-me/</id>
     <published>2019-04-12T14:56:41.000Z</published>
-    <updated>2019-04-26T11:30:49.930Z</updated>
+    <updated>2019-04-30T12:37:26.642Z</updated>
     
-    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
+    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li><p>2019-4-30  很大的雨</p><p>马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把</p></li></ul><hr><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
     
     <summary type="html">
     
