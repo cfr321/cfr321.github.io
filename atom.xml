@@ -252,6 +252,28 @@
   
   <entry>
     <title>redis学习心得</title>
+    <link href="https://www.ccgofa.top/2019/04/17/Linux%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%91%BD%E4%BB%A4/"/>
+    <id>https://www.ccgofa.top/2019/04/17/Linux性能分析命令/</id>
+    <published>2019-04-17T05:22:07.000Z</published>
+    <updated>2019-05-01T07:28:17.230Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单罗列一些Linux和jvm性能分析的工具和命令、</p><a id="more"></a><p>Linux性能分析命令</p><ul><li><p>top(整机）：（uptime)：查开整机性能，cup和load average（平局超过0.6）就比较高了</p></li><li><p>vmstat -n 2 3（cpu)  :  看procs: 轮转进程数  cpu ：us+sy   mpstat   pidstat。</p></li><li><p>free（内存）:  free m   free g（后面是单位，兆还是g） </p></li><li><p>df（硬盘）: </p></li><li><p>iostat（磁盘io)  ：</p></li><li><p>ifstat（网络io）：</p></li><li><p>pidstat：查看具体进程号对应信息： pidstat -r -p 13084 1</p><ul><li><p>pidstat命令指定采样周期和采样次数，命令形式为”pidstat [option] interval [count]”，以下pidstat输出以2秒为采样周期，输出10次cpu使用统计信息：</p></li><li><p><strong>cpu使用情况统计(-u)</strong></p></li><li><strong>内存使用情况统计(-r)</strong></li><li><strong>IO情况统计(-d)</strong></li></ul></li></ul><p>JVM性能分析工具</p><ul><li>jps （虚拟机进程）like ps</li><li>jstat （统计信息监视）like  pidstat，可以查看进程的某种信息，比如-gc -gcold</li><li>jinfo（配置信息）</li><li>jmap  (堆内存，dump heap，查看进程堆信息)  </li><li>jstack（堆栈跟踪工具）  </li><li>jhat  （堆转储快照分析） </li></ul><p>CUP占用过高：</p><p>​        分析流程: top==&gt;找到哪个程序，记录pid</p><p>​        用 jps -l 或者 ps -ef | grep -v grep 得到进程 id</p><p>​        ps -mp  进程id  -o  THREAD，tid,time   得到线程 id  （-m 显示所有线程，-p进程号，-o 用户自定义格式）</p><p>​        <strong>线程id变成16 进制</strong>      或者用 ”printf “%x\n”</p><p>​        jstack 进程号  |  grep <strong>(16进制线程号)</strong>  -A60</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单罗列一些Linux和jvm性能分析的工具和命令、&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="https://www.ccgofa.top/categories/java/"/>
+    
+    
+      <category term="操作系统" scheme="https://www.ccgofa.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis学习心得</title>
     <link href="https://www.ccgofa.top/2019/04/17/redis%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/"/>
     <id>https://www.ccgofa.top/2019/04/17/redis学习心得/</id>
     <published>2019-04-17T05:22:07.000Z</published>
@@ -349,9 +371,9 @@
     <link href="https://www.ccgofa.top/2019/04/12/about-me/"/>
     <id>https://www.ccgofa.top/2019/04/12/about-me/</id>
     <published>2019-04-12T14:56:41.000Z</published>
-    <updated>2019-04-30T12:37:26.642Z</updated>
+    <updated>2019-05-01T14:46:51.720Z</updated>
     
-    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li><p>2019-4-30  很大的雨</p><p>马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把</p></li></ul><hr><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
+    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li>被前端代码困扰和crud的一天，劳动节快乐</li></ul><hr><ul><li><p>2019-4-30  很大的雨</p><p>马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把</p></li></ul><hr><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
     
     <summary type="html">
     
