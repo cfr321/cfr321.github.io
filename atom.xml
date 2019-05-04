@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ccgofa.top/"/>
-  <updated>2019-04-30T12:38:57.021Z</updated>
+  <updated>2019-05-04T12:07:21.176Z</updated>
   <id>https://www.ccgofa.top/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL高级知识</title>
+    <link href="https://www.ccgofa.top/2019/05/04/MySQL%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/"/>
+    <id>https://www.ccgofa.top/2019/05/04/MySQL高级知识/</id>
+    <published>2019-05-04T12:02:20.000Z</published>
+    <updated>2019-05-04T12:07:21.176Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始学习一些数据库的高级知识，以及复习之前学过的知识</p><a id="more"></a><p><strong>MySQL内部架构</strong></p><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1556971494404&amp;di=d29bee346947141e1b166bf6710971b5&amp;imgtype=0&amp;src=http%3A%2F%2Fimage20.it168.com%2F201611_670x502%2F2701%2F39b96aa41090f9bb.png" alt></p><ul><li>连接层：连接业务</li><li>服务层：sql分析，sql优化</li><li>引擎层：各种引擎，可以选择使用</li><li>存储层：与底层设备打交道</li></ul><p><strong>区别：</strong></p><p>\1. InnoDB支持事务，MyISAM不支持，对于InnoDB每一条SQL语言都默认封装成事务，自动提交，这样会影响速度，所以最好把多条SQL语言放在begin和commit之间，组成一个事务；  </p><p>\2. InnoDB支持外键，而MyISAM不支持。对一个包含外键的InnoDB表转为MYISAM会失败；  </p><p>\3. InnoDB是聚集索引，数据文件是和索引绑在一起的，必须要有主键，通过主键索引效率很高。但是辅助索引需要两次查询，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。而MyISAM是非聚集索引，数据文件是分离的，索引保存的是数据文件的指针。主键索引和辅助索引是独立的。 </p><p>\4. InnoDB不保存表的具体行数，执行select count(*) from table时需要全表扫描。而MyISAM用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快；  </p><p>\5. Innodb不支持全文索引，而MyISAM支持全文索引，查询效率上MyISAM要高；   </p><p> <strong>InnoDB：事务、行锁、外键、聚集索引、不支持全文，</strong></p><h1 id="sql语句优化："><a href="#sql语句优化：" class="headerlink" title="sql语句优化："></a>sql语句优化：</h1><h3 id="一、join："><a href="#一、join：" class="headerlink" title="一、join："></a>一、join：</h3><p><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4057843062,2771292381&amp;fm=15&amp;gp=0.jpg" alt></p><p>记住这个图的前五个，后面的可以直接用union。union可以去重。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">6:左连接加有链接就是了</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> u <span class="keyword">right</span> <span class="keyword">join</span> t <span class="keyword">on</span> u.t_id=t.id</span><br><span class="line">   -&gt; <span class="keyword">union</span></span><br><span class="line">   -&gt; <span class="keyword">select</span> * <span class="keyword">from</span> u <span class="keyword">left</span> <span class="keyword">join</span> t <span class="keyword">on</span> u.t_id=t.id;</span><br><span class="line"></span><br><span class="line">7:4+5就得到了7</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> u <span class="keyword">right</span> <span class="keyword">join</span> t <span class="keyword">on</span> u.t_id=t.id <span class="keyword">where</span> u.t_id <span class="keyword">is</span> <span class="literal">null</span></span><br><span class="line">   -&gt; <span class="keyword">union</span></span><br><span class="line">   -&gt; <span class="keyword">select</span> * <span class="keyword">from</span> u <span class="keyword">left</span> <span class="keyword">join</span> t <span class="keyword">on</span> u.t_id=t.id <span class="keyword">where</span> t.id <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure><h3 id="二、索引：索引（index）是MySQL高效查询的数据结构"><a href="#二、索引：索引（index）是MySQL高效查询的数据结构" class="headerlink" title="二、索引：索引（index）是MySQL高效查询的数据结构"></a>二、索引：索引（index）是MySQL高效查询的数据结构</h3><p><strong>索引的两大功能：查找和排序。where和order的影响</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始学习一些数据库的高级知识，以及复习之前学过的知识&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="https://www.ccgofa.top/categories/DB/"/>
+    
+    
+      <category term="数据库" scheme="https://www.ccgofa.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL索引</title>
+    <link href="https://www.ccgofa.top/2019/05/04/MySQL%E7%B4%A2%E5%BC%95/"/>
+    <id>https://www.ccgofa.top/2019/05/04/MySQL索引/</id>
+    <published>2019-05-04T05:22:07.000Z</published>
+    <updated>2019-05-04T12:05:13.874Z</updated>
+    
+    <content type="html"><![CDATA[<p>MySQL索引摘抄</p><a id="more"></a><p>mysql的索引分为单列索引(主键索引,唯索引,普通索引)和组合索引.</p><p>单列索引:一个索引只包含一个列,一个表可以有多个单列索引.</p><p>组合索引:一个组合索引包含两个或两个以上的列,</p><p><strong>(一)索引的创建</strong></p><p><strong>1.单列索引</strong></p><ul><li>1-1)    普通索引,这个是最基本的索引,</li></ul><p>其sql格式是 CREATE INDEX IndexName ON <code>TableName</code>(<code>字段名</code>(length)) 或者 ALTER TABLE TableName ADD INDEX IndexName(<code>字段名</code>(length))</p><p><strong>第一种方式 :</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> account_Index <span class="keyword">ON</span> <span class="string">`award`</span>(<span class="string">`account`</span>);</span><br></pre></td></tr></table></figure><p><strong>第二种方式:</strong> </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE award ADD INDEX account_Index(`account`)</span><br></pre></td></tr></table></figure><p> 如果是CHAR,VARCHAR,类型,length可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度,</p><ul><li>1-2)    唯一索引,与普通索引类似,但是不同的是唯一索引要求所有的类的值是唯一的,这一点和主键索引一样.但是他允许有空值,</li></ul><p>其sql格式是 CREATE UNIQUE INDEX IndexName ON <code>TableName</code>(<code>字段名</code>(length)); 或者 ALTER TABLE TableName ADD UNIQUE (column_list)  </p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> account_UNIQUE_Index <span class="keyword">ON</span> <span class="string">`award`</span>(<span class="string">`account`</span>);</span><br></pre></td></tr></table></figure><ul><li>1-3)    主键索引,不允许有空值,(在B+TREE中的InnoDB引擎中,主键索引起到了至关重要的地位)</li></ul><p>主键索引建立的规则是 int优于varchar,一般在建表的时候创建,最好是与表的其他字段不相关的列或者是业务不相关的列.一般会设为 int 而且是 AUTO_INCREMENT自增类型的，</p><p><strong>2.组合索引</strong></p><p>一个表中含有多个单列索引不代表是组合索引,通俗一点讲 组合索引是:包含多个字段但是只有索引名称</p><p>其sql格式是 CREATE INDEX IndexName On <code>TableName</code>(<code>字段名</code>(length),<code>字段名</code>(length),…);</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> nickname_account_createdTime_Index <span class="keyword">ON</span> <span class="string">`award`</span>(<span class="string">`nickname`</span>, <span class="string">`account`</span>, <span class="string">`created_time`</span>);</span><br></pre></td></tr></table></figure><p><strong>在使用查询的时候遵循mysql组合索引的”最左前缀”,下面我们来分析一下 什么是最左前缀</strong>：及索引where时的条件要按照建立索引的时候字段的排序方式，切不支持范围索引。</p><p><strong>3、全文索引</strong></p><p>文本字段上(text)如果建立的是普通索引,那么只有对文本的字段内容前面的字符进行索引,其字符大小根据索引建立索引时申明的大小来规定.</p><p>如果文本中出现多个一样的字符,而且需要查找的话,那么其条件只能是 where column like  ‘%xxxx%’ 这样做会让索引失效</p><p>.这个时候全文索引就起到了作用了</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tablename <span class="keyword">ADD</span> FULLTEXT(column1, column2)</span><br></pre></td></tr></table></figure><p>有了全文索引，就可以用SELECT查询命令去检索那些包含着一个或多个给定单词的数据记录了。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tablename</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">MATCH</span>(column1, column2) AGAINST(‘xxx′, ‘sss′, ‘ddd′)</span><br></pre></td></tr></table></figure><p>这条命令将把column1和column2字段里有xxx、sss和ddd的数据记录全部查询出来。</p><p><strong>(二)索引的删除</strong></p><p>删除索引的mysql格式 :DORP INDEX IndexName ON <code>TableName</code></p><p><strong>(三)使用索引的优点</strong></p><p>1.可以通过建立唯一索引或者主键索引,保证数据库表中每一行数据的唯一性.<br>2.建立索引可以大大提高检索的数据,以及减少表的检索行数<br>3.在表连接的连接条件 可以加速表与表直接的相连<br>4.在分组和排序字句进行数据检索,可以减少查询时间中 分组 和 排序时所消耗的时间(数据库的记录会重新排序)<br>5.建立索引,在查询中使用索引 可以提高性能</p><p><strong>(四)使用索引的缺点</strong></p><p>1.在创建索引和维护索引 会耗费时间,随着数据量的增加而增加<br>2.索引文件会占用物理空间,除了数据表需要占用物理空间之外,每一个索引还会占用一定的物理空间<br>3.当对表的数据进行 INSERT,UPDATE,DELETE 的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MySQL索引摘抄&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DB" scheme="https://www.ccgofa.top/categories/DB/"/>
+    
+    
+      <category term="数据库" scheme="https://www.ccgofa.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>个人简历</title>
@@ -393,9 +437,9 @@
     <link href="https://www.ccgofa.top/2019/04/12/about-me/"/>
     <id>https://www.ccgofa.top/2019/04/12/about-me/</id>
     <published>2019-04-12T14:56:41.000Z</published>
-    <updated>2019-05-01T14:46:51.720Z</updated>
+    <updated>2019-05-04T12:09:44.448Z</updated>
     
-    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li>被前端代码困扰和crud的一天，劳动节快乐</li></ul><hr><ul><li><p>2019-4-30  很大的雨</p><p>马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把</p></li></ul><hr><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
+    <content type="html"><![CDATA[   <center>今天是2019.4.13–我念大三，从今天起记录我的生活。</center><a id="more"></a><ul><li><p>2019-5-04</p><p>今天开始又开始搞MySQL了，再Linux下安装了MySQL，花了不小的功复，到现在无论是window下还是Linux下我，安装遇到问题最大的就是MySQL了。。。</p></li></ul><hr><ul><li><p>2019-5-01 </p><p>被前端代码困扰和crud的一天，劳动节快乐</p></li></ul><hr><ul><li><p>2019-4-30  很大的雨</p><p>马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把</p></li></ul><hr><ul><li><p>2019-4-26  开始热了</p><p>今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想==</p></li></ul><hr><ul><li><p>2019-4-25 暴雨转大太阳</p><p>逼着我画了一下的CAD</p><p>最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习</p></li></ul><hr><ul><li><p>2019-4-23 气温逐渐升高</p><p>负载均衡</p></li></ul><hr><ul><li><p>2019-4-21  还凑合</p><p>为什么重写对象的equals()方法一定要重写hashcode()方法。</p><p>原因很简单：</p><ul><li><p>基本条件：两个对象  equals成立  是  hashcode相等的  充分不必要条件。</p></li><li><p>就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。</p></li></ul></li></ul><hr><ul><li><p>2019-4-20 多云转雨</p><p>今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。</p><p>学习学习使我快乐。</p></li></ul><hr><ul><li>2019-4-18 天气还不错<br>今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油</li></ul><hr><ul><li>2019-4-16 多云<br>Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。<br>现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。</li></ul><hr><ul><li>2019-4-15 阴<br>今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。<br>这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。</li></ul><hr><ul><li>2019-4-14  多云<br>我已经写了两篇文章啦，还是很开心的。<br>我在过着我喜欢的日子，不再有过去两年那种迷茫。</li></ul><hr><ul><li>2019-4-12  雨<br>初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。</li></ul>]]></content>
     
     <summary type="html">
     
@@ -433,25 +477,6 @@
       <category term="学习" scheme="https://www.ccgofa.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="jvm" scheme="https://www.ccgofa.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://www.ccgofa.top/2019/04/12/hello-world/"/>
-    <id>https://www.ccgofa.top/2019/04/12/hello-world/</id>
-    <published>2019-04-12T10:53:52.138Z</published>
-    <updated>2019-04-12T15:25:14.743Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
-    
-    </summary>
-    
     
   </entry>
   

@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL高级知识]]></title>
+    <url>%2F2019%2F05%2F04%2FMySQL%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[开始学习一些数据库的高级知识，以及复习之前学过的知识 MySQL内部架构 连接层：连接业务 服务层：sql分析，sql优化 引擎层：各种引擎，可以选择使用 存储层：与底层设备打交道 区别： \1. InnoDB支持事务，MyISAM不支持，对于InnoDB每一条SQL语言都默认封装成事务，自动提交，这样会影响速度，所以最好把多条SQL语言放在begin和commit之间，组成一个事务； \2. InnoDB支持外键，而MyISAM不支持。对一个包含外键的InnoDB表转为MYISAM会失败； \3. InnoDB是聚集索引，数据文件是和索引绑在一起的，必须要有主键，通过主键索引效率很高。但是辅助索引需要两次查询，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。而MyISAM是非聚集索引，数据文件是分离的，索引保存的是数据文件的指针。主键索引和辅助索引是独立的。 \4. InnoDB不保存表的具体行数，执行select count(*) from table时需要全表扫描。而MyISAM用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快； \5. Innodb不支持全文索引，而MyISAM支持全文索引，查询效率上MyISAM要高； InnoDB：事务、行锁、外键、聚集索引、不支持全文， sql语句优化：一、join： 记住这个图的前五个，后面的可以直接用union。union可以去重。 1234567896:左连接加有链接就是了select * from u right join t on u.t_id=t.id -&gt; union -&gt; select * from u left join t on u.t_id=t.id;7:4+5就得到了7select * from u right join t on u.t_id=t.id where u.t_id is null -&gt; union -&gt; select * from u left join t on u.t_id=t.id where t.id is null; 二、索引：索引（index）是MySQL高效查询的数据结构索引的两大功能：查找和排序。where和order的影响]]></content>
+      <categories>
+        <category>DB</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL索引]]></title>
+    <url>%2F2019%2F05%2F04%2FMySQL%E7%B4%A2%E5%BC%95%2F</url>
+    <content type="text"><![CDATA[MySQL索引摘抄 mysql的索引分为单列索引(主键索引,唯索引,普通索引)和组合索引. 单列索引:一个索引只包含一个列,一个表可以有多个单列索引. 组合索引:一个组合索引包含两个或两个以上的列, (一)索引的创建 1.单列索引 1-1) 普通索引,这个是最基本的索引, 其sql格式是 CREATE INDEX IndexName ON TableName(字段名(length)) 或者 ALTER TABLE TableName ADD INDEX IndexName(字段名(length)) 第一种方式 : 1CREATE INDEX account_Index ON `award`(`account`); 第二种方式: 1ALTER TABLE award ADD INDEX account_Index(`account`) 如果是CHAR,VARCHAR,类型,length可以小于字段的实际长度,如果是BLOB和TEXT类型就必须指定长度, 1-2) 唯一索引,与普通索引类似,但是不同的是唯一索引要求所有的类的值是唯一的,这一点和主键索引一样.但是他允许有空值, 其sql格式是 CREATE UNIQUE INDEX IndexName ON TableName(字段名(length)); 或者 ALTER TABLE TableName ADD UNIQUE (column_list) 1CREATE UNIQUE INDEX account_UNIQUE_Index ON `award`(`account`); 1-3) 主键索引,不允许有空值,(在B+TREE中的InnoDB引擎中,主键索引起到了至关重要的地位) 主键索引建立的规则是 int优于varchar,一般在建表的时候创建,最好是与表的其他字段不相关的列或者是业务不相关的列.一般会设为 int 而且是 AUTO_INCREMENT自增类型的， 2.组合索引 一个表中含有多个单列索引不代表是组合索引,通俗一点讲 组合索引是:包含多个字段但是只有索引名称 其sql格式是 CREATE INDEX IndexName On TableName(字段名(length),字段名(length),…); 1CREATE INDEX nickname_account_createdTime_Index ON `award`(`nickname`, `account`, `created_time`); 在使用查询的时候遵循mysql组合索引的”最左前缀”,下面我们来分析一下 什么是最左前缀：及索引where时的条件要按照建立索引的时候字段的排序方式，切不支持范围索引。 3、全文索引 文本字段上(text)如果建立的是普通索引,那么只有对文本的字段内容前面的字符进行索引,其字符大小根据索引建立索引时申明的大小来规定. 如果文本中出现多个一样的字符,而且需要查找的话,那么其条件只能是 where column like ‘%xxxx%’ 这样做会让索引失效 .这个时候全文索引就起到了作用了 1ALTER TABLE tablename ADD FULLTEXT(column1, column2) 有了全文索引，就可以用SELECT查询命令去检索那些包含着一个或多个给定单词的数据记录了。 12SELECT * FROM tablenameWHERE MATCH(column1, column2) AGAINST(‘xxx′, ‘sss′, ‘ddd′) 这条命令将把column1和column2字段里有xxx、sss和ddd的数据记录全部查询出来。 (二)索引的删除 删除索引的mysql格式 :DORP INDEX IndexName ON TableName (三)使用索引的优点 1.可以通过建立唯一索引或者主键索引,保证数据库表中每一行数据的唯一性.2.建立索引可以大大提高检索的数据,以及减少表的检索行数3.在表连接的连接条件 可以加速表与表直接的相连4.在分组和排序字句进行数据检索,可以减少查询时间中 分组 和 排序时所消耗的时间(数据库的记录会重新排序)5.建立索引,在查询中使用索引 可以提高性能 (四)使用索引的缺点 1.在创建索引和维护索引 会耗费时间,随着数据量的增加而增加2.索引文件会占用物理空间,除了数据表需要占用物理空间之外,每一个索引还会占用一定的物理空间3.当对表的数据进行 INSERT,UPDATE,DELETE 的时候,索引也要动态的维护,这样就会降低数据的维护速度,(建立索引会占用磁盘空间的索引文件。一般情况这个问题不太严重，但如果你在一个大表上创建了多种组合索引，索引文件的会膨胀很快)。]]></content>
+      <categories>
+        <category>DB</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[个人简历]]></title>
     <url>%2F2019%2F04%2F30%2F%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86%2F</url>
     <content type="text"><![CDATA[这是一份个人简历。。 联系方式 | 期望职位：Java开发实习生 手机（微信号）：173-9651-0930 Email：cwellshake@gmail.com 个人信息 | 陈发荣 / 男 / 1998 教育背景：福州大学（211） 技术博客：http://cfr321.github.io Github：https://github.com/cfr321 证书技能：CTE4 / 自学C语言、数据结构和算法、计算机网络知识等计算机专业知识 技能清单 | 熟悉Java基础，了解常见设计模式 熟悉Servlet、JSP、JDBC等JavaWeb基础知识 熟悉IntelliJ IDEA、eclipse、vscode、Git、Maven等工具 熟悉MySQL关系型数据库，了解Redis 熟悉SringMVC、Spring、Mybatis框架技术；了解SpringBoot、SpringData 了解HTML+CSS+JS，以及BootStrap、Vue.js等前端知识 了解Linux常用命令，能够搭建开发环境 个人项目 | 员工管理系统 项目介绍：这是一个独立完成的员工管理系统，通过这个项目使我更加熟悉了SSM框架，以及学习BootStrap对页面的搭建，项目主要采用页面发送ajax到后端，实现对员工的信息的修改。整个项目业务并不复杂，但第一次做项目还是出现了很多问题，比如bootstrap的cs效果引入问题、MySQL8.0版本连接问题等等，我是完全自学的、遇到了问题我只能不断地去网上搜索，翻阅很多别人的博客，最终让问题得到解决。 CkServer服务器 一个类似tomcat的web服务器，这是在我学习Java网络编程时候做的一个小项目。它能接受HTTP请求以及响应，实现了war包的自动解压、xml的解析获取servlet、以及常见的状态码的响应。一开始它只支持IO流操作，一个请求一个线程；我又去学习了NIO的知识，并运用在这个小项目上。 cako商城 这是一个基于SpringBoot和SpringData的分布式项目，前端用的是vue.js，用nginx实现方向代理。目前并没有完全开发完全，现在在开发后台商品管理系统，从中我也在不断记取不断进步。 其他信息 | 校园经历：曾担任idea精英汇新闻官部长，负责微信公众号管理，有公众号管理和推文撰写经验 性格特点：专注度高，热爱学习，富有创造力 个人爱好：运动、游戏、读书和敲代码]]></content>
@@ -184,7 +206,7 @@
   <entry>
     <title><![CDATA[about me]]></title>
     <url>%2F2019%2F04%2F12%2Fabout-me%2F</url>
-    <content type="text"><![CDATA[今天是2019.4.13–我念大三，从今天起记录我的生活。 被前端代码困扰和crud的一天，劳动节快乐 2019-4-30 很大的雨 马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把 2019-4-26 开始热了 今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想== 2019-4-25 暴雨转大太阳 逼着我画了一下的CAD 最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习 2019-4-23 气温逐渐升高 负载均衡 2019-4-21 还凑合 为什么重写对象的equals()方法一定要重写hashcode()方法。 原因很简单： 基本条件：两个对象 equals成立 是 hashcode相等的 充分不必要条件。 就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。 2019-4-20 多云转雨 今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。 学习学习使我快乐。 2019-4-18 天气还不错今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油 2019-4-16 多云Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。 2019-4-15 阴今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。 2019-4-14 多云我已经写了两篇文章啦，还是很开心的。我在过着我喜欢的日子，不再有过去两年那种迷茫。 2019-4-12 雨初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。]]></content>
+    <content type="text"><![CDATA[今天是2019.4.13–我念大三，从今天起记录我的生活。 2019-5-04 今天开始又开始搞MySQL了，再Linux下安装了MySQL，花了不小的功复，到现在无论是window下还是Linux下我，安装遇到问题最大的就是MySQL了。。。 2019-5-01 被前端代码困扰和crud的一天，劳动节快乐 2019-4-30 很大的雨 马上开始五一长假了，我并没有回家呆在了学校，今天没怎么学知识，做了份简历，希望好运把 2019-4-26 开始热了 今天把图书馆借的多线程和高并发两本书还了，然后又借了本 ==Java编程思想== 2019-4-25 暴雨转大太阳 逼着我画了一下的CAD 最近依旧学习劲蒙，高并发—算法—以及新技术的继续学习 2019-4-23 气温逐渐升高 负载均衡 2019-4-21 还凑合 为什么重写对象的equals()方法一定要重写hashcode()方法。 原因很简单： 基本条件：两个对象 equals成立 是 hashcode相等的 充分不必要条件。 就此如果改了 equals 方法，使得地址不一样的两个对象 相等了；但是根据地址计算的hashcode却不相等；这违背了上面的条件，后面还会导致 hashSet去重不得经了，hashMap的key不重复也不得经了。 2019-4-20 多云转雨 今天周末，女朋友说练车手背门夹了，然后她大姨给了她一些17前过期的创口贴，然后现在她的手指夹还是紫的。我要笑死了。 学习学习使我快乐。 2019-4-18 天气还不错今天满课啊，每天又要上课又要学计算机还是蛮累的喔加油加油 2019-4-16 多云Java多线程一书算是看完了，后面还会看并发编程艺术一书，继续补充Java高级知识，真的挺累的，每天还有很多自己专业的课，虽然没听都是看自己的书，但还是感觉计算机学习不去敲代码感受很难有深切的体会。现在挺迷茫的，是应该再继续多学习新知识，还是回过头来把Java的核心知识回顾学习，三大框架和web基础好久没碰都不太记得了，原因也是之前学就仅仅只是学会怎么用，要去搞懂这些子框架原理又是需要一大把时间，我现在缺的就是时间啊。 2019-4-15 阴今天继续学习了JVM，这书看得非常的难受，先看到着吧，这本书以后再翻。这个月也不准备在学很多新知识了，准备做一个阶段性的复习，回顾整理。 2019-4-14 多云我已经写了两篇文章啦，还是很开心的。我在过着我喜欢的日子，不再有过去两年那种迷茫。 2019-4-12 雨初次尝试搭建一个博客，作为一个没什么审美的boy，照着文档七七八八的把功能补齐了，先凑合着用吧。我的其实是想记录下自己的所学，每天都能记录下来一些东西。]]></content>
       <categories>
         <category>life</category>
       </categories>
