@@ -365,6 +365,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/27/锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/27/锁/" class="post-title-link" itemprop="url">锁</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-27 12:23:48 / 修改时间：14:37:49" itemprop="dateCreated datePublished" datetime="2019-04-27T12:23:48+08:00">2019-04-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>学习三部曲：理论+实践+总结</p>
+<h3 id="一、公平锁和非公平锁"><a href="#一、公平锁和非公平锁" class="headerlink" title="一、公平锁和非公平锁"></a>一、公平锁和非公平锁</h3><p>公平锁符合先到先得，有先来后到之分；非公平锁就没有，都是同时竞争锁，而且趋于短作业优先。</p>
+<p>ReentrantLock默认就是非公平锁，非公平锁有着更好的吞吐率。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lock lock=<span class="keyword">new</span> ReentrantLock(<span class="keyword">true</span>);  <span class="comment">//设置为公平锁</span></span><br></pre></td></tr></table></figure>
+<p>synchronized，也是非公平锁</p>
+<h3 id="二、可重入锁（递归锁）"><a href="#二、可重入锁（递归锁）" class="headerlink" title="二、可重入锁（递归锁）"></a>二、可重入锁（递归锁）</h3><p>ReentrantLock 和 Synchronized都是个可重入锁：</p>
+<p>重入锁：同一个线程外层获取锁后，这个线程可以进入任何这把锁的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//case1:证明了synchronized是可重入锁</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"方法一被调用了"</span>);</span><br><span class="line">    method2();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"方法二被调用了"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Doma01 doma01=<span class="keyword">new</span> Doma01();</span><br><span class="line">    doma01.method1();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//case2：证明了ReentrantLock是可重入锁</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dome2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> Lock lock=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"\t invoked  method1"</span>);</span><br><span class="line">            method2();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"\t invoked  method2"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            method1();</span><br><span class="line">        &#125;, <span class="string">"t1"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            method1();</span><br><span class="line">        &#125;, <span class="string">"t2"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码都能正常运行，线程可以访问到其他的同样锁的方法，可重入锁的目的是防止了死锁。自锁。</p>
+<p>注意，ReenteankLock，加锁和解锁的次数一定要匹配，调用了几次lock（），就需要几unlock()，才能释放锁，其他线程才能获得到锁。</p>
+<p><strong>少了unlock()，会出现锁未释放，程序阻塞。而多了unlock（）程序是会报错的。</strong></p>
+<p>java.lang.IllegalMonitorStateException</p>
+<h3 id="三、自旋锁"><a href="#三、自旋锁" class="headerlink" title="三、自旋锁"></a>三、自旋锁</h3><p>自旋：多次来看看时候能获得锁，看了不能获得就去干自己的，然后一段时间后又来看看时候能获得锁。</p>
+<p>手写自旋锁：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySpinLock</span> </span>&#123;</span><br><span class="line">    <span class="comment">//设置Thread的原子对象，对其修改具有原子性</span></span><br><span class="line">    AtomicReference&lt;Thread&gt; atomicReference=<span class="keyword">new</span> AtomicReference&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myLock</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Thread thread=Thread.currentThread();</span><br><span class="line">        System.out.println(thread.getName()+<span class="string">"\t come in"</span>);</span><br><span class="line">        <span class="comment">//自旋的去看atomicReference是否为空了，为空就将自己设置进去。</span></span><br><span class="line">        <span class="keyword">while</span>(!atomicReference.compareAndSet(<span class="keyword">null</span>,thread))&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//释放锁的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myUnlock</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Thread thread=Thread.currentThread();</span><br><span class="line">        atomicReference.compareAndSet(thread,<span class="keyword">null</span>);</span><br><span class="line">        System.out.println(thread.getName()+<span class="string">"\t come out"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自旋锁问题：当一个线程长时间占用资源，其他线程将会不断的去尝试获取锁，那么就会消耗cup性能。</p>
+<h3 id="四、独占锁（写锁）-共享锁（读锁）-读写锁"><a href="#四、独占锁（写锁）-共享锁（读锁）-读写锁" class="headerlink" title="四、独占锁（写锁）/共享锁（读锁）/ 读写锁"></a>四、独占锁（写锁）/共享锁（读锁）/ 读写锁</h3><p>多线程操作资源，有时又需要读的时候可以共同访问，但是写的时候其他线程不能访问子资源。</p>
+<p>写操作：原子性+独占，整个过程必须是个完整的过程，不能又其他线程插入其中。</p>
+<p>ReentrankReadWriteLock就是典型的读写锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用ReentrankReadWriteLock实现 写时上锁，读读共享</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mychace</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> ReentrantReadWriteLock lock=<span class="keyword">new</span> ReentrantReadWriteLock(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(String k,Object o)</span></span>&#123;</span><br><span class="line">        lock.writeLock().lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"\t 开始写入"</span>);</span><br><span class="line">            map.put(k,o);</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"\t  写入完成"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.writeLock().unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(String k)</span></span>&#123;</span><br><span class="line">        lock.readLock().lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.readLock().unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"\t 开始读取"</span>);</span><br><span class="line">        Object o=map.get(k);</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"\t  读取完成"</span>+o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/26/CAS-实现原子性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -756,7 +937,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
