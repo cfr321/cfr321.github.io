@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="简单罗列一些Linux和jvm性能分析的工具和命令、">
-<meta name="keywords" content="操作系统">
+  <meta name="description" content="Manacher和KMP实现">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis学习心得">
-<meta property="og:url" content="https://www.ccgofa.top/2019/04/17/Linux性能分析命令/index.html">
+<meta property="og:title" content="Manacher和KMP">
+<meta property="og:url" content="https://www.ccgofa.top/2019/05/09/Manacher和KMP/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="简单罗列一些Linux和jvm性能分析的工具和命令、">
+<meta property="og:description" content="Manacher和KMP实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T07:28:17.230Z">
+<meta property="og:updated_time" content="2019-05-09T11:17:48.700Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis学习心得">
-<meta name="twitter:description" content="简单罗列一些Linux和jvm性能分析的工具和命令、">
+<meta name="twitter:title" content="Manacher和KMP">
+<meta name="twitter:description" content="Manacher和KMP实现">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://www.ccgofa.top/2019/04/17/Linux性能分析命令/">
+  <link rel="canonical" href="https://www.ccgofa.top/2019/05/09/Manacher和KMP/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>redis学习心得 | Task try</title>
+  <title>Manacher和KMP | Task try</title>
   
 
 
@@ -366,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/17/Linux性能分析命令/">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/09/Manacher和KMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="摇井">
@@ -383,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis学习心得
+          <h1 class="post-title" itemprop="name headline">Manacher和KMP
 
               
             
@@ -409,24 +409,12 @@
                 
               
 
-              <time title="创建时间：2019-04-17 13:22:07" itemprop="dateCreated datePublished" datetime="2019-04-17T13:22:07+08:00">2019-04-17</time>
+              <time title="创建时间：2019-05-09 13:22:07 / 修改时间：19:17:48" itemprop="dateCreated datePublished" datetime="2019-05-09T13:22:07+08:00">2019-05-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 15:28:17" itemprop="dateModified" datetime="2019-05-01T15:28:17+08:00">2019-05-01</time>
               
             
           </span>
@@ -443,7 +431,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -462,8 +450,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/17/Linux性能分析命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/Linux性能分析命令/" itemprop="commentCount"></span>
+                <a href="/2019/05/09/Manacher和KMP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/09/Manacher和KMP/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,48 +486,10 @@
       
 
       
-        <p>简单罗列一些Linux和jvm性能分析的工具和命令、</p>
+        <p>Manacher和KMP实现</p>
 <a id="more"></a>
-<p>Linux性能分析命令</p>
-<ul>
-<li><p>top(整机）：（uptime)：查开整机性能，cup和load average（平局超过0.6）就比较高了</p>
-</li>
-<li><p>vmstat -n 2 3（cpu)  :  看procs: 轮转进程数  cpu ：us+sy   mpstat   pidstat。</p>
-</li>
-<li><p>free（内存）:  free m   free g（后面是单位，兆还是g） </p>
-</li>
-<li><p>df（硬盘）: </p>
-</li>
-<li><p>iostat（磁盘io)  ：</p>
-</li>
-<li><p>ifstat（网络io）：</p>
-</li>
-<li><p>pidstat：查看具体进程号对应信息： pidstat -r -p 13084 1</p>
-<ul>
-<li><p>pidstat命令指定采样周期和采样次数，命令形式为”pidstat [option] interval [count]”，以下pidstat输出以2秒为采样周期，输出10次cpu使用统计信息：</p>
-</li>
-<li><p><strong>cpu使用情况统计(-u)</strong></p>
-</li>
-<li><strong>内存使用情况统计(-r)</strong></li>
-<li><strong>IO情况统计(-d)</strong></li>
-</ul>
-</li>
-</ul>
-<p>JVM性能分析工具</p>
-<ul>
-<li>jps （虚拟机进程）like ps</li>
-<li>jstat （统计信息监视）like  pidstat，可以查看进程的某种信息，比如-gc -gcold</li>
-<li>jinfo（配置信息）</li>
-<li>jmap  (堆内存，dump heap，查看进程堆信息)  </li>
-<li>jstack（堆栈跟踪工具）  </li>
-<li>jhat  （堆转储快照分析） </li>
-</ul>
-<p>CUP占用过高：</p>
-<p>​        分析流程: top==&gt;找到哪个程序，记录pid</p>
-<p>​        用 jps -l 或者 ps -ef | grep -v grep 得到进程 id</p>
-<p>​        ps -mp  进程id  -o  THREAD，tid,time   得到线程 id  （-m 显示所有线程，-p进程号，-o 用户自定义格式）</p>
-<p>​        <strong>线程id变成16 进制</strong>      或者用 ”printf “%x\n”</p>
-<p>​        jstack 进程号  |  grep <strong>(16进制线程号)</strong>  -A60</p>
+<h2 id="Manacher和KMP"><a href="#Manacher和KMP" class="headerlink" title="Manacher和KMP"></a>Manacher和KMP</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* * Manacher</span></span><br><span class="line"><span class="comment"> * 1、help数组，用来记录每个位置的最长回文长度</span></span><br><span class="line"><span class="comment"> * 2、R，记录最右边界</span></span><br><span class="line"><span class="comment"> * 3、C,记录最右边界的中心</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 思路：一、如果当前位置不被R包裹，直接进行暴力求回文。并跟新C和R</span></span><br><span class="line"><span class="comment"> *       二、如果当前位置被R包裹</span></span><br><span class="line"><span class="comment"> *          1、当前位置以C为中心的对称点，的回文长度没有突破R回文边界，当前位置回文就等于对称位置的回文长度</span></span><br><span class="line"><span class="comment"> *          2、当前位置以C为中心的对称点，的回文长度突破了R回文边界，当前位置回文就等于R-i</span></span><br><span class="line"><span class="comment"> *          3、恰好踩在了R位置，直接以半径为len去暴力求新的len。跟新C和R。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Marnach</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">difStrlen</span><span class="params">(String str)</span></span>&#123;  </span><br><span class="line">        <span class="keyword">char</span>[] ss=str.toCharArray();</span><br><span class="line">        <span class="keyword">int</span>[] index=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>, i=<span class="number">0</span>;i&lt;ss.length;i++)&#123;</span><br><span class="line">            j=Math.max(j, index[ss[i]]);</span><br><span class="line">            len=Math.max(len, i-j+<span class="number">1</span>);</span><br><span class="line">            index[ss[i]]=i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findMlen</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] c=<span class="keyword">new</span> <span class="keyword">char</span>[str.length() * <span class="number">2</span> - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            c[a++]=str.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(i!=str.length()-<span class="number">1</span>)&#123;</span><br><span class="line">                c[a++]=<span class="string">'#'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> R =-<span class="number">1</span>;	<span class="comment">//右边界</span></span><br><span class="line">        <span class="keyword">int</span> C=<span class="number">0</span>;	<span class="comment">//回文中心</span></span><br><span class="line">        <span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] help=<span class="keyword">new</span> <span class="keyword">int</span>[c.length];</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len; <span class="comment">//记录当前当前位置的回文长度</span></span><br><span class="line">        <span class="keyword">while</span>(R&lt;c.length &amp;&amp; i&lt;c.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(R==c.length-<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;R)&#123;</span><br><span class="line">               len = postLen(c,i,<span class="number">1</span>);</span><br><span class="line">               help[i]=len;</span><br><span class="line">               C=i;</span><br><span class="line">               R=i+len-<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                len=help[<span class="number">2</span>*C-i];</span><br><span class="line">                <span class="keyword">if</span>(len+(i-C)&lt;help[C])&#123;</span><br><span class="line">                    help[i]=help[<span class="number">2</span>*C-i];</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(len+(i-C)&gt;help[C])&#123;</span><br><span class="line">                    help[i]=help[C]-(i-C);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        len=postLen(c, i, len);</span><br><span class="line">                        help[i]=len;</span><br><span class="line">                        C=i;</span><br><span class="line">                        R=i+len-<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            max=Math.max(max, help[i]);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">postLen</span><span class="params">(<span class="keyword">char</span>[] c, <span class="keyword">int</span> i,<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(i-len&gt;-<span class="number">1</span> &amp;&amp; i+len&lt;c.length &amp;&amp; c[i-len]==c[i+len])&#123;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(findMlen(<span class="string">"aasdbbbbbbdsaa"</span>));</span><br><span class="line">        System.out.println(difStrlen(<span class="string">"stradad"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * KmpTest</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KmpTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">kmp</span><span class="params">(String str1,String str2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] c1=str1.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] c2=str2.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] next =findMinlen(str2);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;c1.length &amp;&amp; j&lt;c2.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c1[i]==c2[j])&#123;</span><br><span class="line">                i++;j++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(next[j]==-<span class="number">1</span>)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                j=next[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j==c2.length?c1.length-c2.length:-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] findMinlen(String str)&#123;</span><br><span class="line">        <span class="keyword">char</span>[] c=str.toCharArray();</span><br><span class="line">        <span class="keyword">int</span>[] next=<span class="keyword">new</span> <span class="keyword">int</span>[str.length()+<span class="number">1</span>];</span><br><span class="line">        next[<span class="number">0</span>]=-<span class="number">1</span>;</span><br><span class="line">        next[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cn=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=str.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(c[i-<span class="number">1</span>]==c[cn])&#123;</span><br><span class="line">                next[i++]=++cn;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cn&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                cn=next[cn];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                next[i++]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">         System.out.println(str+str.substring(next[i-<span class="number">1</span>], str.length()));</span><br><span class="line">         <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        findMinlen(<span class="string">"adad"</span>);</span><br><span class="line">        System.out.println(kmp(<span class="string">"str1"</span>, <span class="string">"r1"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -587,7 +537,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -600,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/redis学习心得/" rel="next" title="redis学习心得">
-                <i class="fa fa-chevron-left"></i> redis学习心得
+              <a href="/2019/05/07/MySQL锁和事务/" rel="next" title="MySQL锁和事务">
+                <i class="fa fa-chevron-left"></i> MySQL锁和事务
               </a>
             
           </div>
@@ -609,10 +559,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/18/spring重点归纳/" rel="prev" title="spring重点归纳">
-                spring重点归纳 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -660,8 +606,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -808,6 +763,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Manacher和KMP"><span class="nav-number">1.</span> <span class="nav-text">Manacher和KMP</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
