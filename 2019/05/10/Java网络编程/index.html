@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="学习redis已经有几天了，主要都是断断续续的，这几天看Java高级知识也花了很多时间，今天来给redis的一些知识点做一下总结回顾。">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用">
+<meta name="keywords" content="学习,网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis学习心得">
-<meta property="og:url" content="https://www.ccgofa.top/2019/04/17/redis学习心得/index.html">
+<meta property="og:title" content="java多线程（二）">
+<meta property="og:url" content="https://www.ccgofa.top/2019/05/10/Java网络编程/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="学习redis已经有几天了，主要都是断断续续的，这几天看Java高级知识也花了很多时间，今天来给redis的一些知识点做一下总结回顾。">
+<meta property="og:description" content="最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-26T04:27:50.154Z">
+<meta property="og:updated_time" content="2019-05-10T14:02:48.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis学习心得">
-<meta name="twitter:description" content="学习redis已经有几天了，主要都是断断续续的，这几天看Java高级知识也花了很多时间，今天来给redis的一些知识点做一下总结回顾。">
+<meta name="twitter:title" content="java多线程（二）">
+<meta name="twitter:description" content="最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://www.ccgofa.top/2019/04/17/redis学习心得/">
+  <link rel="canonical" href="https://www.ccgofa.top/2019/05/10/Java网络编程/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>redis学习心得 | Task try</title>
+  <title>java多线程（二） | Task try</title>
   
 
 
@@ -366,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/04/17/redis学习心得/">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/10/Java网络编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="摇井">
@@ -383,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis学习心得
+          <h1 class="post-title" itemprop="name headline">java多线程（二）
 
               
             
@@ -409,24 +409,12 @@
                 
               
 
-              <time title="创建时间：2019-04-17 13:22:07" itemprop="dateCreated datePublished" datetime="2019-04-17T13:22:07+08:00">2019-04-17</time>
+              <time title="创建时间：2019-05-10 16:52:38 / 修改时间：22:02:48" itemprop="dateCreated datePublished" datetime="2019-05-10T16:52:38+08:00">2019-05-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 12:27:50" itemprop="dateModified" datetime="2019-04-26T12:27:50+08:00">2019-04-26</time>
               
             
           </span>
@@ -462,8 +450,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/04/17/redis学习心得/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/redis学习心得/" itemprop="commentCount"></span>
+                <a href="/2019/05/10/Java网络编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/10/Java网络编程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -498,88 +486,19 @@
       
 
       
-        <p>学习redis已经有几天了，主要都是断断续续的，这几天看Java高级知识也花了很多时间，今天来给redis的一些知识点做一下总结回顾。</p>
+        <p>最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用</p>
 <a id="more"></a>
-<h2 id="redis是什么"><a href="#redis是什么" class="headerlink" title="redis是什么"></a>redis是什么</h2><p>介绍Redis之前，先了解下NoSQL （Not noly SQL）不仅仅是SQL</p>
-<p>属于非关系型数据库；Redis就属于非关系型数据库</p>
-<p>传统的Mysql ,oracle ,sql server 等 都是关系型数据库</p>
-<p>redis是基于内存的，单线程操作的，多路IO(NIO)复用的，key value型缓存数据库。</p>
-<h2 id="为什么要学redis"><a href="#为什么要学redis" class="headerlink" title="为什么要学redis"></a>为什么要学redis</h2><p>为什么需要NoSQL，主要应对以下问题，传统关系型数据库力不从心</p>
-<p>High performance -高并发读写</p>
-<p>Huge Storage-海量数据的高效率存储和访问</p>
-<p>High Scalablility &amp;&amp; High Availability 高可扩展性和高可用性</p>
-<h2 id="redis主要的数据类型"><a href="#redis主要的数据类型" class="headerlink" title="redis主要的数据类型"></a>redis主要的数据类型</h2><p>1.STRING redis的STRING十分神奇，它不单指字符串，还可以代表数值型数据，可以进行字符串以及数值的各种处理 </p>
-<p>2.LIST redis的列表，列表的每一个节点都包含了一个字符串 LIST可以从表头和表尾push和put数据，也可以根据偏移量对链表进行修剪（trim）；读取单个/多个元素，查询或者删除元素 </p>
-<p>3.SET 包含字符串的无序收集器，并且包含的每一个字符串都是唯一的 操作就是基本的增删改查，计算交集，并集以及差集，并且可以随机获取元素 </p>
-<p>4.ZSET 有序集合 字符串成员（member）与浮点数分值（sorce）之间的有序映射，元素排列顺序由分值决定 操作就是基本的增，查，删单个元素，获取分值范围内的或者成员来获取元素 </p>
-<p>5.HASH 包换键值对的无序列表 增，删，查单个键值对，获取所有键值对</p>
-<h2 id="redis一些高级特性"><a href="#redis一些高级特性" class="headerlink" title="redis一些高级特性"></a>redis一些高级特性</h2><p><strong>【聊聊redis持久化 – 两种方式】</strong></p>
-<p>redis提供了两种持久化的方式，分别是RDB（Redis DataBase）和AOF（Append Only File）。</p>
-<p>RDB，简而言之，就是在不同的时间点，将redis存储的数据生成快照并存储到磁盘等介质上；</p>
-<p>AOF，则是换了一个角度来实现持久化，那就是将redis执行过的所有写指令记录下来，在下次redis重新启动时，只要把这些写指令从前到后再重复执行一遍，就可以实现数据恢复了。</p>
-<p>其实RDB和AOF两种方式也可以同时使用，在这种情况下，如果redis重启的话，则会优先采用AOF方式来进行数据恢复，这是因为AOF方式的数据恢复完整度更高。</p>
-<p>如果你没有数据持久化的需求，也完全可以关闭RDB和AOF方式，这样的话，redis将变成一个纯内存数据库，就像memcache一样。</p>
-<p><strong>【聊聊redis持久化 – RDB】</strong></p>
-<p>RDB方式，是将redis某一时刻的数据持久化到磁盘中，是一种快照式的持久化方法。</p>
-<p>redis在进行数据持久化的过程中，会先将数据写入到一个临时文件中，待持久化过程都结束了，才会用这个临时文件替换上次持久化好的文件。正是这种特性，让我们可以随时来进行备份，因为快照文件总是完整可用的。</p>
-<p>对于RDB方式，redis会单独创建（fork）一个子进程来进行持久化，而主进程是不会进行任何IO操作的，这样就确保了redis极高的性能。</p>
-<p>如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。</p>
-<p>虽然RDB有不少优点，但它的缺点也是不容忽视的。如果你对数据的完整性非常敏感，那么RDB方式就不太适合你，因为即使你每5分钟都持久化一次，当redis故障时，仍然会有近5分钟的数据丢失。所以，redis还提供了另一种持久化方式，那就是AOF。</p>
-<p><strong>【聊聊redis持久化 – AOF】</strong></p>
-<p>AOF，英文是Append Only File，即只允许追加不允许改写的文件。</p>
-<p>如前面介绍的，AOF方式是将执行过的写指令记录下来，在数据恢复时按照从前到后的顺序再将指令都执行一遍，就这么简单。</p>
-<p>我们通过配置redis.conf中的appendonly yes就可以打开AOF功能。如果有写操作（如SET等），redis就会被追加到AOF文件的末尾。</p>
-<p>默认的AOF持久化策略是每秒钟fsync一次（fsync是指把缓存中的写指令记录到磁盘中），因为在这种情况下，redis仍然可以保持很好的处理性能，即使redis故障，也只会丢失最近1秒钟的数据。</p>
-<p>如果在追加日志时，恰好遇到磁盘空间满、inode满或断电等情况导致日志写入不完整，也没有关系，redis提供了redis-check-aof工具，可以用来进行日志修复。</p>
-<p>因为采用了追加方式，如果不做任何处理的话，AOF文件会变得越来越大，为此，redis提供了AOF文件重写（rewrite）机制，即当AOF文件的大小超过所设定的阈值时，redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集。举个例子或许更形象，假如我们调用了100次INCR指令，在AOF文件中就要存储100条指令，但这明显是很低效的，完全可以把这100条指令合并成一条SET指令，这就是重写机制的原理。</p>
-<p>在进行AOF重写时，仍然是采用先写临时文件，全部完成后再替换的流程，所以断电、磁盘满等问题都不会影响AOF文件的可用性，这点大家可以放心。</p>
-<p>AOF方式的另一个好处，我们通过一个“场景再现”来说明。某同学在操作redis时，不小心执行了FLUSHALL，导致redis内存中的数据全部被清空了，这是很悲剧的事情。不过这也不是世界末日，只要redis配置了AOF持久化方式，且AOF文件还没有被重写（rewrite），我们就可以用最快的速度暂停redis并编辑AOF文件，将最后一行的FLUSHALL命令删除，然后重启redis，就可以恢复redis的所有数据到FLUSHALL之前的状态了。是不是很神奇，这就是AOF持久化方式的好处之一。但是如果AOF文件已经被重写了，那就无法通过这种方法来恢复数据了。</p>
-<p>虽然优点多多，但AOF方式也同样存在缺陷，比如在同样数据规模的情况下，AOF文件要比RDB文件的体积大。而且，AOF方式的恢复速度也要慢于RDB方式。</p>
-<p>如果你直接执行BGREWRITEAOF命令，那么redis会生成一个全新的AOF文件，其中便包括了可以恢复现有数据的最少的命令集。</p>
-<p>如果运气比较差，AOF文件出现了被写坏的情况，也不必过分担忧，redis并不会贸然加载这个有问题的AOF文件，而是报错退出。这时可以通过以下步骤来修复出错的文件：</p>
-<p>1.备份被写坏的AOF文件<br> 2.运行redis-check-aof –fix进行修复<br> 3.用diff -u来看下两个文件的差异，确认问题点<br> 4.重启redis，加载修复后的AOF文件</p>
-<p><strong>【聊聊redis持久化 – AOF重写】</strong></p>
-<p>AOF重写的内部运行原理，我们有必要了解一下。</p>
-<p>在重写即将开始之际，redis会创建（fork）一个“重写子进程”，这个子进程会首先读取现有的AOF文件，并将其包含的指令进行分析压缩并写入到一个临时文件中。</p>
-<p>与此同时，主工作进程会将新接收到的写指令一边累积到内存缓冲区中，一边继续写入到原有的AOF文件中，这样做是保证原有的AOF文件的可用性，避免在重写过程中出现意外。</p>
-<p>当“重写子进程”完成重写工作后，它会给父进程发一个信号，父进程收到信号后就会将内存中缓存的写指令追加到新AOF文件中。</p>
-<p>当追加结束后，redis就会用新AOF文件来代替旧AOF文件，之后再有新的写指令，就都会追加到新的AOF文件中了。</p>
-<p><strong>【聊聊redis持久化 – 如何选择RDB和AOF】</strong></p>
-<p>对于我们应该选择RDB还是AOF，官方的建议是两个同时使用。这样可以提供更可靠的持久化方案。</p>
-<p><strong>【聊聊主从 – 用法】</strong></p>
-<p>像MySQL一样，redis是支持主从同步的，而且也支持一主多从以及多级从结构。</p>
-<p>主从结构，一是为了纯粹的冗余备份，二是为了提升读性能，比如很消耗性能的SORT就可以由从服务器来承担。</p>
-<p>redis的主从同步是异步进行的，这意味着主从同步不会影响主逻辑，也不会降低redis的处理性能。</p>
-<p>主从架构中，可以考虑关闭主服务器的数据持久化功能，只让从服务器进行持久化，这样可以提高主服务器的处理性能。</p>
-<p>在主从架构中，从服务器通常被设置为只读模式，这样可以避免从服务器的数据被误修改。但是从服务器仍然可以接受CONFIG等指令，所以还是不应该将从服务器直接暴露到不安全的网络环境中。如果必须如此，那可以考虑给重要指令进行重命名，来避免命令被外人误执行。</p>
-<p><strong>【聊聊主从 – 同步原理】</strong></p>
-<p>从服务器会向主服务器发出SYNC指令，当主服务器接到此命令后，就会调用BGSAVE指令来创建一个子进程专门进行数据持久化工作，也就是将主服务器的数据写入RDB文件中。在数据持久化期间，主服务器将执行的写指令都缓存在内存中。</p>
-<p>在BGSAVE指令执行完成后，主服务器会将持久化好的RDB文件发送给从服务器，从服务器接到此文件后会将其存储到磁盘上，然后再将其读取到内存中。这个动作完成后，主服务器会将这段时间缓存的写指令再以redis协议的格式发送给从服务器。</p>
-<p>另外，要说的一点是，即使有多个从服务器同时发来SYNC指令，主服务器也只会执行一次BGSAVE，然后把持久化好的RDB文件发给多个下游。在redis2.8版本之前，如果从服务器与主服务器因某些原因断开连接的话，都会进行一次主从之间的全量的数据同步；而在2.8版本之后，redis支持了效率更高的增量同步策略，这大大降低了连接断开的恢复成本。</p>
-<p>主服务器会在内存中维护一个缓冲区，缓冲区中存储着将要发给从服务器的内容。从服务器在与主服务器出现网络瞬断之后，从服务器会尝试再次与主服务器连接，一旦连接成功，从服务器就会把“希望同步的主服务器ID”和“希望请求的数据的偏移位置（replication   offset）”发送出去。主服务器接收到这样的同步请求后，首先会验证主服务器ID是否和自己的ID匹配，其次会检查“请求的偏移位置”是否存在于自己的缓冲区中，如果两者都满足的话，主服务器就会向从服务器发送增量内容。</p>
-<p>增量同步功能，需要服务器端支持全新的PSYNC指令。这个指令，只有在redis-2.8之后才具有。</p>
-<p><strong>【聊聊redis的事务处理】</strong></p>
-<p>众所周知，事务是指“一个完整的动作，要么全部执行，要么什么也没有做”。</p>
-<p>在聊redis事务处理之前，要先和大家介绍四个redis指令，即MULTI、EXEC、DISCARD、WATCH。这四个指令构成了redis事务处理的基础。</p>
-<p> 1.MULTI用来组装一个事务；<br> 2.EXEC用来执行一个事务；<br> 3.DISCARD用来取消一个事务；<br> 4.WATCH用来监视一些key，一旦这些key在事务执行之前被改变，则取消事务的执行。</p>
-<p>redis没有实际的事务的感念，这里的事务也不想关系型数据库里的事务那样。当在组装的时候某个语句组装没出错，比如取一个空key，那么在执行的时候也只有这一句是不行的。但在exec执行前就报出来语法错误则整个事务失败。</p>
-<h2 id="redis面试题"><a href="#redis面试题" class="headerlink" title="redis面试题"></a>redis面试题</h2><h3 id="Redis与Memcached的区别与比较"><a href="#Redis与Memcached的区别与比较" class="headerlink" title="Redis与Memcached的区别与比较"></a>Redis与Memcached的区别与比较</h3><p>1 、Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，hash等数据结构的存储。memcache支持简单的数据类型，String。</p>
-<p>2 、Redis支持数据的备份，即master-slave模式的数据备份。</p>
-<p>3 、Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而Memecache把数据全部存在内存之中</p>
-<p>4、 redis的速度比memcached快很多</p>
-<p>5、Memcached是多线程，非阻塞IO复用的网络模型；Redis使用单线程的IO复用模型。</p>
-<h3 id="MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）"><a href="#MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）" class="headerlink" title="MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）"></a>MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）</h3><p>相关知识：redis 内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略（回收策略）。redis 提供 6种数据淘汰策略：</p>
-<ol>
-<li>volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰</li>
-<li>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</li>
-<li>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</li>
-<li>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</li>
-<li>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</li>
-<li>no-enviction（驱逐）：禁止驱逐数据</li>
-</ol>
-<p>lru算法是一种用hashmap和链表实现的算法，没使用一次就将数据放在链表的最后，要回收的时候就回收前面的。</p>
-<h3 id="Redis常见性能问题和解决方案"><a href="#Redis常见性能问题和解决方案" class="headerlink" title="Redis常见性能问题和解决方案:"></a>Redis常见性能问题和解决方案:</h3><p>1、Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件<br>2、如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次<br>3、为了主从复制的速度和连接的稳定性，Master和Slave最好在同一个局域网内<br>4、尽量避免在压力很大的主库上增加从库</p>
-
+<ul>
+<li>InetAddress获取主机的IP地址等信息</li>
+<li>URL，统一资源定位符。通过这个可以打开一个输入流和获取一个连接，从流里面可以获取资源</li>
+<li>URLEncoder进行编码，URKLDecoder进行解码</li>
+<li>ServertSocket，这个这里就没有案例了，因为我比较了解。</li>
+<li>UDP的 DatagramPacket（包装一条信息）和 DatagramSocket（发送/接受 一条信息）</li>
+</ul>
+<h2 id="1、InetAddress"><a href="#1、InetAddress" class="headerlink" title="1、InetAddress"></a>1、InetAddress</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * InetAddress主要用于IP地址，有两个子类Inet4Address Inet6Address</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InetAddressDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//获取本机InetAddress</span></span><br><span class="line">        InetAddress locAdd=InetAddress.getLocalHost();</span><br><span class="line">        <span class="comment">//根据名称获取InetAddress</span></span><br><span class="line">        InetAddress baidu=InetAddress.getByName(<span class="string">"www.baidu.com"</span>);</span><br><span class="line">        InetAddress.getByAddress(locAdd.getAddress());   <span class="comment">//需要一个字节数组</span></span><br><span class="line">        <span class="comment">//获取一些信息</span></span><br><span class="line">        System.out.println(<span class="string">"本机主机地址为："</span>+locAdd.getHostAddress());</span><br><span class="line">        System.out.println(<span class="string">"百度主机地址为："</span>+baidu.getHostAddress());</span><br><span class="line">        <span class="comment">//getAddress方法和getHostAddress类似，它们的唯一区别是getHostAddress方法返回的是字符串形式的IP地址，</span></span><br><span class="line">        <span class="comment">// 而getAddress方法返回的是byte数组形式的IP地址。</span></span><br><span class="line">        System.out.println(<span class="string">"本机是地址： "</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] address = locAdd.getAddress();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">byte</span> b : address) &#123;</span><br><span class="line">            System.out.print(b&gt;<span class="number">0</span>?b:<span class="number">256</span>+b);   <span class="comment">//注意这里的转换</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(<span class="string">"本机是否可连接："</span>+locAdd.isReachable(<span class="number">5000</span>));</span><br><span class="line">        System.out.println(<span class="string">"百度时候可达："</span> + baidu.isReachable(<span class="number">5000</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、URL"><a href="#2、URL" class="headerlink" title="2、URL"></a>2、URL</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * URL：统一资源定位符，通过这个可以准确的找到一个网页</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">URLDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//构造方法有两种，根据String的地址 或者 主机+端口+uri</span></span><br><span class="line">        URL url=<span class="keyword">new</span> URL(<span class="string">"https://www.cnblogs.com/yulinfeng/p/5844151.html"</span>);</span><br><span class="line"></span><br><span class="line">        URLConnection urlConnection = url.openConnection(); <span class="comment">//打开一个连接</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"内容的大小："</span>+urlConnection.getContentLength());</span><br><span class="line">        System.out.println(<span class="string">"内容类型"</span>+urlConnection.getContentType());</span><br><span class="line"></span><br><span class="line">        InputStream inputStream = url.openStream();            <span class="comment">//获取一个输入流</span></span><br><span class="line">        File file=<span class="keyword">new</span> File(<span class="string">"H:\\java\\idea-workspace\\jvm\\src\\com\\test.html"</span>);</span><br><span class="line">        BufferedWriter bufferedWriter=<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(file,<span class="keyword">true</span>));<span class="comment">//可设置追加</span></span><br><span class="line"></span><br><span class="line">        Scanner scanner=<span class="keyword">new</span> Scanner(inputStream);</span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNext())&#123;</span><br><span class="line">            bufferedWriter.write(scanner.next());</span><br><span class="line">            bufferedWriter.newLine();</span><br><span class="line">            bufferedWriter.flush();</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">        bufferedWriter.close();</span><br><span class="line">        System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、编码解码"><a href="#3、编码解码" class="headerlink" title="3、编码解码"></a>3、编码解码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * URL的编码和解码操作：URLEncoder进行编码，URKLDecoder进行解码</span></span><br><span class="line"><span class="comment"> * 这个也是比较常用的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">URLCoderDemo</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">       String file=<span class="string">"中文"</span>;</span><br><span class="line">       String gb2312 = URLEncoder.encode(file, <span class="string">"utf-8"</span>);  <span class="comment">//编码</span></span><br><span class="line">       String comeBack= URLDecoder.decode(file,<span class="string">"utf-8"</span>);  <span class="comment">//解码</span></span><br><span class="line">       System.out.println(file);</span><br><span class="line">       System.out.println(gb2312);</span><br><span class="line">       System.out.println(comeBack);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、UDP实现简单客户端和服务端"><a href="#4、UDP实现简单客户端和服务端" class="headerlink" title="4、UDP实现简单客户端和服务端"></a>4、UDP实现简单客户端和服务端</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * TCP的socket变成，我有做过一个web服务器，相对比较熟悉、</span></span><br><span class="line"><span class="comment"> * 直接UDP,</span></span><br><span class="line"><span class="comment"> * DatagramPacket（包装一条信息）和DatagramSocket（发送/接受 一条信息）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//客户端</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> SocketException </span>&#123;</span><br><span class="line">        <span class="comment">//DatagramPacket提供两个构造方法</span></span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1204</span>];</span><br><span class="line">        DatagramPacket packet=<span class="keyword">new</span> DatagramPacket(bytes,<span class="number">1204</span>);  <span class="comment">//还可以添加主机地址 和 端口号</span></span><br><span class="line">        DatagramSocket socket=<span class="keyword">new</span> DatagramSocket(<span class="number">6666</span>);</span><br><span class="line">        System.out.println(<span class="string">"等待接受消息"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            socket.receive(packet);</span><br><span class="line">            String message=<span class="keyword">new</span> String(packet.getData(),</span><br><span class="line">                    <span class="number">0</span>,packet.getLength());  <span class="comment">//数据包可以获取数据 和 数据长度</span></span><br><span class="line">            System.out.println(<span class="string">"from:"</span>+packet.getAddress()+<span class="string">": "</span>+packet.getPort());</span><br><span class="line">            System.out.println(<span class="string">"收到信息"</span>);</span><br><span class="line">            System.out.println(message);</span><br><span class="line">            socket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="string">"wo ai ni "</span>.getBytes();</span><br><span class="line">        <span class="comment">//客户端需要地址，和端口</span></span><br><span class="line">        DatagramPacket datagramPacket=<span class="keyword">new</span> DatagramPacket</span><br><span class="line">                (bytes,bytes.length, InetAddress.getByName(<span class="string">"localhost"</span>),<span class="number">6666</span>);</span><br><span class="line">        DatagramSocket datagramSocket=<span class="keyword">new</span> DatagramSocket(<span class="number">8888</span>); <span class="comment">//客户端端口</span></span><br><span class="line">        <span class="comment">//socket可以接和发，客户端发，服务端收</span></span><br><span class="line">        <span class="comment">//结合</span></span><br><span class="line">        System.out.println(<span class="string">"发送 udp ----"</span>);</span><br><span class="line">        datagramSocket.send(datagramPacket);</span><br><span class="line">        System.out.println(<span class="string">"发送 完毕===="</span>);</span><br><span class="line">        datagramSocket.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -626,7 +545,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/网络/" rel="tag"># 网络</a>
           
         </div>
       
@@ -639,8 +560,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/16/Java多线程（二）/" rel="next" title="java多线程（二）">
-                <i class="fa fa-chevron-left"></i> java多线程（二）
+              <a href="/2019/05/09/Manacher和KMP/" rel="next" title="Manacher和KMP">
+                <i class="fa fa-chevron-left"></i> Manacher和KMP
               </a>
             
           </div>
@@ -648,10 +569,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/17/Linux性能分析命令/" rel="prev" title="redis学习心得">
-                redis学习心得 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -867,7 +784,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis是什么"><span class="nav-number">1.</span> <span class="nav-text">redis是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要学redis"><span class="nav-number">2.</span> <span class="nav-text">为什么要学redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis主要的数据类型"><span class="nav-number">3.</span> <span class="nav-text">redis主要的数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis一些高级特性"><span class="nav-number">4.</span> <span class="nav-text">redis一些高级特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis面试题"><span class="nav-number">5.</span> <span class="nav-text">redis面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis与Memcached的区别与比较"><span class="nav-number">5.1.</span> <span class="nav-text">Redis与Memcached的区别与比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）"><span class="nav-number">5.2.</span> <span class="nav-text">MySQL里有2000w数据，Redis中只存20w的数据，如何保证Redis中的数据都是热点数据（redis有哪些数据淘汰策略？？？）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis常见性能问题和解决方案"><span class="nav-number">5.3.</span> <span class="nav-text">Redis常见性能问题和解决方案:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、InetAddress"><span class="nav-number">1.</span> <span class="nav-text">1、InetAddress</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、URL"><span class="nav-number">2.</span> <span class="nav-text">2、URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、编码解码"><span class="nav-number">3.</span> <span class="nav-text">3、编码解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、UDP实现简单客户端和服务端"><span class="nav-number">4.</span> <span class="nav-text">4、UDP实现简单客户端和服务端</span></a></li></ol></div>
             
 
           </div>

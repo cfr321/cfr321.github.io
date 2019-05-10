@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java多线程（二）]]></title>
+    <url>%2F2019%2F05%2F10%2FJava%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用 InetAddress获取主机的IP地址等信息 URL，统一资源定位符。通过这个可以打开一个输入流和获取一个连接，从流里面可以获取资源 URLEncoder进行编码，URKLDecoder进行解码 ServertSocket，这个这里就没有案例了，因为我比较了解。 UDP的 DatagramPacket（包装一条信息）和 DatagramSocket（发送/接受 一条信息） 1、InetAddress12345678910111213141516171819202122232425/** * InetAddress主要用于IP地址，有两个子类Inet4Address Inet6Address */public class InetAddressDemo &#123; public static void main(String[] args) throws IOException &#123; //获取本机InetAddress InetAddress locAdd=InetAddress.getLocalHost(); //根据名称获取InetAddress InetAddress baidu=InetAddress.getByName("www.baidu.com"); InetAddress.getByAddress(locAdd.getAddress()); //需要一个字节数组 //获取一些信息 System.out.println("本机主机地址为："+locAdd.getHostAddress()); System.out.println("百度主机地址为："+baidu.getHostAddress()); //getAddress方法和getHostAddress类似，它们的唯一区别是getHostAddress方法返回的是字符串形式的IP地址， // 而getAddress方法返回的是byte数组形式的IP地址。 System.out.println("本机是地址： "); byte[] address = locAdd.getAddress(); for (byte b : address) &#123; System.out.print(b&gt;0?b:256+b); //注意这里的转换 &#125; System.out.println(); System.out.println("本机是否可连接："+locAdd.isReachable(5000)); System.out.println("百度时候可达：" + baidu.isReachable(5000)); &#125;&#125; 2、URL12345678910111213141516171819202122232425262728/** * URL：统一资源定位符，通过这个可以准确的找到一个网页 */public class URLDemo &#123; public static void main(String[] args) throws Exception &#123; //构造方法有两种，根据String的地址 或者 主机+端口+uri URL url=new URL("https://www.cnblogs.com/yulinfeng/p/5844151.html"); URLConnection urlConnection = url.openConnection(); //打开一个连接 System.out.println("内容的大小："+urlConnection.getContentLength()); System.out.println("内容类型"+urlConnection.getContentType()); InputStream inputStream = url.openStream(); //获取一个输入流 File file=new File("H:\\java\\idea-workspace\\jvm\\src\\com\\test.html"); BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(file,true));//可设置追加 Scanner scanner=new Scanner(inputStream); while (scanner.hasNext())&#123; bufferedWriter.write(scanner.next()); bufferedWriter.newLine(); bufferedWriter.flush(); &#125; scanner.close(); bufferedWriter.close(); System.out.println("ok"); &#125;&#125; 3、编码解码1234567891011121314/** * URL的编码和解码操作：URLEncoder进行编码，URKLDecoder进行解码 * 这个也是比较常用的 */public class URLCoderDemo &#123; public static void main(String[] args) throws UnsupportedEncodingException &#123; String file="中文"; String gb2312 = URLEncoder.encode(file, "utf-8"); //编码 String comeBack= URLDecoder.decode(file,"utf-8"); //解码 System.out.println(file); System.out.println(gb2312); System.out.println(comeBack); &#125;&#125; 4、UDP实现简单客户端和服务端123456789101112131415161718192021222324252627282930313233343536373839404142/** * TCP的socket变成，我有做过一个web服务器，相对比较熟悉、 * 直接UDP, * DatagramPacket（包装一条信息）和DatagramSocket（发送/接受 一条信息） *///客户端public class Server &#123; public static void main(String[] args) throws SocketException &#123; //DatagramPacket提供两个构造方法 byte[] bytes = new byte[1204]; DatagramPacket packet=new DatagramPacket(bytes,1204); //还可以添加主机地址 和 端口号 DatagramSocket socket=new DatagramSocket(6666); System.out.println("等待接受消息"); try &#123; socket.receive(packet); String message=new String(packet.getData(), 0,packet.getLength()); //数据包可以获取数据 和 数据长度 System.out.println("from:"+packet.getAddress()+": "+packet.getPort()); System.out.println("收到信息"); System.out.println(message); socket.close(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;&#125;public class Client &#123; public static void main(String[] args) throws IOException &#123; byte[] bytes = "wo ai ni ".getBytes(); //客户端需要地址，和端口 DatagramPacket datagramPacket=new DatagramPacket (bytes,bytes.length, InetAddress.getByName("localhost"),6666); DatagramSocket datagramSocket=new DatagramSocket(8888); //客户端端口 //socket可以接和发，客户端发，服务端收 //结合 System.out.println("发送 udp ----"); datagramSocket.send(datagramPacket); System.out.println("发送 完毕===="); datagramSocket.close(); &#125;&#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Manacher和KMP]]></title>
     <url>%2F2019%2F05%2F09%2FManacher%E5%92%8CKMP%2F</url>
     <content type="text"><![CDATA[Manacher和KMP实现 Manacher和KMP1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677/* * Manacher * 1、help数组，用来记录每个位置的最长回文长度 * 2、R，记录最右边界 * 3、C,记录最右边界的中心 * * 思路：一、如果当前位置不被R包裹，直接进行暴力求回文。并跟新C和R * 二、如果当前位置被R包裹 * 1、当前位置以C为中心的对称点，的回文长度没有突破R回文边界，当前位置回文就等于对称位置的回文长度 * 2、当前位置以C为中心的对称点，的回文长度突破了R回文边界，当前位置回文就等于R-i * 3、恰好踩在了R位置，直接以半径为len去暴力求新的len。跟新C和R。 */public class Marnach &#123; public static int difStrlen(String str)&#123; char[] ss=str.toCharArray(); int[] index=new int[128]; int len=0; for(int j=0, i=0;i&lt;ss.length;i++)&#123; j=Math.max(j, index[ss[i]]); len=Math.max(len, i-j+1); index[ss[i]]=i+1; &#125; return len; &#125; public static int findMlen(String str)&#123; char[] c=new char[str.length() * 2 - 1]; int a=0; for (int i = 0; i &lt; str.length(); i++) &#123; c[a++]=str.charAt(i); if(i!=str.length()-1)&#123; c[a++]='#'; &#125; &#125; int R =-1; //右边界 int C=0; //回文中心 int max=0; int[] help=new int[c.length]; int i=0; int len; //记录当前当前位置的回文长度 while(R&lt;c.length &amp;&amp; i&lt;c.length)&#123; if(R==c.length-1)&#123; break; &#125; if(i&gt;R)&#123; len = postLen(c,i,1); help[i]=len; C=i; R=i+len-1; &#125;else&#123; len=help[2*C-i]; if(len+(i-C)&lt;help[C])&#123; help[i]=help[2*C-i]; &#125;else if(len+(i-C)&gt;help[C])&#123; help[i]=help[C]-(i-C); &#125;else&#123; len=postLen(c, i, len); help[i]=len; C=i; R=i+len-1; &#125; &#125; max=Math.max(max, help[i]); i++; &#125; return max; &#125; private static int postLen(char[] c, int i,int len) &#123; while(i-len&gt;-1 &amp;&amp; i+len&lt;c.length &amp;&amp; c[i-len]==c[i+len])&#123; len++; &#125; return len; &#125; public static void main(String[] args) &#123; System.out.println(findMlen("aasdbbbbbbdsaa")); System.out.println(difStrlen("stradad")); &#125;&#125; 1234567891011121314151617181920212223242526272829303132333435363738394041424344/** * KmpTest */public class KmpTest &#123; public static int kmp(String str1,String str2)&#123; char[] c1=str1.toCharArray(); char[] c2=str2.toCharArray(); int i=0,j=0; int[] next =findMinlen(str2); while(i&lt;c1.length &amp;&amp; j&lt;c2.length)&#123; if(c1[i]==c2[j])&#123; i++;j++; &#125;else if(next[j]==-1)&#123; i++; &#125;else&#123; j=next[j]; &#125; &#125; return j==c2.length?c1.length-c2.length:-1; &#125; public static int[] findMinlen(String str)&#123; char[] c=str.toCharArray(); int[] next=new int[str.length()+1]; next[0]=-1; next[1]=0; int cn=0; int i=2; while(i&lt;=str.length())&#123; if(c[i-1]==c[cn])&#123; next[i++]=++cn; &#125;else if(cn&gt;0)&#123; cn=next[cn]; &#125;else&#123; next[i++]=0; &#125; &#125; System.out.println(str+str.substring(next[i-1], str.length())); return next; &#125; public static void main(String[] args) &#123; findMinlen("adad"); System.out.println(kmp("str1", "r1")); &#125;&#125;]]></content>
@@ -30,8 +42,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>多线程</tag>
         <tag>学习</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
@@ -154,7 +166,7 @@
         <category>计算机基础</category>
       </categories>
       <tags>
-        <tag>计算机网络</tag>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
@@ -209,8 +221,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>多线程</tag>
         <tag>学习</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
@@ -233,8 +245,8 @@
         <category>java</category>
       </categories>
       <tags>
-        <tag>多线程</tag>
         <tag>学习</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
