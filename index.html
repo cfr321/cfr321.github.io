@@ -711,6 +711,350 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/26/LRU算法以及缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/LRU算法以及缓存/" class="post-title-link" itemprop="url">LRU算法以及缓存</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-26 20:05:30 / 修改时间：20:46:37" itemprop="dateCreated datePublished" datetime="2019-05-26T20:05:30+08:00">2019-05-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。</p>
+<!--mroe-->
+<h2 id="一、LinkedHashMap"><a href="#一、LinkedHashMap" class="headerlink" title="一、LinkedHashMap"></a>一、LinkedHashMap</h2><p>这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。</p>
+<p>作为LRU缓存，提供了一个这样的构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,	//缓存大小</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">float</span> loadFactor,		//加载因子</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">boolean</span> accessOrder)</span> </span>&#123;  <span class="comment">//是否开启用了之后放最后</span></span><br><span class="line">    <span class="keyword">super</span>(initialCapacity, loadFactor);</span><br><span class="line">    <span class="keyword">this</span>.accessOrder = accessOrder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>怎样一个逻辑呢？首先我们建立了一个Map，定义他只能有initialCapacity这么大，然后定义accessOrder为true。</p>
+<h3 id="我们来看put方法"><a href="#我们来看put方法" class="headerlink" title="我们来看put方法**"></a>我们来看put方法**</h3><p>LinkedHashMap的put就是父类put方法。</p>
+<p>在HashMap中定义了下面三个方法，在HashMap都没有实现，就是给LinkedHashMap中的回调。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Callbacks to allow LinkedHashMap post-actions</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeAccess</span><span class="params">(Node&lt;K,V&gt; p)</span> </span>&#123; &#125;		<span class="comment">//当节点的值被改变的时候调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeInsertion</span><span class="params">(<span class="keyword">boolean</span> evict)</span> </span>&#123; &#125;	<span class="comment">//当节点被添加时被调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeRemoval</span><span class="params">(Node&lt;K,V&gt; p)</span> </span>&#123; &#125;		<span class="comment">//当节点被删除时调用</span></span><br></pre></td></tr></table></figure>
+<p>我们来看看afterNodeInsertion方法在LinkedHashMap中的实现，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeInsertion</span><span class="params">(<span class="keyword">boolean</span> evict)</span> </span>&#123; <span class="comment">// possibly remove eldest  evict在hashMap调用传入的就是true</span></span><br><span class="line">    LinkedHashMap.Entry&lt;K,V&gt; first;</span><br><span class="line">    <span class="keyword">if</span> (evict &amp;&amp; (first = head) != <span class="keyword">null</span> &amp;&amp; removeEldestEntry(first)) &#123;</span><br><span class="line">        K key = first.key;</span><br><span class="line">        removeNode(hash(key), key, <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>);	<span class="comment">//删除HashMap中的节点，并且回调afterNodeRemoval，让节点从链表中也移除</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到注释也就是知道就是看看要不要移除最老的，判断条件是 <strong>removeEldestEntry(first)</strong></p>
+<p>而removeEldestEntry(first)方法确实默认放回false的，<strong>所以我们需要有删除功能的cache就需要重写这个方法。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;K,V&gt; eldest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在来看看get方法"><a href="#在来看看get方法" class="headerlink" title="在来看看get方法"></a><strong>在来看看get方法</strong></h3><p>get方法在LinkedHashMap是重写了的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">if</span> ((e = getNode(hash(key), key)) == <span class="keyword">null</span>)	<span class="comment">//直接从Map中取出值来</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (accessOrder)		<span class="comment">//这里就是我们构造传入的时候被调用就放到链表的最后</span></span><br><span class="line">        afterNodeAccess(e);	<span class="comment">//这里就是实现，把从原来的链表中取出来，然后放到最后。</span></span><br><span class="line">    <span class="keyword">return</span> e.value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了这样一套get和put的逻辑，就保证了我们最新的数据一定在后面，每次删掉的会使前面的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用LinkedHashMap定义一个符合LRU算法的缓存</span></span><br><span class="line">LinkedHashMap&lt;Integer, Integer&gt; cache = <span class="keyword">new</span> LinkedHashMap&lt;Integer, Integer&gt;(<span class="number">12</span></span><br><span class="line">        ,<span class="number">0.75f</span>,<span class="keyword">true</span>)&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;Integer, Integer&gt; eldest)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(size()&gt;<span class="number">12</span>)&#123;</span><br><span class="line">            System.out.println(eldest.getKey()+<span class="string">"移除了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  size()&gt;<span class="number">12</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/26/七种排序的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/七种排序的实现/" class="post-title-link" itemprop="url">七种排序的实现</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-26 20:05:30 / 修改时间：20:11:17" itemprop="dateCreated datePublished" datetime="2019-05-26T20:05:30+08:00">2019-05-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>排序是算法里面非常重要的一部分，其实很久之前就学习过一次了，不过这东西还是很容易遗忘，尤其是希尔排序，不去参考之前的我都写不出来了</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/26/七种排序的实现/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/24/spring-boot编写自己的启动器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1710,340 +2054,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/13/Spring加载bean都干了嘛？/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="摇井">
-      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
-      <meta itemprop="image" content="/images/aaa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Task try">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/13/Spring加载bean都干了嘛？/" class="post-title-link" itemprop="url">spring加载bean都干了嘛？</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-13 19:50:23 / 修改时间：09:03:06" itemprop="dateCreated datePublished" datetime="2019-05-13T19:50:23+08:00">2019-05-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Spring一些基础基本概念之前已经复习过，然后说起IOC，AOP也就知道它用了什么原理，但具体怎么实现没有去研究过，今天我就来简单的看看IOC的实现过程。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/13/Spring加载bean都干了嘛？/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/10/Java网络编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="摇井">
-      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
-      <meta itemprop="image" content="/images/aaa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Task try">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/10/Java网络编程/" class="post-title-link" itemprop="url">java多线程（二）</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-10 16:52:38 / 修改时间：22:02:48" itemprop="dateCreated datePublished" datetime="2019-05-10T16:52:38+08:00">2019-05-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在重新整理我之前做过的一个web服务器项目，设计到的主要是TCP的Java编程，然后今天做一个笔试题有一些其他Java网络编程的知识，很蒙，今晚学习了一下基本使用</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/10/Java网络编程/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2092,7 +2102,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2121,7 +2131,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>

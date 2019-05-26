@@ -103,16 +103,18 @@
 
 
 
-  <meta name="description" content="锄禾日当午 码农真辛苦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Task try">
-<meta property="og:url" content="https://www.ccgofa.top/archives/2019/05/index.html">
+  <meta name="description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
+<meta name="keywords" content="算法,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LRU算法以及缓存">
+<meta property="og:url" content="https://www.ccgofa.top/2019/05/26/LRU算法以及缓存/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="锄禾日当午 码农真辛苦">
+<meta property="og:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-26T12:46:37.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Task try">
-<meta name="twitter:description" content="锄禾日当午 码农真辛苦">
+<meta name="twitter:title" content="LRU算法以及缓存">
+<meta name="twitter:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
 
 
 
@@ -122,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://www.ccgofa.top/archives/2019/05/">
+  <link rel="canonical" href="https://www.ccgofa.top/2019/05/26/LRU算法以及缓存/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>归档 | Task try</title>
+  <title>LRU算法以及缓存 | Task try</title>
   
 
 
@@ -180,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/cfr321" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,7 +275,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -344,419 +346,262 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        还行! 目前共计 35 篇日志。 继续努力。
-      </span>
-      
+  
 
-      
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.ccgofa.top/2019/05/26/LRU算法以及缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="摇井">
+      <meta itemprop="description" content="锄禾日当午 码农真辛苦">
+      <meta itemprop="image" content="/images/aaa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Task try">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">LRU算法以及缓存
+
+              
+            
+          </h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-26 20:05:30 / 修改时间：20:46:37" itemprop="dateCreated datePublished" datetime="2019-05-26T20:05:30+08:00">2019-05-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/26/LRU算法以及缓存/" itemprop="url">
+            <span class="post-category">
             
-              <span itemprop="name">LRU算法以及缓存</span>
+              <span class="post-meta-divider">|</span>
             
-          </a>
-        
-      </h2>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-26T20:05:30+08:00" content="2019-05-26">
-          05-26
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/26/LRU算法以及缓存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/LRU算法以及缓存/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/26/七种排序的实现/" itemprop="url">
-            
-              <span itemprop="name">七种排序的实现</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-26T20:05:30+08:00" content="2019-05-26">
-          05-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/24/spring-boot编写自己的启动器/" itemprop="url">
-            
-              <span itemprop="name">spring-boot编写自己的启动器</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-24T14:04:27+08:00" content="2019-05-24">
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/23/AIO了解了解/" itemprop="url">
-            
-              <span itemprop="name">AIO了解了解</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-23T22:46:55+08:00" content="2019-05-23">
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <p>主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。</p>
+<!--mroe-->
+<h2 id="一、LinkedHashMap"><a href="#一、LinkedHashMap" class="headerlink" title="一、LinkedHashMap"></a>一、LinkedHashMap</h2><p>这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。</p>
+<p>作为LRU缓存，提供了一个这样的构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,	//缓存大小</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">float</span> loadFactor,		//加载因子</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">boolean</span> accessOrder)</span> </span>&#123;  <span class="comment">//是否开启用了之后放最后</span></span><br><span class="line">    <span class="keyword">super</span>(initialCapacity, loadFactor);</span><br><span class="line">    <span class="keyword">this</span>.accessOrder = accessOrder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>怎样一个逻辑呢？首先我们建立了一个Map，定义他只能有initialCapacity这么大，然后定义accessOrder为true。</p>
+<h3 id="我们来看put方法"><a href="#我们来看put方法" class="headerlink" title="我们来看put方法**"></a>我们来看put方法**</h3><p>LinkedHashMap的put就是父类put方法。</p>
+<p>在HashMap中定义了下面三个方法，在HashMap都没有实现，就是给LinkedHashMap中的回调。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Callbacks to allow LinkedHashMap post-actions</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeAccess</span><span class="params">(Node&lt;K,V&gt; p)</span> </span>&#123; &#125;		<span class="comment">//当节点的值被改变的时候调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeInsertion</span><span class="params">(<span class="keyword">boolean</span> evict)</span> </span>&#123; &#125;	<span class="comment">//当节点被添加时被调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeRemoval</span><span class="params">(Node&lt;K,V&gt; p)</span> </span>&#123; &#125;		<span class="comment">//当节点被删除时调用</span></span><br></pre></td></tr></table></figure>
+<p>我们来看看afterNodeInsertion方法在LinkedHashMap中的实现，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeInsertion</span><span class="params">(<span class="keyword">boolean</span> evict)</span> </span>&#123; <span class="comment">// possibly remove eldest  evict在hashMap调用传入的就是true</span></span><br><span class="line">    LinkedHashMap.Entry&lt;K,V&gt; first;</span><br><span class="line">    <span class="keyword">if</span> (evict &amp;&amp; (first = head) != <span class="keyword">null</span> &amp;&amp; removeEldestEntry(first)) &#123;</span><br><span class="line">        K key = first.key;</span><br><span class="line">        removeNode(hash(key), key, <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>);	<span class="comment">//删除HashMap中的节点，并且回调afterNodeRemoval，让节点从链表中也移除</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到注释也就是知道就是看看要不要移除最老的，判断条件是 <strong>removeEldestEntry(first)</strong></p>
+<p>而removeEldestEntry(first)方法确实默认放回false的，<strong>所以我们需要有删除功能的cache就需要重写这个方法。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;K,V&gt; eldest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在来看看get方法"><a href="#在来看看get方法" class="headerlink" title="在来看看get方法"></a><strong>在来看看get方法</strong></h3><p>get方法在LinkedHashMap是重写了的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">if</span> ((e = getNode(hash(key), key)) == <span class="keyword">null</span>)	<span class="comment">//直接从Map中取出值来</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (accessOrder)		<span class="comment">//这里就是我们构造传入的时候被调用就放到链表的最后</span></span><br><span class="line">        afterNodeAccess(e);	<span class="comment">//这里就是实现，把从原来的链表中取出来，然后放到最后。</span></span><br><span class="line">    <span class="keyword">return</span> e.value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了这样一套get和put的逻辑，就保证了我们最新的数据一定在后面，每次删掉的会使前面的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用LinkedHashMap定义一个符合LRU算法的缓存</span></span><br><span class="line">LinkedHashMap&lt;Integer, Integer&gt; cache = <span class="keyword">new</span> LinkedHashMap&lt;Integer, Integer&gt;(<span class="number">12</span></span><br><span class="line">        ,<span class="number">0.75f</span>,<span class="keyword">true</span>)&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;Integer, Integer&gt; eldest)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(size()&gt;<span class="number">12</span>)&#123;</span><br><span class="line">            System.out.println(eldest.getKey()+<span class="string">"移除了"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  size()&gt;<span class="number">12</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/21/Nio的零拷贝/" itemprop="url">
-            
-              <span itemprop="name">Nio的零拷贝</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-21T19:32:08+08:00" content="2019-05-21">
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/20/Sping-AOP基于注解/" itemprop="url">
-            
-              <span itemprop="name">Sping-AOP基于注解</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-20T18:13:38+08:00" content="2019-05-20">
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/16/简单实现IOC和AOP/" itemprop="url">
-            
-              <span itemprop="name">简单实现IOC和AOP第一版</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-16T17:37:55+08:00" content="2019-05-16">
-          05-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/14/聊聊编码/" itemprop="url">
-            
-              <span itemprop="name">聊聊编码</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-14T17:37:55+08:00" content="2019-05-14">
-          05-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/13/Spring加载bean都干了嘛？/" itemprop="url">
-            
-              <span itemprop="name">spring加载bean都干了嘛？</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-13T19:50:23+08:00" content="2019-05-13">
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/11/J2EE基础知识回顾/" itemprop="url">
-            
-              <span itemprop="name">J2EE基础知识回回顾</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-11T15:29:44+08:00" content="2019-05-11">
-          05-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>个人微信，欢迎骚扰</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/we.png" alt="摇井 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/26/七种排序的实现/" rel="next" title="七种排序的实现">
+                <i class="fa fa-chevron-left"></i> 七种排序的实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/05/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -776,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -936,6 +790,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、LinkedHashMap"><span class="nav-number">1.</span> <span class="nav-text">一、LinkedHashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们来看put方法"><span class="nav-number">1.1.</span> <span class="nav-text">我们来看put方法**</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在来看看get方法"><span class="nav-number">1.2.</span> <span class="nav-text">在来看看get方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1102,6 +973,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1147,6 +1022,8 @@
 
 
 
+
+  
 
 
   
