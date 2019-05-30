@@ -111,15 +111,15 @@
 <meta property="og:site_name" content="Task try">
 <meta property="og:description" content="Java容器是数据结构、算法、高并发的完美体现，Java容器家族相当的庞大，这里我们不对底层实现深究，我们来整体观看Java容器家族。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/images/QQ截图20190526233502.png">
-<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/images/QQ截图20190526234531.png">
-<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/images/QQ截图20190526235246.png">
-<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/images/QQ截图20190527001140.png">
-<meta property="og:updated_time" content="2019-05-30T06:47:41.894Z">
+<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/QQ截图20190526233502.png">
+<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/QQ截图20190526234531.png">
+<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/QQ截图20190526235246.png">
+<meta property="og:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/QQ截图20190527001140.png">
+<meta property="og:updated_time" content="2019-05-30T07:03:19.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一统Java集合">
 <meta name="twitter:description" content="Java容器是数据结构、算法、高并发的完美体现，Java容器家族相当的庞大，这里我们不对底层实现深究，我们来整体观看Java容器家族。">
-<meta name="twitter:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/images/QQ截图20190526233502.png">
+<meta name="twitter:image" content="https://www.ccgofa.top/2019/05/27/一统Java集合/QQ截图20190526233502.png">
 
 
 
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-30 14:47:41" itemprop="dateModified" datetime="2019-05-30T14:47:41+08:00">2019-05-30</time>
+                <time title="修改时间：2019-05-30 15:03:19" itemprop="dateModified" datetime="2019-05-30T15:03:19+08:00">2019-05-30</time>
               
             
           </span>
@@ -508,7 +508,7 @@
 <p>在编程的世界里面，容器作为对象的持有者，是相当的重要的，程序是数据结构和算法加起来，那么学习Java的种种容器集合是非常有必要的。</p>
 <p>Java容器有两个顶级接口</p>
 <p>Collection和Map，当然Collection上面还有个Iterable，这就是说数作为集合的话，你都都可以迭代，Map没有实现这个接口，那是不是就不能迭代呢，并不是，虽然Map本身不含有迭代器，但是考内部类Set&lt;Map.Entry&lt;K,V&gt;&gt;实现对内部节点的迭代。</p>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><img src="images/QQ截图20190526233502.png" alt></p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><img src="/2019/05/27/一统Java集合/QQ截图20190526233502.png" alt="非线程安全集合"></p>
 <p>仔细看上面这张图，我找出来最重要的接口和最重要的实现类。忽略了中间的抽象类，忽略了Vector</p>
 <ul>
 <li>List：我想List都很熟悉，它就是数据结构里面的<strong>线性表</strong>，它的实现也从<strong>链表</strong>  和 <strong>顺序表</strong>两种存储结构实现</li>
@@ -518,7 +518,7 @@
 <li>Stack：按上面的惯例来说，栈这种逻辑结构本应该定义为接口，但是没有，它就是一个用List的实现类，其实它继承自Vector，就是用Vector来实现栈的功能（先进后出），但同样我们可以用Deque来实现栈喔。</li>
 </ul>
 <p>上面这些除了Stack加了同步锁实现了线程安全，其他全都不是线程安全的，如果你的程序不需要考虑线程安全，你可以从这里面选择你需要的功能的集合。</p>
-<h3 id="如果需要线程安全的集合，从这里面找"><a href="#如果需要线程安全的集合，从这里面找" class="headerlink" title="如果需要线程安全的集合，从这里面找"></a>如果需要线程安全的集合，从这里面找</h3><p><img src="images/QQ截图20190526234531.png" alt></p>
+<h3 id="如果需要线程安全的集合，从这里面找"><a href="#如果需要线程安全的集合，从这里面找" class="headerlink" title="如果需要线程安全的集合，从这里面找"></a>如果需要线程安全的集合，从这里面找</h3><p><img src="/2019/05/27/一统Java集合/QQ截图20190526234531.png" alt="线程安全集合"></p>
 <p>这里我只列出了部分，其实还有，安全的队列可还有好几个呢，后面我在放一个图专门放队列的。</p>
 <p>可以看到对于着三种不同逻辑结构的接口，也有他们安全的的容器，这些容器全部来自于<strong>java.util.concurrent</strong>包。前面说过，对于Set基本都是用Map实现的，因为Map要求key唯一，着正好对上了set的需求。</p>
 <p><strong>但是CopyOnWriteArraySet使用CopyOnWriteList实现的</strong>，那它怎么去重，没有一次添加都去遍历看看有没有。。。</p>
@@ -528,9 +528,9 @@
 <li>再看你需要上面功能，能实现的也就是排序的Map和保持插入顺序的Map,TreeMap就是用来排序的，但是在线程安全的Map里用来是使用调表这个数据结构实现的。</li>
 <li>几乎所有的Map都有一个对应的Set，Set拿去用就好。但是WeakHashMap是没有对应的WeakHashSet。但是我们强大的集合工具类有这么个方法<strong>Collections.newSetFromMap()</strong>，这要得到的set也能是weak的了。</li>
 </ul>
-<p><img src="images/QQ截图20190526235246.png" alt></p>
+<p><img src="/2019/05/27/一统Java集合/QQ截图20190526235246.png" alt="Map"></p>
 <h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>Queue它本来就是输入集合的，队列算是一种逻辑结构了，它的实现非常的多，安全的不安全的，各种功能的，用各种不同储存结构实现的。</p>
-<p><img src="images/QQ截图20190527001140.png" alt></p>
+<p><img src="/2019/05/27/一统Java集合/QQ截图20190527001140.png" alt="对列"></p>
 <p>队列总的来分也是分为线程安全和线程不安全</p>
 <ul>
 <li>线程不安全的好说，分别用链表、顺序表、和具有优先级的基于数组的优先队列，为什么不用树实现优先队列？其实也是可以的，但是逻辑复杂不说，效率还不如直接用数组。</li>
@@ -688,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
