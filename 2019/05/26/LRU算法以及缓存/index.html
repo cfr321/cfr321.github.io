@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
+  <meta name="description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法">
 <meta name="keywords" content="算法,spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LRU算法以及缓存">
 <meta property="og:url" content="https://www.ccgofa.top/2019/05/26/LRU算法以及缓存/index.html">
 <meta property="og:site_name" content="Task try">
-<meta property="og:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
+<meta property="og:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-27T09:47:25.240Z">
+<meta property="og:updated_time" content="2019-05-30T05:47:47.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LRU算法以及缓存">
-<meta name="twitter:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。  一、LinkedHashMap这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。 作为LRU缓存，提供了一个这样的">
+<meta name="twitter:description" content="主要介绍一下Java中用LinkedHashMap实现LRU的算法">
 
 
 
@@ -426,7 +426,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-27 17:47:25" itemprop="dateModified" datetime="2019-05-27T17:47:25+08:00">2019-05-27</time>
+                <time title="修改时间：2019-05-30 13:47:47" itemprop="dateModified" datetime="2019-05-30T13:47:47+08:00">2019-05-30</time>
               
             
           </span>
@@ -498,8 +498,8 @@
       
 
       
-        <p>主要介绍一下Java中用LinkedHashMap实现LRU的算法、自己用HashMap加LinkedList实现LRU算法和springboot对缓存操作的支持。</p>
-<!--mroe-->
+        <p>主要介绍一下Java中用LinkedHashMap实现LRU的算法</p>
+<a id="more"></a>
 <h2 id="一、LinkedHashMap"><a href="#一、LinkedHashMap" class="headerlink" title="一、LinkedHashMap"></a>一、LinkedHashMap</h2><p>这个东西其实就是继承自HashMap，然后改写了Entry的结构，让节点有一个before和after指针，就这样把HashMap里面的一个个节点安装先后顺序串起来了。</p>
 <p>作为LRU缓存，提供了一个这样的构造方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,	//缓存大小</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">float</span> loadFactor,		//加载因子</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">boolean</span> accessOrder)</span> </span>&#123;  <span class="comment">//是否开启用了之后放最后</span></span><br><span class="line">    <span class="keyword">super</span>(initialCapacity, loadFactor);</span><br><span class="line">    <span class="keyword">this</span>.accessOrder = accessOrder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
