@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ccgofa.top/"/>
-  <updated>2019-05-30T07:09:10.705Z</updated>
+  <updated>2019-06-02T13:26:42.863Z</updated>
   <id>https://www.ccgofa.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最近的一些思考</title>
+    <link href="https://www.ccgofa.top/2019/06/02/%E6%9C%80%E8%BF%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
+    <id>https://www.ccgofa.top/2019/06/02/最近的一些思考/</id>
+    <published>2019-06-02T12:32:51.000Z</published>
+    <updated>2019-06-02T13:26:42.863Z</updated>
+    
+    <content type="html"><![CDATA[<p>接近期末，考试真的好多，现在都没办法很静下心来学习，都大三下了还一堆乱七八糟的课真的是服了这个专业了。主要还是不喜欢吧。</p><a id="more"></a><p>明天又有一个闭卷的背背背的科目。很烦，学习的专注度很低，甚至我现在都不知道在干什么要干什么很空虚。</p><p>我自学计算机是从C开始的，后来看的数据结构也是C的，但是说实话C我只是稍微学了一下，然后我就开始学习Java的，从Java基础到Javaweb基础，再到后面的几个框架和一些数据库中间件。学了下来到现在其实也没花几个月。三个多月吧，虽然说学习效率不低，学了很多。可是我最近在想我这样真的是在变强吗？我那薄弱的计算机基础的知识支撑不起我的学习之路，学Java虚拟机学多线程，可是搞不清底层到的机制，不了解计算机运作的原理，不够扎实的算法与数据结构知识，不够系统的计算机知识等等。我知道我比起那些强者差了不止一点点，会用再多的框架又有什么用呢，写不出优雅的代码做不出美优的设计始终只能在鄙视链的最低端。</p><p>其实挺纠结的，到底要不要重写学习下C，要不要去学习一下C++。今天搞了半天搭建了一个C的IDE。可是尝到了写Java甜头的我再去写C真的有种很难受的感觉。而且似乎没有太多的意义。C++我不熟悉，但是给我一种晦涩的感觉。我不知道，一方面想着再去提高我的Java水平，一方面又想学习C和C++（为了更好的了解计算机）。还想去学习算法和计算机基础。一遍还有期末繁重的考试和实验。可是我的时间好少啊，我想在毕业的时候找到一个满意的工作。可是我马上就要毕业了啊。如何取舍呢，在这些剩下不多的大学时间了我该如何抓住，从何学。</p><p>在网上买了一些书，都是大家都在推荐的圣经吧，像深入了解计算机系统、Java编程思想、算法还有两把Java的书，我比较担心的是我着薄弱的C语言的水平，到时候看深入了解计算机系统会不会看到想放弃。可是真的不想最近又花上一些时间从头来搞一遍C，应该不会有很大问题吧，应该不止于看不懂，这三本书我也不是准备短时间就看完的，毕竟各个分量十足，我还买了两本Java的也是很重要的书吧，准便先看那两本，然后慢慢翻深入了解计算机系统和Java编程思想。其实有准备买一个C++的入门书籍，还能顺带复习C，但是想着估计也不会怎么看吧，就不浪费钱了先。</p><p><strong>立个flag吧，好好看书！</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接近期末，考试真的好多，现在都没办法很静下心来学习，都大三下了还一堆乱七八糟的课真的是服了这个专业了。主要还是不喜欢吧。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="https://www.ccgofa.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="学习" scheme="https://www.ccgofa.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="反思" scheme="https://www.ccgofa.top/tags/%E5%8F%8D%E6%80%9D/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -429,28 +453,6 @@
     
     
       <category term="数据库" scheme="https://www.ccgofa.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个人简历</title>
-    <link href="https://www.ccgofa.top/2019/04/30/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
-    <id>https://www.ccgofa.top/2019/04/30/个人简历/</id>
-    <published>2019-04-30T12:33:48.000Z</published>
-    <updated>2019-04-30T12:38:57.021Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一份个人简历。。</p><a id="more"></a><h2 id="联系方式-期望职位：Java开发实习生"><a href="#联系方式-期望职位：Java开发实习生" class="headerlink" title="联系方式 | 期望职位：Java开发实习生"></a>联系方式 | <font face="微软雅黑" size="2" color="#0099ff">期望职位：<u>Java开发实习生</u></font></h2><ul><li>手机（微信号）：173-9651-0930</li><li>Email：<a href="mailto:cwellshake@gmail.com" target="_blank" rel="noopener">cwellshake@gmail.com</a> </li></ul><h2 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息 |"></a>个人信息 |</h2><ul><li>陈发荣 / 男 / 1998</li><li>教育背景：福州大学（211）</li><li>技术博客：<a href="http://cfr321.github.io" target="_blank" rel="noopener">http://cfr321.github.io</a></li><li>Github：<a href="https://github.com/cfr321" target="_blank" rel="noopener">https://github.com/cfr321</a></li><li>证书技能：CTE4 / 自学C语言、数据结构和算法、计算机网络知识等计算机专业知识</li></ul><h2 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单 |"></a>技能清单 |</h2><ul><li>熟悉Java基础，了解常见设计模式</li><li>熟悉Servlet、JSP、JDBC等JavaWeb基础知识</li><li>熟悉IntelliJ IDEA、eclipse、vscode、Git、Maven等工具</li><li>熟悉MySQL关系型数据库，了解Redis</li><li>熟悉SringMVC、Spring、Mybatis框架技术；了解SpringBoot、SpringData</li><li>了解HTML+CSS+JS，以及BootStrap、Vue.js等前端知识</li><li>了解Linux常用命令，能够搭建开发环境</li></ul><h2 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目 |"></a>个人项目 |</h2><ul><li><p><strong>员工管理系统</strong></p><p>项目介绍：这是一个独立完成的员工管理系统，通过这个项目使我更加熟悉了SSM框架，以及学习BootStrap对页面的搭建，项目主要采用页面发送ajax到后端，实现对员工的信息的修改。整个项目业务并不复杂，但第一次做项目还是出现了很多问题，比如bootstrap的cs效果引入问题、MySQL8.0版本连接问题等等，我是完全自学的、遇到了问题我只能不断地去网上搜索，翻阅很多别人的博客，最终让问题得到解决。</p></li><li><p><strong>CkServer服务器</strong></p><p>一个类似tomcat的web服务器，这是在我学习Java网络编程时候做的一个小项目。它能接受HTTP请求以及响应，实现了war包的自动解压、xml的解析获取servlet、以及常见的状态码的响应。一开始它只支持IO流操作，一个请求一个线程；我又去学习了NIO的知识，并运用在这个小项目上。</p></li><li><p><strong>cako商城</strong></p><p>这是一个基于SpringBoot和SpringData的分布式项目，前端用的是vue.js，用nginx实现方向代理。目前并没有完全开发完全，现在在开发后台商品管理系统，从中我也在不断记取不断进步。</p></li></ul><h2 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息 |"></a>其他信息 |</h2><ul><li>校园经历：曾担任idea精英汇新闻官部长，负责微信公众号管理，有公众号管理和推文撰写经验</li><li>性格特点：专注度高，热爱学习，富有创造力</li><li>个人爱好：运动、游戏、读书和敲代码</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是一份个人简历。。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="life" scheme="https://www.ccgofa.top/categories/life/"/>
-    
-    
-      <category term="分享" scheme="https://www.ccgofa.top/tags/%E5%88%86%E4%BA%AB/"/>
     
   </entry>
   
