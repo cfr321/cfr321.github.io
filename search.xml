@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[about me]]></title>
+    <title><![CDATA[读《Java编程思想》对异常的一些新认识]]></title>
+    <url>%2F2019%2F06%2F25%2F%E8%AF%BB%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E5%AF%B9%E5%BC%82%E5%B8%B8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B0%E8%AE%A4%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[异常并不是一个很大的部分，但是它在Java中确实相当重要的一部分 对于异常，之前的学习都是零零散散中认识的，毕竟有事没事的就给你来个异常。简单的来说Java编程思想对于异常进行了一些思考，以及一些别的有意思的用法。 重新抛出异常 try-catch捕捉异常之后，我们可以进行处理，也可以重新抛出这个异常，或者抛出新的异常。 对于抛出当前的这个异常，又有两个细微的差异 123456789&#125; catch (Exception e) &#123; //...do something or not throw e; &#125;catch (Exception e)&#123; //...do something or not throw (Exception) e.fillInStackTrace();&#125; 有何不同？ 打印的轨迹不一样， throw e 是原来异常的栈轨迹，e.fillInStackTrace()则会有重新抛出异常的调用轨迹。 e.fillInStackTrace()返回的是一个Throwable对象，需要强转为Excption。 异常链 这个怎么理解呢？就是我们要抛出的异常是因为另一个异常的产生，我们需要把另一个异常绑定到我们将要抛出的异常上。比如产生了一个空指针异常，我们把它绑定到我们自定义的异常上，改怎么做？ 12345678NullPointerException exception = new NullPointerException();MyException myException=new MyException();myException.initCause(exception);try &#123; throw myException;&#125; catch (MyException e) &#123; e.getCause();&#125; 异常的丢失 finally中的异常会覆盖try中的异常。 finally中return也会导致异常的丢失。 12345678910111213public static void main(String[] args) &#123; try &#123; try&#123; throw new Exception("try 的 Exception"); &#125;finally &#123; throw new Exception("finally 的 E"); &#125; &#125;catch (Exception e)&#123; System.out.println(e); &#125;&#125;//out: java.lang.Exception: finally 的 E 被检验异常 这个章节的后面，写了很多对Java中的被检验异常的思考，本人对C++不了解，但是Java的受检验异常是C++中的异常说明而来，然后指出被检验异常对于开发效率的影响等等。确实，每次去打开一个文件就强制要求你对被检验的异常处理，着实有一些麻烦。对于此书中给出的几条异常使用的建议是这样的： 恰当的处理级别（知道怎么处理才捕捉） 解决问题并且重新调用产生异常的方法 进行少许的修补，然后绕开异常发生的地方继续执行 用别的数据进行计算，以替代方法预计返回的值 把当前运行环境下能做的事尽量做完，然后把相同的异常抛出 把当前运行环境下能做的事尽量做完，然后把不相同的异常抛出 终止程序 进行简化 让类库更加安全 说实话，有一些不是很明白，有点模糊。 对于被建议的异常我们可以将它包装成运行时的异常，这样在调用的时候就不用那么麻烦得去try-catch 123catch (Exception e)&#123; throw new RuntimeException(e);&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[内部类]]></title>
     <url>%2F2019%2F06%2F24%2F%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E8%BF%98%E6%98%AF%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[大家都说他的好。 最近一直在读Java圣经，Effective Java说静态内部类优先非静态，Java编程思想也这么说，那到底是为什么呢？ 对于非静态内部类当一个外部类的对象创建这个非静态的内部类对象的时候，它们之间就存在一种引用，使得内部类可以访问外部的所有属性方法。 such as1234567891011121314151617181920212223242526272829public class Outer &#123; private int aa=1; private void fun()&#123; System.out.println("outer de fun"); &#125; class Inner&#123; private int aa=2; private void test()&#123; int aa=3; System.out.println(aa); // 3 System.out.println(this.aa); // 2 System.out.println(Outer.this.aa); //1 fun(); // "inner de fun" Outer.this.fun(); // "outer de fun" &#125; private void fun()&#123; System.out.println("inner de fun"); &#125; &#125; &#123; final Outer outer = new Outer(); final Inner inner = outer.new Inner(); &#125;&#125; 我们可以看到这种成员内部类与外部的类彼此是完全透明的，则自的私有方法都可以被彼此访问，这种访问取决于就是在创建的时候有有一个彼此的引用，但是根据Effective Java的阐述，这个引用是占内存的，一个两个没什么问题，但是对于集合与内部结点，结点的数量是很多的，那么就会出现内存的OOM的可能， 所以如果内部类对外部没有依赖，我们就应该让外部的类是静态的。它们之间的引用就没有了。 such as1234567891011121314151617181920public class Outer2 &#123; static class Inner&#123; private void fun()&#123; System.out.println("inner de fun"); // Outer2.this 编译错误 Outer2 outer2 = new Outer2(); outer2.fun2(); &#125; &#125; private void fun2()&#123; System.out.println("outer de fun"); &#125; public static void main(String[] args) &#123; Inner inner = new Inner(); inner.fun(); &#125;&#125; 我们不用使用 Outer2.this或者直接访问外部的方法，要调用只能new 一个外部对象，当然这就不是this了，有点诡异，但是往往我们的内部类是不依赖外部的属性的，这时候我们就要考虑使用静态内部类。]]></content>
       <categories>
