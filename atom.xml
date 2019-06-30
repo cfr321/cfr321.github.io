@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.ccgofa.top/"/>
-  <updated>2019-06-25T15:02:02.020Z</updated>
+  <updated>2019-06-27T10:35:37.250Z</updated>
   <id>https://www.ccgofa.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读《Java编程思想》对反射的一些新认识</title>
+    <link href="https://www.ccgofa.top/2019/06/27/%E5%8F%8D%E5%B0%84%E5%BE%97%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
+    <id>https://www.ccgofa.top/2019/06/27/反射得一些思考/</id>
+    <published>2019-06-27T14:56:41.000Z</published>
+    <updated>2019-06-27T10:35:37.250Z</updated>
+    
+    <content type="html"><![CDATA[   <center>一句话让我明白了反射</center><a id="more"></a><p><strong>每个类都有一个Class对象</strong></p><p>我们来回顾一下Java代码运行的过程，首先是编译变成一个二进制的.class文件。</p><p>class文件加载到JVM的过程就是类的加载：</p><p>加载==》验证==》准备==》解析==》初始化==》使用==》退出、清理</p><p>一个class文件加载过后就会在JVM的堆上生成一个这个类的Class对象，指向方法区类信息。后面这个类的所有对象都由这个Class对象创建。</p><p>我之前对反射的理解，反射就是拿到这个类的Class对象的引用，至于这个反射对象到底是哪里来的，它是一个什么样子的存在有点模糊。</p><p>然后反射有三种创建方式，调用类.class，类对象.getClass和Class.forName。现在想 <strong>每个对象都有一个Class对象</strong>，而我们反射就是去拿到这个对象的引用，再看获取反射的三个方法你就会觉得这个东西它很道理了。</p><p>再来回以一下什么时候会发生类的加载：</p><ul><li>调用一个类的静态资源（main方法也是静态的，所以执行main的类会被加载）</li><li>用new去创建一个类的对象，这也证明了构造方法也是类的静态方法（没有对象就能调用）</li><li>子类被使用，父类也会被加载</li><li>用反射的方法去获取类的Class对象。</li></ul><p>反观反射获取Class引用的三个方法，前提就是类已经加载。可以猜测任何类都有的class属性应该是一个静态常量的属性。</p><h3 id="class和Class-forName有何不同。"><a href="#class和Class-forName有何不同。" class="headerlink" title=".class和Class.forName有何不同。"></a>.class和Class.forName有何不同。</h3><p>回顾上面类的加载过程，加载负责获取字节流，验证看是否合法安全，准备是为类静态域分配储存空间。</p><p><strong>初始化</strong>是执行静态初始化器和静态初始化块。</p><p>而.class和Class.forName的不同就在于会不会去执行初始化，调用 .class并不会初始化这个类，只有使用到了静态方法或者<strong>非常量静态域</strong>（没有用final修饰，否则是个编译器的常量，编译的时候就会被读取）才会发生初始化。Class.forName是会发生初始化的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;center&gt;一句话让我明白了反射&lt;/center&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.ccgofa.top/categories/Java/"/>
+    
+    
+      <category term="Java基础" scheme="https://www.ccgofa.top/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>读《Java编程思想》对异常的一些新认识</title>
@@ -437,30 +459,6 @@
     
     
       <category term="数据库" scheme="https://www.ccgofa.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java多线程工具类（一）</title>
-    <link href="https://www.ccgofa.top/2019/05/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <id>https://www.ccgofa.top/2019/05/05/多线程工具类/</id>
-    <published>2019-05-05T14:56:41.000Z</published>
-    <updated>2019-06-24T08:14:19.055Z</updated>
-    
-    <content type="html"><![CDATA[<p>记录一下</p><a id="more"></a><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一个线程要在其他线程全部结束后在结束的n种方法。。。。</span></span><br><span class="line"><span class="comment"> * 1、sleep，可以估算的情况下可以，最垃圾的办法</span></span><br><span class="line"><span class="comment"> * 2、join,将其他线程一个个的join进来，还凑合，但是麻烦</span></span><br><span class="line"><span class="comment"> * 3、while(Thread.activeCount()&gt;2)  yeild。这个在平时测试还是很不错的一个办法。2表示main线程和gc线程。</span></span><br><span class="line"><span class="comment"> * 4、CountDownLacthTest，并发工具。</span></span><br><span class="line"><span class="comment"> * 5、CyclicBarrier，同步屏障。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountDownLacthTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> CountDownLatch c=<span class="keyword">new</span> CountDownLatch(<span class="number">20</span>);</span><br><span class="line">    <span class="keyword">static</span> AtomicInteger integer=<span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;<span class="number">100</span> ; j++) &#123;</span><br><span class="line">                    integer.incrementAndGet();</span><br><span class="line">                &#125;</span><br><span class="line">                c.countDown();</span><br><span class="line">            &#125;, <span class="string">"i"</span>).start();</span><br><span class="line">        &#125;</span><br><span class="line">        c.await();</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * CycliBarrier，也是设置一个初始值，每个线程调用 await方法。</span></span><br><span class="line"><span class="comment"> * 当await调用的次数达到了初始值，所有等待线程释放。</span></span><br><span class="line"><span class="comment"> * 此外CycliBarrierh还有一些其他功能，比如当都到达屏障可以设置一个先要去执行的方法。</span></span><br><span class="line"><span class="comment"> * 还可以reset(),重置计数器，让线程重新执行一次。</span></span><br><span class="line"><span class="comment"> * 还有一些其他的有用的方法，isBroken，getNumberwaiting.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CycliBarrierTest</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    CyclicBarrier c=<span class="keyword">new</span> CyclicBarrier(<span class="number">10</span>, <span class="keyword">this</span>);</span><br><span class="line">    ConcurrentHashMap&lt;String,Integer&gt; map=<span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">count</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> finalI = i;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                map.put(Thread.currentThread().getName(),Integer.valueOf(finalI));</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    c.await();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AtomicInteger result= <span class="keyword">new</span> AtomicInteger();</span><br><span class="line">        map.forEach((k,v) -&gt; &#123;</span><br><span class="line">            result.addAndGet(v);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String,Integer&gt;  entry :map.entrySet())&#123;</span><br><span class="line">            s+=entry.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(result+<span class="string">" "</span>+s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        CycliBarrierTest cycliBarrierTest=<span class="keyword">new</span> CycliBarrierTest();</span><br><span class="line">        cycliBarrierTest.count();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录一下&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="https://www.ccgofa.top/categories/Java/"/>
-    
-    
-      <category term="多线程" scheme="https://www.ccgofa.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="学习" scheme="https://www.ccgofa.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

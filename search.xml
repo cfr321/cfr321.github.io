@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[读《Java编程思想》对反射的一些新认识]]></title>
+    <url>%2F2019%2F06%2F27%2F%E5%8F%8D%E5%B0%84%E5%BE%97%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83%2F</url>
+    <content type="text"><![CDATA[一句话让我明白了反射 每个类都有一个Class对象 我们来回顾一下Java代码运行的过程，首先是编译变成一个二进制的.class文件。 class文件加载到JVM的过程就是类的加载： 加载==》验证==》准备==》解析==》初始化==》使用==》退出、清理 一个class文件加载过后就会在JVM的堆上生成一个这个类的Class对象，指向方法区类信息。后面这个类的所有对象都由这个Class对象创建。 我之前对反射的理解，反射就是拿到这个类的Class对象的引用，至于这个反射对象到底是哪里来的，它是一个什么样子的存在有点模糊。 然后反射有三种创建方式，调用类.class，类对象.getClass和Class.forName。现在想 每个对象都有一个Class对象，而我们反射就是去拿到这个对象的引用，再看获取反射的三个方法你就会觉得这个东西它很道理了。 再来回以一下什么时候会发生类的加载： 调用一个类的静态资源（main方法也是静态的，所以执行main的类会被加载） 用new去创建一个类的对象，这也证明了构造方法也是类的静态方法（没有对象就能调用） 子类被使用，父类也会被加载 用反射的方法去获取类的Class对象。 反观反射获取Class引用的三个方法，前提就是类已经加载。可以猜测任何类都有的class属性应该是一个静态常量的属性。 .class和Class.forName有何不同。回顾上面类的加载过程，加载负责获取字节流，验证看是否合法安全，准备是为类静态域分配储存空间。 初始化是执行静态初始化器和静态初始化块。 而.class和Class.forName的不同就在于会不会去执行初始化，调用 .class并不会初始化这个类，只有使用到了静态方法或者非常量静态域（没有用final修饰，否则是个编译器的常量，编译的时候就会被读取）才会发生初始化。Class.forName是会发生初始化的。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[读《Java编程思想》对异常的一些新认识]]></title>
     <url>%2F2019%2F06%2F25%2F%E8%AF%BB%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E5%AF%B9%E5%BC%82%E5%B8%B8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B0%E8%AE%A4%E8%AF%86%2F</url>
     <content type="text"><![CDATA[异常并不是一个很大的部分，但是它在Java中确实相当重要的一部分 对于异常，之前的学习都是零零散散中认识的，毕竟有事没事的就给你来个异常。简单的来说Java编程思想对于异常进行了一些思考，以及一些别的有意思的用法。 重新抛出异常 try-catch捕捉异常之后，我们可以进行处理，也可以重新抛出这个异常，或者抛出新的异常。 对于抛出当前的这个异常，又有两个细微的差异 123456789&#125; catch (Exception e) &#123; //...do something or not throw e; &#125;catch (Exception e)&#123; //...do something or not throw (Exception) e.fillInStackTrace();&#125; 有何不同？ 打印的轨迹不一样， throw e 是原来异常的栈轨迹，e.fillInStackTrace()则会有重新抛出异常的调用轨迹。 e.fillInStackTrace()返回的是一个Throwable对象，需要强转为Excption。 异常链 这个怎么理解呢？就是我们要抛出的异常是因为另一个异常的产生，我们需要把另一个异常绑定到我们将要抛出的异常上。比如产生了一个空指针异常，我们把它绑定到我们自定义的异常上，改怎么做？ 12345678NullPointerException exception = new NullPointerException();MyException myException=new MyException();myException.initCause(exception);try &#123; throw myException;&#125; catch (MyException e) &#123; e.getCause();&#125; 异常的丢失 finally中的异常会覆盖try中的异常。 finally中return也会导致异常的丢失。 12345678910111213public static void main(String[] args) &#123; try &#123; try&#123; throw new Exception("try 的 Exception"); &#125;finally &#123; throw new Exception("finally 的 E"); &#125; &#125;catch (Exception e)&#123; System.out.println(e); &#125;&#125;//out: java.lang.Exception: finally 的 E 被检验异常 这个章节的后面，写了很多对Java中的被检验异常的思考，本人对C++不了解，但是Java的受检验异常是C++中的异常说明而来，然后指出被检验异常对于开发效率的影响等等。确实，每次去打开一个文件就强制要求你对被检验的异常处理，着实有一些麻烦。对于此书中给出的几条异常使用的建议是这样的： 恰当的处理级别（知道怎么处理才捕捉） 解决问题并且重新调用产生异常的方法 进行少许的修补，然后绕开异常发生的地方继续执行 用别的数据进行计算，以替代方法预计返回的值 把当前运行环境下能做的事尽量做完，然后把相同的异常抛出 把当前运行环境下能做的事尽量做完，然后把不相同的异常抛出 终止程序 进行简化 让类库更加安全 说实话，有一些不是很明白，有点模糊。 对于被建议的异常我们可以将它包装成运行时的异常，这样在调用的时候就不用那么麻烦得去try-catch 123catch (Exception e)&#123; throw new RuntimeException(e);&#125;]]></content>
